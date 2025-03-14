@@ -7,6 +7,13 @@ public class TestEnemy : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 5.0f;
 
+    private void Awake()
+    {
+        StatsComponent statsComponent = GetComponent<StatsComponent>();
+        statsComponent.Died += () => Destroy(gameObject);
+    }
+    
+
     private void Update()
     {
         inputVector = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));

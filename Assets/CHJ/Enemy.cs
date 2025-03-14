@@ -2,10 +2,21 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private StatsComponent _statsComponent;
+    
     public float speed = 10f; //속도
 
     private Transform target; //목표 방향
     private int wavepointIndex = 0;//현재 목표로하는 웨이포인트 인덱스
+
+    private void Awake()
+    {
+        _statsComponent = GetComponent<StatsComponent>();
+        if (_statsComponent != null)
+        {
+            _statsComponent.Died += () => Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {

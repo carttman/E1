@@ -22,12 +22,18 @@ public class Tower : MonoBehaviour
     [SerializeField] private Transform rotatingPart;
     [SerializeField] private Transform turret;
     [SerializeField] private Transform laserBeam;
+
+    [SerializeField] private float DamagePerSecond = 10f;
+
+    [SerializeField] public TowerData TowerData;
     
     private SphereCollider _sphereCollider;
     private Vector3 _laserBeamScale;
     
     private void Awake()
     {
+        Debug.Assert(TowerData);
+        
         _sphereCollider = GetComponent<SphereCollider>();
         _sphereCollider.radius = targetingRange;
         _laserBeamScale = laserBeam.localScale;
@@ -86,5 +92,11 @@ public class Tower : MonoBehaviour
         _laserBeamScale.z = dist;
         laserBeam.localScale = _laserBeamScale;
         laserBeam.localPosition = turret.localPosition + laserBeam.forward * (dist * 0.5f);
+
+        StatsComponent sc = target.GetComponent<StatsComponent>();
+        if (sc)
+        {
+            sc.TakeDamage(DamagePerSecond * 1f * Time.deltaTime);
+        }
     }
 }
