@@ -136,13 +136,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591684e7c46620d46882f4719cf88ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetingRange: 2.63
+  attackType: 1
+  cooldown: 1
+  currentDuration: 0
+  targetingRange: 3
   target: {fileID: 0}
   rotatingPart: {fileID: 3653282857593457266}
   turret: {fileID: 2388252123258264661}
   laserBeam: {fileID: 8637150883866057580}
   DamagePerSecond: 10
   TowerData: {fileID: 11400000, guid: b723b4a884f32c04e97f97fc67590014, type: 2}
+  projectilePrefab: {fileID: 6242738920967742884, guid: 5ed507674e0b2024f80dcb3517f862b7,
+    type: 3}
 --- !u!65 &303210249947105551
 BoxCollider:
   m_ObjectHideFlags: 0
