@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class SelectionTower : MonoBehaviour
 {
+    public event Action<TowerData> OnTowerBuilt;
+    
     private Ray TouchRay => Camera.main.ScreenPointToRay(Input.mousePosition);
     
     // Update is called once per frame
@@ -13,7 +16,9 @@ public class SelectionTower : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 enabled = false;
-                GetComponent<Tower>().enabled = true;
+                Tower tower = GetComponent<Tower>();
+                OnTowerBuilt?.Invoke(tower.TowerData);
+                tower.enabled = true;
             }
         }
     }
