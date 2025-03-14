@@ -30,6 +30,16 @@ PrefabInstance:
       propertyPath: rotatingPart
       value: 
       objectReference: {fileID: 9217957365068234085}
+    - target: {fileID: 819716441762515386, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: targetingRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 819716441762515386, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: DamagePerSecond
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1173346956814147457, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
         type: 3}
       propertyPath: m_Enabled
