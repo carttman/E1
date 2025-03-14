@@ -13,7 +13,7 @@ public class Tower : MonoBehaviour
     public float cooldown = 1f;
     public float currentDuration = 0f;
     
-    [SerializeField, Range(1.5f, 10.5f)]
+    [SerializeField, Range(1.5f, 100f)]
     private float targetingRange = 1.5f;
 
     public float TargetingRange
