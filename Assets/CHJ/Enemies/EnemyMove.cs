@@ -6,7 +6,7 @@ public class EnemyMove : MonoBehaviour
     public float speed = 10f; //속도
 
     private Transform target; //목표 방향
-    private int wavepointIndex = 0;//현재 목표로하는 웨이포인트 인덱스
+    private int wavePointIndex = 0;//현재 목표로하는 웨이포인트 인덱스
 
     private void Awake()
     {
@@ -42,14 +42,14 @@ public class EnemyMove : MonoBehaviour
 
     void GetNextWayPoint()
     {
-        if (wavepointIndex >= Waypoints.points.Length - 1) //만약 가지고 있는 모든 웨이포인트를 방문 > 도착 지점 도달
+        if (wavePointIndex >= Waypoints.points.Length - 1) //만약 가지고 있는 모든 웨이포인트를 방문 > 도착 지점 도달
         {
             EndPath();
-            return; //아래의 다음 웨이포인트 가져오는 것을 하지 않고 바로 종료
+            return;
         }
 
-        wavepointIndex++; //다음 웨이포인트 인덱스
-        target = Waypoints.points[wavepointIndex]; //다음 인덱스의 웨이포인트 오브젝트를 받아온다.
+        wavePointIndex++; //다음 웨이포인트 인덱스
+        target = Waypoints.points[wavePointIndex]; //다음 인덱스의 웨이포인트 오브젝트를 받아온다.
     }
     
     void EndPath() //경로의 끝(목표)에 도달
