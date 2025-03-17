@@ -1,22 +1,11 @@
 using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
-    private StatsComponent _statsComponent;
-    
     public float speed = 10f; //속도
 
     private Transform target; //목표 방향
     private int wavePointIndex = 0;//현재 목표로하는 웨이포인트 인덱스
-
-    private void Awake()
-    {
-        _statsComponent = GetComponent<StatsComponent>();
-        if (_statsComponent != null)
-        {
-            _statsComponent.Died += () => Destroy(gameObject);
-        }
-    }
-
+    
     private void Start()
     {
         //WayPoints의 points를 static으로 선언해놨기 때문에 바로 불러올 수 있다.
@@ -31,10 +20,10 @@ public class EnemyMove : MonoBehaviour
         //방향 벡터로 스피드 만큼 이동
         //방향을 단위벡터로 바꾸기 위해 normalized 진행 후 speed를 곱한만큼 진행 (프레임-시간 보정으로 deltaTime을 사용)
         transform.Translate(dir.normalized * (speed * Time.deltaTime), Space.World); //World Space에서 이동
-
+        transform.LookAt(target);
 
         //웨이포인트 도착 시 다음 웨이포인트로 변경
-        if (Vector3.Distance(transform.position, target.position) <= 0.4f) // 웨이 포인트와 에너미의 거리가 0.4 이하면 다음 웨이 포인트로
+        if (Vector3.Distance(transform.position, target.position) <= 0.4f)
         {
             GetNextWayPoint(); //다음 웨이포인트를 타겟으로 변경
         } 
@@ -42,7 +31,7 @@ public class EnemyMove : MonoBehaviour
 
     void GetNextWayPoint()
     {
-        if (wavePointIndex >= Waypoints.points.Length - 1) //만약 가지고 있는 모든 웨이포인트를 방문 > 도착 지점 도달
+        if (wavePointIndex >= Waypoints.points.Length - 1) //모든 웨이포인트를 방문
         {
             EndPath();
             return;
