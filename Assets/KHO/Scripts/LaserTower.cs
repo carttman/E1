@@ -34,7 +34,7 @@ public class LaserTower : Tower
         }
         else
         {
-            //laserBeam.localScale = Vector3.zero;
+            laserBeam.localScale = Vector3.zero;
         }
     }
 
@@ -51,7 +51,7 @@ public class LaserTower : Tower
         StatsComponent sc = target.GetComponent<StatsComponent>();
         if (sc)
         {
-            sc.TakeDamage(damagePerSecond * 1f * Time.deltaTime);
+            sc.TakeDamage(damagePerSecond * Time.deltaTime);
         }
     }
 }

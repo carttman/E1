@@ -31,12 +31,28 @@ public abstract class Tower : MonoBehaviour
             pTarget = null;
             return false;
         }
-        pTarget = potentialTargets[0];
-        return true;
+
+        for (int i = 0; i < potentialTargets.Count; i++)
+        {
+            if (potentialTargets[i])
+            {
+                pTarget = potentialTargets[i];
+                return true;
+            }
+            else
+            {
+                potentialTargets.RemoveAt(i);
+                i--;
+            }
+        }
+        pTarget = null;
+        return false;
     }
 
     protected bool TrackTarget(ref Transform pTarget)
     {
+        if (!pTarget) return false;
+        
         if ((transform.position - pTarget.position).magnitude <= targetingRange)
         {
             // look at target

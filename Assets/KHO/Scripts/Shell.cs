@@ -1,11 +1,15 @@
-using System;
+
 using UnityEngine;
+using RaycastHit = UnityEngine.RaycastHit;
 
 public class Shell : MonoBehaviour
 {
     private Vector3 launchPoint;
     private Vector3 targetPoint;
     private Vector3 launchVelocity;
+
+    public float blastRadius = 5f;
+    public float damage = 100f;
 
     private float age;
 
@@ -25,6 +29,18 @@ public class Shell : MonoBehaviour
 
         if (p.y < 0f)
         {
+            RaycastHit[] hits = new RaycastHit[100];
+            
+            var size = Physics.SphereCastNonAlloc(origin: transform.position, radius: blastRadius, direction: Vector3.up, hits);
+            if (size > 0)
+            {
+                for (int i = 0; i < size; i++)
+                {
+                    GameObject go = hits[i].transform.gameObject;
+                    go.GetComponent<StatsComponent>()?.TakeDamage(damage);
+                }
+            }
+            
             Destroy(gameObject);
         }
 

@@ -139,12 +139,13 @@ MonoBehaviour:
   towerData: {fileID: 11400000, guid: b723b4a884f32c04e97f97fc67590014, type: 2}
   targetingRange: 100
   potentialTargets: []
-  damagePerSecond: 10
+  damagePerSecond: 20
   rotatingPart: {fileID: 3653282857593457266}
   turret: {fileID: 2388252123258264661}
   cooldown: 1
   currentDuration: 0
   laserBeam: {fileID: 8637150883866057580}
+  _laserBeamScale: {x: 1, y: 1, z: 1}
 --- !u!65 &303210249947105551
 BoxCollider:
   m_ObjectHideFlags: 0

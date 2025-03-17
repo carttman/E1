@@ -28,7 +28,10 @@ public class MortarTower : Tower
         {
             if (AcquireTarget(out Transform pTarget))
             {
-                Launch(pTarget);
+                if (pTarget)
+                {
+                    Launch(pTarget);
+                }
                 _launchProgress -= 1f;
             }
             else
@@ -60,6 +63,7 @@ public class MortarTower : Tower
         if (r < 0f)
         {
             Debug.Log("Launch velocity insufficient for range!");
+            return;
         }
         
         float tanTheta = (s2 + Mathf.Sqrt(r)) / (g * x);
