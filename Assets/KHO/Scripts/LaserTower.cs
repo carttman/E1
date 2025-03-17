@@ -8,8 +8,9 @@ public class LaserTower : Tower
     [SerializeField] private Transform laserBeam;
     [SerializeField] private Vector3 _laserBeamScale = Vector3.one;
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         _laserBeamScale = laserBeam.localScale;
     }
     
