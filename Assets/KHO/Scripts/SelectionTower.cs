@@ -8,7 +8,7 @@ public class SelectionTower : MonoBehaviour
     private Ray TouchRay => Camera.main.ScreenPointToRay(Input.mousePosition);
     private Transform _pointerTile = null;
     
-    private void Awake()
+    private void Start()
     {
         GameEventHub.Instance.OnTilePointerEnter += OnTilePointerEnter;
         GameEventHub.Instance.OnTilePointerExit += OnTilePointerExit;
@@ -17,9 +17,10 @@ public class SelectionTower : MonoBehaviour
 
     private void OnTilePointerClick(Transform obj)
     {
-        enabled = false;
         Tower tower = GetComponent<Tower>();
-        OnTowerBuilt?.Invoke(tower.TowerData);
+        OnTowerBuilt?.Invoke(tower.towerData);
+        OnTowerBuilt = null;
+        enabled = false;
         tower.enabled = true;
     }
 
