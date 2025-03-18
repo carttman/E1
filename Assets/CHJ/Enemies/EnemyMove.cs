@@ -1,6 +1,7 @@
 using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
+    // Enemy 스크립트
     private Enemy _enemy;
     
     public float speed = 10f; //속도
@@ -51,6 +52,7 @@ public class EnemyMove : MonoBehaviour
     
     void EndPath() //경로의 끝(목표)에 도달
     {
+        // Enemy 스크립트에서 처리
         _enemy.EndPath();
     }
 }

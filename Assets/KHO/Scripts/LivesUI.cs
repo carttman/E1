@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
+// 목숨 표시 UI
 public class LivesUI : MonoBehaviour
 {
     private TextMeshProUGUI _textMesh;

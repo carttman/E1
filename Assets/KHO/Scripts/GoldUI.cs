@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
+// 골드 표시 UI
 public class GoldUI : MonoBehaviour
 {
     private TextMeshProUGUI _textMesh;

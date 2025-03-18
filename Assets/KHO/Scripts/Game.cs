@@ -10,11 +10,16 @@ public class Game : MonoBehaviour
     public event Action<int> goldChanged;
     public event Action<int> livesChanged;
 
+    // 웨이브 스폰 레퍼런스
     [SerializeField] private WaveSpawner waveSpawner;
+    
+    // 타워가 사용하는 PREFABS
     [SerializeField] private List<GameObject> towerPrefabs;
     
+    // UI에서 선택한 타워
     [SerializeField] private GameObject buildingTower;
 
+    // 게임오버 처리를 위한 UI 레퍼런스
     [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject gameoverUI;
     
@@ -49,6 +54,7 @@ public class Game : MonoBehaviour
         }
     }
 
+    // 게임 오버시 호출됨
     private void GameOver()
     {
         mainUI.SetActive(false);
@@ -89,6 +95,7 @@ public class Game : MonoBehaviour
         }
     }
 
+    // 적이 끝 도달시 목숨에 데미지 처리
     private void OnEnemyEndPath(Enemy enemy, int livesdamage)
     {
         if (enemy != null)
@@ -99,6 +106,7 @@ public class Game : MonoBehaviour
         Lives -= livesdamage;
     }
 
+    // 적이 죽을시 골드 추가
     private void OnEnemyDied(Enemy enemy, float goldDropAmount)
     {
         if (enemy != null)
@@ -108,6 +116,7 @@ public class Game : MonoBehaviour
         AddGold((int)goldDropAmount);
     }
 
+    // 타워 UI 클릭시 건설 토글
     public void toggleTowerBuildSelection(int button_idx)
     {
         Debug.Log($"{button_idx} was selected!");
@@ -131,6 +140,7 @@ public class Game : MonoBehaviour
         }
     }
 
+    // 게임오버 UI 재시작 처리 (현재 신 다시 불러옴)
     public void GameRetry()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;

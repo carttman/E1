@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+// 이벤트 처리하는 컴포넌트
 public class GameEventHub : MonoBehaviour
 {
     public event Action<Transform> OnTilePointerEnter;
