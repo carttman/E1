@@ -4,14 +4,19 @@ using UnityEngine;
 public abstract class Tower : MonoBehaviour
 {
     protected SphereCollider SphereCollider;
+    
+    // 타워 static data
     [SerializeField] public TowerData towerData;
     
+    // 타겟 범위
     [SerializeField, Range(1.5f, 100f)]
     protected float targetingRange = 1.5f;
     
+    // 타워가 때릴 수 있는 타겟들
     [SerializeField] protected List<Transform> potentialTargets = new List<Transform>();
     [SerializeField] protected float damagePerSecond = 10f;
     
+    // 타워 파트들 (좌표 처리용)
     [SerializeField] protected Transform rotatingPart;
     [SerializeField] protected Transform turret;
 
@@ -24,6 +29,7 @@ public abstract class Tower : MonoBehaviour
         SphereCollider.radius = targetingRange;
     }
     
+    // 타겟 지정 함수
     protected bool AcquireTarget(out Transform pTarget)
     {
         if (potentialTargets.Count == 0)
@@ -49,6 +55,7 @@ public abstract class Tower : MonoBehaviour
         return false;
     }
 
+    // 타겟 쳐다보는 함수
     protected bool TrackTarget(ref Transform pTarget)
     {
         if (!pTarget) return false;
@@ -62,6 +69,7 @@ public abstract class Tower : MonoBehaviour
         return false;
     }
     
+    // 범위 안에 들어올시 타겟에 추가
     protected void OnTriggerEnter(Collider other)
     {
         //Debug.Log($"{other.name} has entered the tower range");
@@ -71,6 +79,7 @@ public abstract class Tower : MonoBehaviour
         }
     }
 
+    // 범위 나갈시 타겟에서 삭제
     protected void OnTriggerExit(Collider other)
     {
         if (potentialTargets.Contains(other.transform))
@@ -79,6 +88,7 @@ public abstract class Tower : MonoBehaviour
         }
     }
 
+    // 범위 시각화
     protected void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;

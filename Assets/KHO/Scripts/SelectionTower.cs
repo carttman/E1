@@ -1,18 +1,38 @@
 using System;
 using UnityEngine;
 
+// 타워 건설시 마우스 따라가는 표시하는 컴포넌트
 public class SelectionTower : MonoBehaviour
 {
+    private Color _startColor;
+    private Color _selectionColor = new Color(0, 1, 0, 0.25f);
+    
     public event Action<TowerData> OnTowerBuilt;
     
     private Ray TouchRay => Camera.main.ScreenPointToRay(Input.mousePosition);
     private Transform _pointerTile = null;
-    
+
+    private Renderer[] _renderers;
+
+    private void Awake()
+    {
+        _renderers = GetComponentsInChildren<Renderer>();
+        if (_renderers != null && _renderers.Length > 0)
+        {
+            _startColor = _renderers[0].material.color;
+        }
+    }
+
     private void Start()
     {
         GameEventHub.Instance.OnTilePointerEnter += OnTilePointerEnter;
         GameEventHub.Instance.OnTilePointerExit += OnTilePointerExit;
         GameEventHub.Instance.OnTilePointerClick += OnTilePointerClick;
+
+        foreach (var rend in _renderers)
+        {
+            rend.material.color = _selectionColor;
+        }
     }
 
     private void OnTilePointerClick(Transform obj)
@@ -21,6 +41,12 @@ public class SelectionTower : MonoBehaviour
         OnTowerBuilt?.Invoke(tower.towerData);
         OnTowerBuilt = null;
         enabled = false;
+
+        foreach (var rend in _renderers)
+        {
+            rend.material.color = _startColor;
+        }
+        
         tower.enabled = true;
     }
 

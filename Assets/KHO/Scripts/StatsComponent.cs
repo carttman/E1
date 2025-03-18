@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+// HP 등 스탯 처리하는 컴포넌트
 public class StatsComponent : MonoBehaviour
 {
     public event Action Died;
