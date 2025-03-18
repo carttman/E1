@@ -3,10 +3,12 @@ public class EnemyMove : MonoBehaviour
 {
     // Enemy 스크립트
     private Enemy _enemy;
+
+    [SerializeField] private float distanceCheckTolerance = 0.01f;
     
     public float speed = 10f; //속도
 
-    private Transform target; //목표 방향
+    [SerializeField] private Transform target; //목표 방향
     private int wavePointIndex = 0;//현재 목표로하는 웨이포인트 인덱스
 
     private void Awake()
@@ -32,7 +34,7 @@ public class EnemyMove : MonoBehaviour
         transform.LookAt(target);
 
         //웨이포인트 도착 시 다음 웨이포인트로 변경
-        if (Vector3.Distance(transform.position, target.position) <= 0.01f)
+        if (Vector3.Distance(transform.position, target.position) <= distanceCheckTolerance)
         {
             GetNextWayPoint(); //다음 웨이포인트를 타겟으로 변경
         } 

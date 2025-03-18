@@ -4,9 +4,8 @@ using System.Collections;
 using TMPro;
 
 public class WaveSpawner : MonoBehaviour
-{
+{ 
     public event Action<GameObject> OnEnemySpawned;
-    
    public static int EnemiesAlive = 0;
    
    public Wave[] waves; // 웨이브 클래스
@@ -14,7 +13,6 @@ public class WaveSpawner : MonoBehaviour
    //public Transform enemyPrefab;
 
    public Transform spawnPoint;
-   
    public TextMeshProUGUI waveCountdownText;
    
    //public float timeBetweenWaves = 5f;

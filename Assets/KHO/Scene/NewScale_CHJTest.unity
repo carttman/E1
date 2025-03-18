@@ -11195,10 +11195,10 @@ RectTransform:
   - {fileID: 516086299}
   m_Father: {fileID: 1084768977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -448, y: -791.79}
-  m_SizeDelta: {x: 258.611, y: 138.382}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 17, y: 196}
+  m_SizeDelta: {x: 258.611, y: 138.38202}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &935126218
 MonoBehaviour:
@@ -26166,9 +26166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveSpawner: {fileID: 129412669}
-  towerPrefabs:
-  - {fileID: 4709322006253467250, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
-  - {fileID: 7045167765027661043, guid: 5b776cfb8a984d741bb55e005c813741, type: 3}
   buildingTower: {fileID: 0}
   mainUI: {fileID: 1084768973}
   gameoverUI: {fileID: 1849098284}
