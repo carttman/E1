@@ -7,4 +7,5 @@ public class TowerData : ScriptableObject
     [SerializeField] public string description;
     [SerializeField] public int goldCost;
     [SerializeField] public Texture2D sprite;
+    [SerializeField] public GameObject towerPrefab;
 }

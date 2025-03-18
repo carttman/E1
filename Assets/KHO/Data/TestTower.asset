@@ -16,3 +16,5 @@ MonoBehaviour:
   description: Hi this is a test tower I think
   goldCost: 10
   sprite: {fileID: 0}
+  towerPrefab: {fileID: 3934494808485481923, guid: 0b630c1c6d7b5f641b277e84d4f1a6b9,
+    type: 3}

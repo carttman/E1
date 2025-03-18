@@ -1,42 +1,62 @@
 using System;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField]
-    private float moveSpeedPerSecond = 1f;
+    [SerializeField] public float Damage = float.MinValue;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private float upwardMovementModifier = 0.5f;
 
-    public Transform target;
-    public Vector3 startPosition;
-    public float damage;
+    private float maxAllowedDisplacement = 3f;
     
-    private float progress = 0f;
-    private float moveDuration;
+    private float age = 0f;
+    private float duration;
     
+    private Vector3 startPos;
+    private Vector3 middlePos;
+    private Vector3 lastKnownTargetPos;
+    
+    public Transform Target;
+
     private void Start()
     {
-        moveDuration = (target.transform.position - transform.position).magnitude / moveSpeedPerSecond;
-        startPosition = transform.position;
+        startPos = transform.position;
+        duration = (Target.position - startPos).magnitude / speed;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (!target)
+        age += Time.fixedDeltaTime;
+        
+        lastKnownTargetPos = Target ? Target.position : lastKnownTargetPos;
+        
+        var middlePos = Vector3.Lerp(startPos, lastKnownTargetPos, 0.5f) + (lastKnownTargetPos - startPos).magnitude * upwardMovementModifier * Vector3.up;
+
+        var nowPostion = transform.position;
+        var wantPosition = FunctionLibrary.Vezier(startPos, middlePos, lastKnownTargetPos, age / duration);
+        var displacement = Vector3.Distance(nowPostion, wantPosition);
+
+        if (displacement > maxAllowedDisplacement)
         {
             Destroy(gameObject);
         }
         
-        progress += Time.deltaTime;
-        transform.position = Vector3.Lerp(startPosition, target.transform.position, (progress / moveDuration));
-
-        if (progress >= moveDuration)
+        transform.position = wantPosition;
+        
+        transform.LookAt(duration <= 0.5 ? middlePos : lastKnownTargetPos);
+        
+        if (age >= duration)
         {
-            StatsComponent targetStatsComponent = target?.GetComponent<StatsComponent>();
-
-            if (targetStatsComponent)
+            // Check if target is still present
+            if (Target && Target.GetComponent<StatsComponent>() is StatsComponent sc)
             {
-                targetStatsComponent.TakeDamage(damage);
+                if (!Mathf.Approximately(Damage, float.MinValue))
+                {
+                    sc.TakeDamage(Damage);
+                }
             }
+            
             Destroy(gameObject);
         }
     }
