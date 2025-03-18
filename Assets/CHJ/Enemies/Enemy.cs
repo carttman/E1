@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     // 적이 끝까지 도달시 목숨 데미지
     [SerializeField] private int livesDamage = 1;
     
+
     // 스탯처리 컴포넌트
     private StatsComponent _statsComponent;
 
