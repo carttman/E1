@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldDropAmount: 2
+  livesDamage: 1
 --- !u!114 &8234849783101404713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e01f937c3f1e6dd4bafd32bd692109a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 7
 --- !u!54 &4624415098310990532
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 public class Game : MonoBehaviour
 {
     public event Action<int> goldChanged;
+    public event Action<int> livesChanged;
 
     [SerializeField] private WaveSpawner waveSpawner;
     [SerializeField] private List<GameObject> towerPrefabs;
@@ -26,7 +27,29 @@ public class Game : MonoBehaviour
             goldChanged?.Invoke(_gold);
         }
     }
-    
+
+    private int _lives = 10;
+
+    public int Lives
+    {
+        get => _lives;
+        set
+        {
+            if (_lives == value) return;
+            _lives = value;
+            livesChanged?.Invoke(_lives);
+            if (_lives <= 0)
+            {
+                GameOver();
+            }
+        }
+    }
+
+    private void GameOver()
+    {
+        Debug.Log("Game Over!");
+    }
+
     private bool CanBuyTower(int idx) => towerDatas[idx].goldCost <= Gold;
 
     public void AddGold(int amount)
@@ -46,7 +69,9 @@ public class Game : MonoBehaviour
 
     private void Start()
     {
+        // 시작시 UI 리프레시 위해 이벤트 호출
         goldChanged?.Invoke(_gold);
+        livesChanged?.Invoke(_lives);
     }
 
     private void WaveSpawnerOnEnemySpawned(GameObject obj)
@@ -54,15 +79,26 @@ public class Game : MonoBehaviour
         var enemy = obj.GetComponent<Enemy>();
         if (enemy != null)
         {
-            enemy.EnemyDied += OnEnemyDied;
+            enemy.OnEnemyDied += OnEnemyDied;
+            enemy.OnEnemyEndPath += OnEnemyEndPath;
         }
+    }
+
+    private void OnEnemyEndPath(Enemy enemy, int livesdamage)
+    {
+        if (enemy != null)
+        {
+            enemy.OnEnemyEndPath -= OnEnemyEndPath;
+        }
+
+        Lives -= livesdamage;
     }
 
     private void OnEnemyDied(Enemy enemy, float goldDropAmount)
     {
         if (enemy != null)
         {
-            enemy.EnemyDied -= OnEnemyDied;
+            enemy.OnEnemyDied -= OnEnemyDied;
         }
         AddGold((int)goldDropAmount);
     }

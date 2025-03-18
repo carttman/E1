@@ -1,11 +1,19 @@
 using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
+    private Enemy _enemy;
+    
     public float speed = 10f; //속도
 
     private Transform target; //목표 방향
     private int wavePointIndex = 0;//현재 목표로하는 웨이포인트 인덱스
-    
+
+    private void Awake()
+    {
+        _enemy = GetComponent<Enemy>();
+        Debug.Assert(_enemy, "Enemy 스크립트 없이 EnemyMove 사용됨");
+    }
+
     private void Start()
     {
         //WayPoints의 points를 static으로 선언해놨기 때문에 바로 불러올 수 있다.
@@ -43,7 +51,6 @@ public class EnemyMove : MonoBehaviour
     
     void EndPath() //경로의 끝(목표)에 도달
     {
-        WaveSpawner.EnemiesAlive--;
-        Destroy(gameObject); //도착지점 도착 시 오브젝트 파괴
+        _enemy.EndPath();
     }
 }
