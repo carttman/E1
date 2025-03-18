@@ -14,12 +14,10 @@ public abstract class Tower : MonoBehaviour
     
     // 타워가 때릴 수 있는 타겟들
     [SerializeField] protected List<Transform> potentialTargets = new List<Transform>();
-    [SerializeField] protected float damagePerSecond = 10f;
     
     // 타워 파트들 (좌표 처리용)
     [SerializeField] protected Transform rotatingPart;
     [SerializeField] protected Transform turret;
-
     
     protected void Awake()
     {

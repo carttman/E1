@@ -13,9 +13,6 @@ public class Game : MonoBehaviour
     // 웨이브 스폰 레퍼런스
     [SerializeField] private WaveSpawner waveSpawner;
     
-    // 타워가 사용하는 PREFABS
-    [SerializeField] private List<GameObject> towerPrefabs;
-    
     // UI에서 선택한 타워
     [SerializeField] private GameObject buildingTower;
 
@@ -124,7 +121,7 @@ public class Game : MonoBehaviour
         {
             if (CanBuyTower(button_idx))
             {
-                var newTower = Instantiate(towerPrefabs[button_idx]);
+                var newTower = Instantiate(towerDatas[button_idx].towerPrefab);
                 newTower.GetComponent<SelectionTower>().OnTowerBuilt += data => SpendGold(data.goldCost);
             }
             else

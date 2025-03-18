@@ -16,3 +16,5 @@ MonoBehaviour:
   description: Test tower two
   goldCost: 25
   sprite: {fileID: 0}
+  towerPrefab: {fileID: 7045167765027661043, guid: 5b776cfb8a984d741bb55e005c813741,
+    type: 3}

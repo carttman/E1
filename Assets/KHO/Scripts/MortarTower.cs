@@ -30,6 +30,7 @@ public class MortarTower : Tower
             {
                 if (pTarget)
                 {
+                    TrackTarget(ref pTarget);
                     Launch(pTarget);
                 }
                 _launchProgress -= 1f;

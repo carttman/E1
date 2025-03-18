@@ -2,12 +2,10 @@ using UnityEngine;
 
 public class LaserTower : Tower
 {
-    public float cooldown = 1f;
-    public float currentDuration = 0f;
-
     [SerializeField] private Transform laserBeam;
     [SerializeField] private Vector3 _laserBeamScale = Vector3.one;
-
+    [SerializeField] protected float damagePerSecond = 10f;
+    
     private new void Awake()
     {
         base.Awake();
