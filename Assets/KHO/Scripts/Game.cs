@@ -1,16 +1,15 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Game : MonoBehaviour
 {
     public event Action<int> goldChanged;
-    
+
+    [SerializeField] private WaveSpawner waveSpawner;
     [SerializeField] private List<GameObject> towerPrefabs;
     
-    [SerializeField]
-    private List<GameObject> enemies = new();
-
     [SerializeField]
     private GameObject buildingTower;
 
@@ -42,7 +41,25 @@ public class Game : MonoBehaviour
     
     private void Awake()
     {
-        GameObject.FindGameObjectsWithTag("Enemy", enemies);
+        waveSpawner.OnEnemySpawned += WaveSpawnerOnEnemySpawned;
+    }
+
+    private void WaveSpawnerOnEnemySpawned(GameObject obj)
+    {
+        var enemy = obj.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.EnemyDied += OnEnemyDied;
+        }
+    }
+
+    private void OnEnemyDied(Enemy enemy, float goldDropAmount)
+    {
+        if (enemy != null)
+        {
+            enemy.EnemyDied -= OnEnemyDied;
+        }
+        AddGold((int)goldDropAmount);
     }
 
     public void toggleTowerBuildSelection(int button_idx)

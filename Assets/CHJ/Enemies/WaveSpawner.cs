@@ -5,6 +5,8 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public event Action<GameObject> OnEnemySpawned;
+    
    public static int EnemiesAlive = 0;
    
    public Wave[] waves; // 웨이브 클래스
@@ -20,7 +22,6 @@ public class WaveSpawner : MonoBehaviour
 
    private int waveIndex = 0;
    
-   public 
    
    void Update()
    {
@@ -81,7 +82,8 @@ public class WaveSpawner : MonoBehaviour
 
    void SpawnEnemy(GameObject enemy)
    {
-       Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+       var newEnemy = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+       OnEnemySpawned?.Invoke(newEnemy);
        EnemiesAlive++; //몬스터 카운트 증가
    }
 }

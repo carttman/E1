@@ -1080,7 +1080,7 @@ GameObject:
   - component: {fileID: 129412670}
   - component: {fileID: 129412669}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Wave Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11613,7 +11613,7 @@ PrefabInstance:
     - target: {fileID: 3994107318395900691, guid: 5b776cfb8a984d741bb55e005c813741,
         type: 3}
       propertyPath: targetingRange
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6644873043090690087, guid: 5b776cfb8a984d741bb55e005c813741,
         type: 3}
@@ -14136,7 +14136,7 @@ GameObject:
   - component: {fileID: 1203122091}
   - component: {fileID: 1203122090}
   m_Layer: 0
-  m_Name: End
+  m_Name: END
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16482,7 +16482,7 @@ GameObject:
   - component: {fileID: 1392906903}
   - component: {fileID: 1392906902}
   m_Layer: 0
-  m_Name: Game (1)
+  m_Name: Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16500,10 +16500,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f76a8512b1ae9fb4fa589945bb997a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveSpawner: {fileID: 129412669}
   towerPrefabs:
   - {fileID: 4709322006253467250, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
   - {fileID: 7045167765027661043, guid: 5b776cfb8a984d741bb55e005c813741, type: 3}
-  enemies: []
   buildingTower: {fileID: 0}
   towerDatas:
   - {fileID: 11400000, guid: b723b4a884f32c04e97f97fc67590014, type: 2}
@@ -26539,7 +26539,7 @@ GameObject:
   - component: {fileID: 2055802604}
   - component: {fileID: 2055802603}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Main UI Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
