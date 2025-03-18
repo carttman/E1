@@ -62,7 +62,7 @@ public class MortarTower : Tower
 
         if (r < 0f)
         {
-            Debug.Log("Launch velocity insufficient for range!");
+            //Debug.Log("Launch velocity insufficient for range!");
             return;
         }
         

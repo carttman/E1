@@ -15,7 +15,7 @@ public class Game : MonoBehaviour
 
     [SerializeField] private TowerData[] towerDatas;
     
-    private int _gold;
+    private int _gold = 10;
     public int Gold
     {
         get => _gold;
@@ -42,6 +42,11 @@ public class Game : MonoBehaviour
     private void Awake()
     {
         waveSpawner.OnEnemySpawned += WaveSpawnerOnEnemySpawned;
+    }
+
+    private void Start()
+    {
+        goldChanged?.Invoke(_gold);
     }
 
     private void WaveSpawnerOnEnemySpawned(GameObject obj)

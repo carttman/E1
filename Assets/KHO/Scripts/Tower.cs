@@ -78,4 +78,12 @@ public abstract class Tower : MonoBehaviour
             potentialTargets.Remove(other.transform);
         }
     }
+
+    protected void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Vector3 position = transform.localPosition;
+        position.y += 0.01f;
+        Gizmos.DrawWireSphere(position, targetingRange);
+    }
 }

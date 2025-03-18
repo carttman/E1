@@ -13,14 +13,6 @@ public class LaserTower : Tower
         base.Awake();
         _laserBeamScale = laserBeam.localScale;
     }
-    
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Vector3 position = transform.localPosition;
-        position.y += 0.01f;
-        Gizmos.DrawWireSphere(position, targetingRange);
-    }
 
     private void Update()
     {
