@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private float goldDropAmount = 1;
     [SerializeField] private int livesDamage = 1;
+    
+    
 
     private void Awake()
     {

@@ -31,7 +31,7 @@ public class EnemyMove : MonoBehaviour
         transform.LookAt(target);
 
         //웨이포인트 도착 시 다음 웨이포인트로 변경
-        if (Vector3.Distance(transform.position, target.position) <= 0.4f)
+        if (Vector3.Distance(transform.position, target.position) <= 0.01f)
         {
             GetNextWayPoint(); //다음 웨이포인트를 타겟으로 변경
         } 
