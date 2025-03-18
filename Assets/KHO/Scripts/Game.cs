@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class Game : MonoBehaviour
@@ -11,9 +13,11 @@ public class Game : MonoBehaviour
     [SerializeField] private WaveSpawner waveSpawner;
     [SerializeField] private List<GameObject> towerPrefabs;
     
-    [SerializeField]
-    private GameObject buildingTower;
+    [SerializeField] private GameObject buildingTower;
 
+    [SerializeField] private GameObject mainUI;
+    [SerializeField] private GameObject gameoverUI;
+    
     [SerializeField] private TowerData[] towerDatas;
     
     private int _gold = 10;
@@ -47,7 +51,8 @@ public class Game : MonoBehaviour
 
     private void GameOver()
     {
-        Debug.Log("Game Over!");
+        mainUI.SetActive(false);
+        gameoverUI.SetActive(true);
     }
 
     private bool CanBuyTower(int idx) => towerDatas[idx].goldCost <= Gold;
@@ -124,5 +129,11 @@ public class Game : MonoBehaviour
             Destroy(buildingTower);
             buildingTower = null;
         }
+    }
+
+    public void GameRetry()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }

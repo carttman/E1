@@ -104,7 +104,7 @@ MonoBehaviour:
   damagePerSecond: 10
   rotatingPart: {fileID: 8899267222245754737}
   turret: {fileID: 4953520720328531183}
-  shotsPerSecond: 1
+  shotsPerSecond: 0.3
   mortar: {fileID: 4953520720328531183}
   shellPrefab: {fileID: 6791858764434182562, guid: 912255b3a0e913140818fb6708411b1d,
     type: 3}
