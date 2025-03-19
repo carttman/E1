@@ -1,8 +1,9 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 // 타워 건설시 마우스 따라가는 표시하는 컴포넌트
-public class SelectionTower : MonoBehaviour
+public class BuildingTowerGhost : MonoBehaviour
 {
     private Color _startColor;
     private Color _selectionColor = new Color(0, 1, 0, 0.25f);
@@ -16,7 +17,7 @@ public class SelectionTower : MonoBehaviour
 
     private void Awake()
     {
-        _renderers = GetComponentsInChildren<Renderer>();
+        _renderers = GetComponentsInChildren<Renderer>().Where(r => r.CompareTag("TowerMesh")).ToArray();
         if (_renderers != null && _renderers.Length > 0)
         {
             _startColor = _renderers[0].material.color;
@@ -70,7 +71,7 @@ public class SelectionTower : MonoBehaviour
             return;
         }
         
-        if (Physics.Raycast(TouchRay, out RaycastHit hit))
+        if (Physics.Raycast(TouchRay, out RaycastHit hit, 5000f, LayerMask.NameToLayer("Default")))
         {
             transform.position = hit.point;
         }

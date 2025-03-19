@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.Serialization;
 using RaycastHit = UnityEngine.RaycastHit;
 
 public class Shell : MonoBehaviour
@@ -8,16 +9,19 @@ public class Shell : MonoBehaviour
     private Vector3 targetPoint;
     private Vector3 launchVelocity;
 
+    public Tower instigator;
+    
     public float blastRadius = 5f;
     public float damage = 100f;
 
     private float age;
 
-    public void Initialize(Vector3 launchPoint, Vector3 targetPoint, Vector3 launchVelocity)
+    public void Initialize(Vector3 launchPoint, Vector3 targetPoint, Vector3 launchVelocity, Tower instigator)
     {
         this.launchPoint = launchPoint;
         this.targetPoint = targetPoint;
         this.launchVelocity = launchVelocity;
+        this.instigator = instigator;
     }
 
     private void Update()
@@ -37,7 +41,7 @@ public class Shell : MonoBehaviour
                 for (int i = 0; i < size; i++)
                 {
                     GameObject go = hits[i].transform.gameObject;
-                    go.GetComponent<StatsComponent>()?.TakeDamage(damage);
+                    go.GetComponent<StatsComponent>()?.TakeDamage(damage, instigator);
                 }
             }
             

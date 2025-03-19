@@ -12,6 +12,7 @@ public class StatsComponent : MonoBehaviour
     public float MaxHealth = 100f;
     [SerializeField]
     private float health;
+    public float Health { get; }
     
     PopUpManager PopUp;
     public Transform PopupTransform;
@@ -29,9 +30,9 @@ public class StatsComponent : MonoBehaviour
         
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Tower instigator = null)
     {
-        if (damage <= 0) return;
+        if (damage <= 0 || health <= 0) return;
         health -= damage;
         
         // 데미지 팝업 호출
@@ -40,6 +41,10 @@ public class StatsComponent : MonoBehaviour
         HealthChanged?.Invoke(health);
         if (health <= 0)
         {
+            if (instigator != null)
+            {
+                instigator.Kills++;
+            }
             Died?.Invoke();
         }
     }

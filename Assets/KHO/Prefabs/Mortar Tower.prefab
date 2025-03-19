@@ -74,6 +74,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3994107318395900691}
   m_SourcePrefab: {fileID: 100100000, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
+--- !u!1 &3469911335174370124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1204766025124422093, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2350784071714165377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4953520720328531183 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7215287158059519598, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
@@ -98,12 +104,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18b35f3afd628342baf7ef573e0d530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSelected: 0
+  selectionData:
+    _kills: 0
+  kills: 0
   towerData: {fileID: 11400000, guid: 4e4ca3334fd220c499324807f495b470, type: 2}
   targetingRange: 5
   potentialTargets: []
-  damagePerSecond: 10
   rotatingPart: {fileID: 8899267222245754737}
   turret: {fileID: 4953520720328531183}
+  _selectionIndicator: {fileID: 3469911335174370124}
   shotsPerSecond: 0.3
   mortar: {fileID: 4953520720328531183}
   shellPrefab: {fileID: 6791858764434182562, guid: 912255b3a0e913140818fb6708411b1d,

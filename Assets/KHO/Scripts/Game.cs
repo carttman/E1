@@ -113,13 +113,13 @@ public class Game : MonoBehaviour
     // 타워 UI 클릭시 건설 토글
     public void toggleTowerBuildSelection(int button_idx)
     {
-        Debug.Log($"{button_idx} was selected!");
+        //Debug.Log($"{button_idx} was selected!");
         if (!buildingTower)
         {
             if (CanBuyTower(button_idx))
             {
                 var newTower = Instantiate(towerDatas[button_idx].towerPrefab);
-                newTower.GetComponent<SelectionTower>().OnTowerBuilt += data => SpendGold(data.goldCost);
+                newTower.GetComponent<BuildingTowerGhost>().OnTowerBuilt += data => SpendGold(data.goldCost);
             }
             else
             {
@@ -139,5 +139,11 @@ public class Game : MonoBehaviour
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
+    }
+
+    public void SetTimeScale(float newTimeScale)
+    {
+        if (newTimeScale < 0f) return;
+        Time.timeScale = newTimeScale;
     }
 }

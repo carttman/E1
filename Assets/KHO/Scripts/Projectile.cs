@@ -14,6 +14,8 @@ public class Projectile : MonoBehaviour
     private Vector3 startPos;
     private Vector3 middlePos;
     private Vector3 lastKnownTargetPos;
+
+    public Tower instigator;
     
     public Transform Target;
 
@@ -51,7 +53,7 @@ public class Projectile : MonoBehaviour
             {
                 if (!Mathf.Approximately(Damage, float.MinValue))
                 {
-                    sc.TakeDamage(Damage);
+                    sc.TakeDamage(Damage, instigator);
                 }
             }
             
