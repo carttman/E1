@@ -10,12 +10,20 @@ public abstract class Tower : MonoBehaviour, ISelectable
     {
         isSelected = true;
         SelectionManager.instance.OnSelect(this);
+        if (_selectionIndicator)
+        {
+            _selectionIndicator.SetActive(true);
+        }
     }
 
     public void OnDeselect()
     {
         isSelected = false;
         _rangeIndicator.gameObject.SetActive(false);
+        if (_selectionIndicator)
+        {
+            _selectionIndicator.SetActive(false);
+        }
     }
     public SelectionData GetSelectionData() => selectionData;
     // End of Iselectable
@@ -55,6 +63,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
     [SerializeField] protected Transform turret;
 
     protected RangeIndicator _rangeIndicator;
+    [SerializeField] private GameObject _selectionIndicator;
     
     protected void Awake()
     {

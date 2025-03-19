@@ -69,12 +69,18 @@ public class Enemy : MonoBehaviour, ISelectable
 
     public void OnSelect()
     {
-        _selectionIndicator?.SetActive(true);
+        if (_selectionIndicator)
+        {
+            _selectionIndicator.SetActive(true);
+        }
     }
 
     public void OnDeselect()
     {
-        _selectionIndicator?.SetActive(false);
+        if (_selectionIndicator)
+        {
+            _selectionIndicator.SetActive(false);
+        }
     }
     public SelectionData GetSelectionData() => _enemySelectionData;
     // End of ISelectable
