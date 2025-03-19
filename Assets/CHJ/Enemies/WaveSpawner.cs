@@ -82,6 +82,7 @@ public class WaveSpawner : MonoBehaviour
    {
        var newEnemy = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
        OnEnemySpawned?.Invoke(newEnemy);
+       
        EnemiesAlive++; //몬스터 카운트 증가
    }
 }

@@ -17,7 +17,7 @@ public class Enemy_HPUI : MonoBehaviour
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    {   //HealthChanged 이벤트 바인딩
         statsComponent.HealthChanged += hp => HP_Update(hp, statsComponent.MaxHealth);
     }
     
@@ -31,6 +31,6 @@ public class Enemy_HPUI : MonoBehaviour
 
     void HP_Update(float health, float maxHealth)
     {
-        healthBar.fillAmount = health / statsComponent.MaxHealth;
+        healthBar.fillAmount = health / maxHealth;
     }
 }

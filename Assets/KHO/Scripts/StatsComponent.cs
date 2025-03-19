@@ -13,6 +13,8 @@ public class StatsComponent : MonoBehaviour
     [SerializeField]
     private float health;
     
+    PopUpManager PopUp;
+    public Transform PopupTransform;
     
     private void Awake()
     {
@@ -24,13 +26,16 @@ public class StatsComponent : MonoBehaviour
     
     private void Update()
     {
-       
+        
     }
 
     public void TakeDamage(float damage)
     {
         if (damage <= 0) return;
         health -= damage;
+        
+        // 데미지 팝업 호출
+        PopUpManager.Instance.PopUpDamageUI(damage, transform);
         
         HealthChanged?.Invoke(health);
         if (health <= 0)

@@ -216,6 +216,7 @@ Transform:
   m_Children:
   - {fileID: 8215180139258479180}
   - {fileID: 6824827320139486728}
+  - {fileID: 6850093592067530514}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4210396101167198713
@@ -318,7 +319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e01f937c3f1e6dd4bafd32bd692109a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceCheckTolerance: 0.01
   speed: 7
+  target: {fileID: 0}
 --- !u!54 &4624415098310990532
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -360,6 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   health: 0
+  PopupTransform: {fileID: 6850093592067530514}
 --- !u!114 &6241200190116911929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +487,37 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &6311779214948931724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6850093592067530514}
+  m_Layer: 0
+  m_Name: PopupPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6850093592067530514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6311779214948931724}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 219835893346901403}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7208404059543758196
 GameObject:
   m_ObjectHideFlags: 0
