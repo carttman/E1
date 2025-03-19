@@ -27,7 +27,7 @@ public class StatsComponent : MonoBehaviour
        
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Tower instigator = null)
     {
         if (damage <= 0) return;
         health -= damage;
@@ -35,6 +35,10 @@ public class StatsComponent : MonoBehaviour
         HealthChanged?.Invoke(health);
         if (health <= 0)
         {
+            if (instigator != null)
+            {
+                instigator.Kills++;
+            }
             Died?.Invoke();
         }
     }

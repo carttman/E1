@@ -41,7 +41,7 @@ public class LaserTower : Tower
         StatsComponent sc = target.GetComponent<StatsComponent>();
         if (sc)
         {
-            sc.TakeDamage(damagePerSecond * Time.deltaTime);
+            sc.TakeDamage(damagePerSecond * Time.deltaTime, this);
         }
     }
 }

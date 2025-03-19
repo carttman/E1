@@ -1,14 +1,17 @@
 using System;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class SelectionManager : MonoBehaviour
 {
     public static SelectionManager instance;
     private ISelectable selectedObject;
+    
     private Ray TouchRay => Camera.main.ScreenPointToRay(Input.mousePosition);
 
+    [SerializeField] private GameObject _selectionUI;
+    [SerializeField] private GameObject _towerUI;
+    
     private void Awake()
     {
         if (instance ==null)
@@ -30,6 +33,9 @@ public class SelectionManager : MonoBehaviour
         }
         selectedObject = selectable;
         selectedObject.OnSelectionDataChanged += OnSelectionDataChanged;
+        OnSelectionDataChanged(selectedObject.GetSelectionData());
+        
+        _selectionUI.SetActive(true);
     }
 
     private void Update()
@@ -54,10 +60,18 @@ public class SelectionManager : MonoBehaviour
         if (selectedObject == null) return;
         selectedObject.OnSelectionDataChanged -= OnSelectionDataChanged;
         selectedObject.OnDeselect();
+        selectedObject = null;
+        
+        _selectionUI.SetActive(false);
     }
 
-    private void OnSelectionDataChanged(SelectionData obj)
+    private void OnSelectionDataChanged(SelectionData data)
     {
-        return;
+        if (data == null) return;
+        if (data is TowerSelectionData towerSelectionData)
+        {
+            _towerUI.SetActive(true);
+            _towerUI.GetComponent<TowerSelectionUI>()?.HandleUIChange(towerSelectionData);
+        }
     }
 }

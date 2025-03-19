@@ -4,24 +4,38 @@ using UnityEngine;
 
 public abstract class Tower : MonoBehaviour, ISelectable
 { 
-  
     // ISelectable
     public event Action<SelectionData> OnSelectionDataChanged;
     public void OnSelect()
     {
-        IsSelected = true;
+        isSelected = true;
         SelectionManager.instance.OnSelect(this);
     }
 
     public void OnDeselect()
     {
-        IsSelected = false;
+        isSelected = false;
         _rangeIndicator.gameObject.SetActive(false);
     }
+    public SelectionData GetSelectionData() => selectionData;
+    // End of Iselectable
 
-    [SerializeField] protected bool IsSelected = false;
-    // End of ISelectable
-
+    [SerializeField] protected bool isSelected = false;
+    
+    [SerializeField] private TowerSelectionData selectionData;
+    
+    [SerializeField] protected int kills = 0;
+    public int Kills
+    {
+        get => kills;
+        set
+        {
+            if (value == kills) return;
+            kills = value;
+            selectionData.Kills = value;
+        }
+    }
+    
     protected SphereCollider SphereCollider;
     
     // 타워 static data
@@ -51,8 +65,11 @@ public abstract class Tower : MonoBehaviour, ISelectable
         
         _rangeIndicator = GetComponentInChildren<RangeIndicator>();
         _rangeIndicator.gameObject.SetActive(false);
-    }
 
+        selectionData = new TowerSelectionData(towerData, kills);
+        selectionData.OnSelectionDataChanged += data => OnSelectionDataChanged?.Invoke(data);
+    }
+    
     // 타겟 지정 함수
     protected bool AcquireTarget(out Transform pTarget)
     {
@@ -133,7 +150,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
     
     protected void OnMouseExit()
     {
-        if (IsSelected) return;
+        if (isSelected) return;
         _rangeIndicator.gameObject.SetActive(false);
     }
 }

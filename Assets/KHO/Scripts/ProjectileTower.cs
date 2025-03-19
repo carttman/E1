@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ProjectileTower : Tower
@@ -7,7 +8,7 @@ public class ProjectileTower : Tower
     [SerializeField] private float damagePerShot = 25f;
     
     [SerializeField] private float _launchProgress = 0f;
-    
+
     private void Update()
     {
         _launchProgress += shotsPerSecond * Time.deltaTime;
@@ -35,5 +36,6 @@ public class ProjectileTower : Tower
         var proj = newProjectile.GetComponent<Projectile>();
         proj.Target = pTarget;
         proj.Damage = damagePerShot;
+        proj.instigator = this;
     }
 }

@@ -75,7 +75,7 @@ public class MortarTower : Tower
         GameObject shell = Instantiate(shellPrefab);
         Shell shellScript = shell.GetComponent<Shell>();
         shellScript.Initialize(launchPoint, targetPoint, 
-            new Vector3(s * cosTheta * dir.x, s * sinTheta, s * cosTheta * dir.y));
+            new Vector3(s * cosTheta * dir.x, s * sinTheta, s * cosTheta * dir.y), this);
         
         /*
         // 경로 그리기
