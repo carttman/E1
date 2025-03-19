@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, ISelectable
 {
     public delegate void EnemyDiedEventHandler(Enemy enemy, float goldDropAmount);
     public delegate void EnemyEndPathEventHandler(Enemy enemy, int livesDamage);
@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
 
     // 스탯처리 컴포넌트
     private StatsComponent _statsComponent;
-
+    
     private void Awake()
     {
         _statsComponent = GetComponent<StatsComponent>();
@@ -28,6 +28,22 @@ public class Enemy : MonoBehaviour
         {
             _statsComponent.Died += Die;
         }
+
+        _enemySelectionData = new EnemySelectionData
+        {
+            Name = gameObject.name,
+            Health = _statsComponent.MaxHealth,
+            MaxHealth = _statsComponent.MaxHealth,
+            MoveSpeed = GetComponent<EnemyMove>()?.speed ?? 0f
+        };
+        
+        _statsComponent.HealthChanged += newHealth =>
+        {
+            _enemySelectionData.Health = newHealth;
+            _enemySelectionData.MaxHealth = _statsComponent.MaxHealth;
+        };
+
+        _enemySelectionData.OnSelectionDataChanged += data => OnSelectionDataChanged?.Invoke(data);
     }
 
     private void Die()
@@ -42,5 +58,20 @@ public class Enemy : MonoBehaviour
         OnEnemyEndPath?.Invoke(this, livesDamage);
         WaveSpawner.EnemiesAlive--;
         Destroy(gameObject); //도착지점 도착 시 오브젝트 파괴
+    }
+
+    // Start of ISelectable
+    private EnemySelectionData _enemySelectionData;
+    
+    public event Action<SelectionData> OnSelectionDataChanged;
+    public void OnSelect() { return; }
+    public void OnDeselect() { return; }
+    public SelectionData GetSelectionData() => _enemySelectionData;
+    // End of ISelectable
+
+    private void OnMouseUpAsButton()
+    {
+        OnSelect();
+        SelectionManager.instance.OnSelect(this);
     }
 }

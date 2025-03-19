@@ -11,6 +11,7 @@ public class SelectionManager : MonoBehaviour
 
     [SerializeField] private GameObject _selectionUI;
     [SerializeField] private GameObject _towerUI;
+    [SerializeField] private GameObject _enemyUI;
     
     private void Awake()
     {
@@ -70,8 +71,15 @@ public class SelectionManager : MonoBehaviour
         if (data == null) return;
         if (data is TowerSelectionData towerSelectionData)
         {
+            _enemyUI.SetActive(false);
             _towerUI.SetActive(true);
             _towerUI.GetComponent<TowerSelectionUI>()?.HandleUIChange(towerSelectionData);
+        }
+        else if (data is EnemySelectionData enemySelectionData)
+        {
+            _towerUI.SetActive(false);
+            _enemyUI.SetActive(true);
+            _enemyUI.GetComponent<EnemySelectionUI>()?.HandleUIChange(enemySelectionData);
         }
     }
 }
