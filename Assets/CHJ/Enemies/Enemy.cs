@@ -16,10 +16,12 @@ public class Enemy : MonoBehaviour, ISelectable
     [SerializeField] private float goldDropAmount = 1;
     // 적이 끝까지 도달시 목숨 데미지
     [SerializeField] private int livesDamage = 1;
-    
 
     // 스탯처리 컴포넌트
     private StatsComponent _statsComponent;
+    
+    // 선택시 표시
+    [SerializeField] private GameObject _selectionIndicator;
     
     private void Awake()
     {
@@ -64,8 +66,16 @@ public class Enemy : MonoBehaviour, ISelectable
     private EnemySelectionData _enemySelectionData;
     
     public event Action<SelectionData> OnSelectionDataChanged;
-    public void OnSelect() { return; }
-    public void OnDeselect() { return; }
+
+    public void OnSelect()
+    {
+        _selectionIndicator?.SetActive(true);
+    }
+
+    public void OnDeselect()
+    {
+        _selectionIndicator?.SetActive(false);
+    }
     public SelectionData GetSelectionData() => _enemySelectionData;
     // End of ISelectable
 
