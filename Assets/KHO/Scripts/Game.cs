@@ -140,4 +140,10 @@ public class Game : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
+
+    public void SetTimeScale(float newTimeScale)
+    {
+        if (newTimeScale < 0f) return;
+        Time.timeScale = newTimeScale;
+    }
 }
