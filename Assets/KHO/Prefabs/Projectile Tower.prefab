@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: b723b4a884f32c04e97f97fc67590014, type: 2}
-  targetingRange: 10
+  targetingRange: 5
   potentialTargets: []
   rotatingPart: {fileID: 3233541156249316929}
   turret: {fileID: 6261195216371197924}

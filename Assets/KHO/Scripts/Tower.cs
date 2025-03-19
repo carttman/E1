@@ -1,8 +1,27 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Tower : MonoBehaviour
-{
+public abstract class Tower : MonoBehaviour, ISelectable
+{ 
+  
+    // ISelectable
+    public event Action<SelectionData> OnSelectionDataChanged;
+    public void OnSelect()
+    {
+        IsSelected = true;
+        SelectionManager.instance.OnSelect(this);
+    }
+
+    public void OnDeselect()
+    {
+        IsSelected = false;
+        _rangeIndicator.gameObject.SetActive(false);
+    }
+
+    [SerializeField] protected bool IsSelected = false;
+    // End of ISelectable
+
     protected SphereCollider SphereCollider;
     
     // 타워 static data
@@ -11,13 +30,17 @@ public abstract class Tower : MonoBehaviour
     // 타겟 범위
     [SerializeField, Range(1.5f, 100f)]
     protected float targetingRange = 1.5f;
-    
+
+    public float TargetingRange => targetingRange;
+
     // 타워가 때릴 수 있는 타겟들
     [SerializeField] protected List<Transform> potentialTargets = new List<Transform>();
     
     // 타워 파트들 (좌표 처리용)
     [SerializeField] protected Transform rotatingPart;
     [SerializeField] protected Transform turret;
+
+    protected RangeIndicator _rangeIndicator;
     
     protected void Awake()
     {
@@ -25,8 +48,11 @@ public abstract class Tower : MonoBehaviour
         
         SphereCollider = GetComponent<SphereCollider>();
         SphereCollider.radius = targetingRange;
+        
+        _rangeIndicator = GetComponentInChildren<RangeIndicator>();
+        _rangeIndicator.gameObject.SetActive(false);
     }
-    
+
     // 타겟 지정 함수
     protected bool AcquireTarget(out Transform pTarget)
     {
@@ -93,5 +119,21 @@ public abstract class Tower : MonoBehaviour
         Vector3 position = transform.localPosition;
         position.y += 0.01f;
         Gizmos.DrawWireSphere(position, targetingRange);
+    }
+
+    protected void OnMouseUpAsButton()
+    {
+        OnSelect();
+    }
+
+    protected void OnMouseEnter()
+    {
+        _rangeIndicator.gameObject.SetActive(true);
+    }
+    
+    protected void OnMouseExit()
+    {
+        if (IsSelected) return;
+        _rangeIndicator.gameObject.SetActive(false);
     }
 }
