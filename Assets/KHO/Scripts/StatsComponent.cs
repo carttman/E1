@@ -36,7 +36,7 @@ public class StatsComponent : MonoBehaviour
         health -= damage;
         
         // 데미지 팝업 호출
-        PopUpManager.Instance.PopUpDamageUI(damage, transform);
+        PopUpManager.Instance.PopUpDamageUI(damage, PopupTransform);
         
         HealthChanged?.Invoke(health);
         if (health <= 0)
