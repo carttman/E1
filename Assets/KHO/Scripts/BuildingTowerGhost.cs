@@ -34,6 +34,8 @@ public class BuildingTowerGhost : MonoBehaviour
         {
             rend.material.color = _selectionColor;
         }
+        
+        GameEventHub.Instance.StartBuildingTower();
     }
 
     private void OnTilePointerClick(Transform obj)
@@ -48,6 +50,7 @@ public class BuildingTowerGhost : MonoBehaviour
             rend.material.color = _startColor;
         }
         
+        GameEventHub.Instance.StopBuildingTower();
         tower.enabled = true;
     }
 
@@ -73,6 +76,7 @@ public class BuildingTowerGhost : MonoBehaviour
         
         if (Physics.Raycast(TouchRay, out RaycastHit hit, 5000f, LayerMask.NameToLayer("Default")))
         {
+            Debug.Log("ray hit");
             transform.position = hit.point;
         }
     }
