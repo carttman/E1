@@ -7,39 +7,53 @@ using UnityEngine.EventSystems;
 public class BuildableTileEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     private Vector3 startPosition;
-    private float yOffset = 0.3f;
+    private float yOffset = 0.5f;
 
     private Color _startColor;
     [SerializeField] private Color highlightColor = Color.blue;
-
-    private Renderer _renderer;
+    [SerializeField] private Renderer _renderer;
     
     public void Awake()
     {
-        _renderer = GetComponent<Renderer>();
+        _renderer = GetComponentInChildren<Renderer>();
         startPosition = transform.position;
         _startColor = _renderer.material.color;
+    }
+
+    private void Start()
+    {
+        GameEventHub.Instance.OnStartBuildingTower += StartHighlight;
+        GameEventHub.Instance.OnStopBuildingTower += StopHighlight;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         GameEventHub.Instance.TilePointerEnter(transform);
-        transform.DOComplete();
-        transform.DOLocalMoveY(startPosition.y + yOffset, 0.15f).SetEase(Ease.InCubic);
-        _renderer.material.DOColor(highlightColor, 0.75f).SetEase(Ease.InCubic).SetLoops(-1, LoopType.Yoyo);
+        _renderer.transform.DOComplete();
+        _renderer.transform.DOLocalMoveY(yOffset, 0.15f).SetEase(Ease.InCubic);
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         GameEventHub.Instance.TilePointerExit(transform);
-        transform.DOComplete();
-        transform.DOLocalMoveY(startPosition.y, 0.1f).SetEase(Ease.InCubic);
-        _renderer.material.DOKill();
-        _renderer.material.color = _startColor;
+        _renderer.transform.DOComplete();
+        _renderer.transform.DOLocalMoveY(0f, 0.1f).SetEase(Ease.InCubic);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         GameEventHub.Instance.TilePointerClick(transform);
+    }
+
+    public void StartHighlight()
+    {
+        _renderer.material.DOColor(highlightColor, 0.75f).SetEase(Ease.InCubic).SetLoops(-1, LoopType.Yoyo);
+    }
+
+    public void StopHighlight()
+    {
+        _renderer.material.DOKill();
+        _renderer.material.color = _startColor;
     }
 }

@@ -7,6 +7,9 @@ public class GameEventHub : MonoBehaviour
     public event Action<Transform> OnTilePointerEnter;
     public event Action<Transform> OnTilePointerExit;
     public event Action<Transform> OnTilePointerClick;
+
+    public event Action OnStartBuildingTower;
+    public event Action OnStopBuildingTower;
     
     public static GameEventHub Instance { get; private set; }
 
@@ -22,18 +25,9 @@ public class GameEventHub : MonoBehaviour
         }
     }
     
-    public void TilePointerEnter(Transform tile)
-    {
-        OnTilePointerEnter?.Invoke(tile);
-    }
-    
-    public void TilePointerExit(Transform tile)
-    {
-        OnTilePointerExit?.Invoke(tile);
-    }
-    
-    public void TilePointerClick(Transform tile)
-    {
-        OnTilePointerClick?.Invoke(tile);
-    }
+    public void TilePointerEnter(Transform tile) => OnTilePointerEnter?.Invoke(tile);
+    public void TilePointerExit(Transform tile) => OnTilePointerExit?.Invoke(tile);
+    public void TilePointerClick(Transform tile) => OnTilePointerClick?.Invoke(tile);
+    public void StartBuildingTower() => OnStartBuildingTower?.Invoke();
+    public void StopBuildingTower() => OnStopBuildingTower?.Invoke();
 }
