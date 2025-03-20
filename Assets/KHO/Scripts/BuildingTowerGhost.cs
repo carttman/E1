@@ -40,6 +40,12 @@ public class BuildingTowerGhost : MonoBehaviour
 
     private void OnTilePointerClick(Transform obj)
     {
+        GameEventHub.Instance.OnTilePointerEnter -= OnTilePointerEnter;
+        GameEventHub.Instance.OnTilePointerExit -= OnTilePointerExit;
+        GameEventHub.Instance.OnTilePointerClick -= OnTilePointerClick;
+        
+        obj.GetComponent<BuildableTileEvent>().Disable();
+        
         Tower tower = GetComponent<Tower>();
         OnTowerBuilt?.Invoke(tower.towerData);
         OnTowerBuilt = null;
@@ -52,6 +58,17 @@ public class BuildingTowerGhost : MonoBehaviour
         
         GameEventHub.Instance.StopBuildingTower();
         tower.enabled = true;
+        
+
+    }
+
+    private void OnDestroy()
+    {
+        GameEventHub.Instance.OnTilePointerEnter -= OnTilePointerEnter;
+        GameEventHub.Instance.OnTilePointerExit -= OnTilePointerExit;
+        GameEventHub.Instance.OnTilePointerClick -= OnTilePointerClick;
+        
+        GameEventHub.Instance.StopBuildingTower();
     }
 
     private void OnTilePointerEnter(Transform obj) => _pointerTile = obj;

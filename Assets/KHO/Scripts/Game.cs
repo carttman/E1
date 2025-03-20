@@ -119,19 +119,31 @@ public class Game : MonoBehaviour
             if (CanBuyTower(button_idx))
             {
                 var newTower = Instantiate(towerDatas[button_idx].towerPrefab);
-                newTower.GetComponent<BuildingTowerGhost>().OnTowerBuilt += data => SpendGold(data.goldCost);
+                newTower.GetComponent<BuildingTowerGhost>().OnTowerBuilt += OnTowerBuilt;
+                buildingTower = newTower;
             }
             else
             {
                 Debug.Log($"Cannot buy tower {button_idx}, not enough gold");
             }
         }
-
-        if (buildingTower)
+        else if (buildingTower)
         {
+            var towerGhost = buildingTower.GetComponent<BuildingTowerGhost>();
+            if (towerGhost)
+            {
+                towerGhost.OnTowerBuilt -= OnTowerBuilt;
+            }
+            
             Destroy(buildingTower);
             buildingTower = null;
         }
+    }
+
+    private void OnTowerBuilt(TowerData obj)
+    {
+        SpendGold(obj.goldCost);
+        buildingTower = null;
     }
 
     // 게임오버 UI 재시작 처리 (현재 신 다시 불러옴)

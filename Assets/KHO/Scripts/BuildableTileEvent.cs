@@ -48,12 +48,27 @@ public class BuildableTileEvent : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     public void StartHighlight()
     {
+        if (!_renderer) return;
         _renderer.material.DOColor(highlightColor, 0.75f).SetEase(Ease.InCubic).SetLoops(-1, LoopType.Yoyo);
     }
 
     public void StopHighlight()
     {
-        _renderer.material.DOKill();
+        if (!_renderer) return;   
+        _renderer.material.DOKill(true);
         _renderer.material.color = _startColor;
+    }
+
+    public void Disable()
+    {
+        _renderer.transform.DOKill(true);
+        _renderer.transform.localPosition = Vector3.zero;
+        
+        StopHighlight();
+
+        GameEventHub.Instance.OnStartBuildingTower -= StartHighlight;
+        GameEventHub.Instance.OnStopBuildingTower -= StopHighlight;
+        
+        enabled = false;
     }
 }
