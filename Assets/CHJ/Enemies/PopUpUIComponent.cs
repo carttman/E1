@@ -17,6 +17,7 @@ public class PopUpUIComponent : MonoBehaviour
         transform.position += Vector3.up * (0.01f);
         
         Vector3 pos = MyCamera.transform.position - transform.position;
+        //Vector3 pos = MyCamera.transform.position - MyCamera.WorldToScreenPoint(transform.position);
         Vector3 newVec = new Vector3(pos.x, 0, pos.z);
         //transform.rotation = Quaternion.LookRotation(-newVec);
     }
