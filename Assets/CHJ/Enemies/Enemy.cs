@@ -22,6 +22,9 @@ public class Enemy : MonoBehaviour, ISelectable
     
     // 선택시 표시
     [SerializeField] private GameObject _selectionIndicator;
+
+    // 시간
+    public float Age;
     
     private void Awake()
     {
@@ -46,6 +49,11 @@ public class Enemy : MonoBehaviour, ISelectable
         };
 
         _enemySelectionData.OnSelectionDataChanged += data => OnSelectionDataChanged?.Invoke(data);
+    }
+
+    private void Update()
+    {
+        Age += Time.deltaTime;
     }
 
     private void Die()

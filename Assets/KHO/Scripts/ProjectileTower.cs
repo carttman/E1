@@ -31,8 +31,10 @@ public class ProjectileTower : Tower
 
     private void Shoot(Transform pTarget)
     {
-        var newProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        var newProjectile = Instantiate(projectilePrefab, turret.position, Quaternion.identity);
         newProjectile.transform.LookAt(pTarget);
+        newProjectile.transform.Rotate(Vector3.up, Random.Range(50f, 75f));
+        
         var proj = newProjectile.GetComponent<Projectile>();
         proj.Target = pTarget;
         proj.Damage = damagePerShot;
