@@ -1,0 +1,31 @@
+using System.Collections;
+using TMPro;
+using UnityEngine;
+
+public class PopUpManager : MonoBehaviour
+{
+    private static PopUpManager _instance;
+    public static PopUpManager Instance
+    {
+        get { return _instance; }
+    }
+    
+    public GameObject PopUpObject;
+    private TMP_Text PopUpText;
+
+    private void Awake()
+    {
+        _instance = this;
+    }
+
+    public void PopUpDamageUI(float damage, Transform objectTransform)
+    {
+        Vector3 randomPos = new Vector3(Random.Range(0f, .5f), Random.Range(0f, .5f), Random.Range(0f, .5f));
+        
+        GameObject popUp = Instantiate(PopUpObject, objectTransform.position + randomPos, Quaternion.identity);
+        TextMeshProUGUI temp = popUp.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        temp.text = damage.ToString();
+        temp.faceColor = Color.yellow;
+        Destroy(popUp, 1f);
+    }
+}

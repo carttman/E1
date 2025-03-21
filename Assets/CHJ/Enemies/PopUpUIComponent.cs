@@ -14,11 +14,12 @@ public class PopUpUIComponent : MonoBehaviour
     {
         //transform.position = Vector3.MoveTowards(transform.position, transform.parent.position, 0.01f);
         //transform.position = Vector3.Lerp(transform.position, transform.parent.position, 1f);
-        transform.position += Vector3.up * (0.01f);
         
-        Vector3 pos = MyCamera.transform.position - transform.position;
+        // transform.position += Vector3.up * (0.01f);
+        // Vector3 pos = MyCamera.transform.position - transform.position;
+        // Vector3 newVec = new Vector3(pos.x, 0, pos.z);
+        
         //Vector3 pos = MyCamera.transform.position - MyCamera.WorldToScreenPoint(transform.position);
-        Vector3 newVec = new Vector3(pos.x, 0, pos.z);
         //transform.rotation = Quaternion.LookRotation(-newVec);
     }
 }

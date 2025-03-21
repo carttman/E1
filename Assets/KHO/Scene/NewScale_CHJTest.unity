@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &31922239
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &40618702
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,6 +562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &42159392
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &45087499
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,6 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &50930155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,6 +1017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &67330143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,6 +1140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &96059853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,6 +1284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 109741691}
   - component: {fileID: 109741690}
+  - component: {fileID: 109741692}
   m_Layer: 0
   m_Name: PopUpManager
   m_TagString: Untagged
@@ -1313,6 +1321,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &109741692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109741689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29035db79df140042b4b013b69e44107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 850266223063086573, guid: 08f04005bd6ecdf4d85fe7a8fcbc3642, type: 3}
 --- !u!1 &121740700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,6 +1666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &143281895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,6 +1789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &166778512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,6 +1912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &209365200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,6 +2035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &230828030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,6 +2158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &237191941
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,6 +2281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &243414410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,6 +2537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &257983084
 GameObject:
   m_ObjectHideFlags: 0
@@ -2632,6 +2660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &261485563
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,6 +2904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &296372818
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,6 +3027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &301446979
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,6 +3225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &377750195
 GameObject:
   m_ObjectHideFlags: 0
@@ -3316,6 +3348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &397176220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3438,6 +3471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &409842979
 GameObject:
   m_ObjectHideFlags: 0
@@ -3783,6 +3817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &416764240
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,6 +3940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &418718236
 GameObject:
   m_ObjectHideFlags: 0
@@ -4058,6 +4094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &424684266
 GameObject:
   m_ObjectHideFlags: 0
@@ -4334,6 +4371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &435884405
 GameObject:
   m_ObjectHideFlags: 0
@@ -4456,6 +4494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &456719108
 GameObject:
   m_ObjectHideFlags: 0
@@ -4578,6 +4617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &458661894
 GameObject:
   m_ObjectHideFlags: 0
@@ -4700,6 +4740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &463152057
 GameObject:
   m_ObjectHideFlags: 0
@@ -5041,6 +5082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &481532226
 GameObject:
   m_ObjectHideFlags: 0
@@ -5163,6 +5205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &487614923
 GameObject:
   m_ObjectHideFlags: 0
@@ -5285,6 +5328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &495600840
 GameObject:
   m_ObjectHideFlags: 0
@@ -5407,6 +5451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &510263721
 GameObject:
   m_ObjectHideFlags: 0
@@ -5529,6 +5574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &516086298
 GameObject:
   m_ObjectHideFlags: 0
@@ -5873,6 +5919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &527129892
 GameObject:
   m_ObjectHideFlags: 0
@@ -5995,6 +6042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &531915864
 GameObject:
   m_ObjectHideFlags: 0
@@ -6117,6 +6165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &534741630
 GameObject:
   m_ObjectHideFlags: 0
@@ -6239,6 +6288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &542423270
 GameObject:
   m_ObjectHideFlags: 0
@@ -6361,6 +6411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &542780321
 GameObject:
   m_ObjectHideFlags: 0
@@ -6650,6 +6701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &579642475
 GameObject:
   m_ObjectHideFlags: 0
@@ -6772,6 +6824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &596260299
 GameObject:
   m_ObjectHideFlags: 0
@@ -6894,6 +6947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &616345260
 GameObject:
   m_ObjectHideFlags: 0
@@ -7016,6 +7070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &628562114
 GameObject:
   m_ObjectHideFlags: 0
@@ -7138,6 +7193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &630471333
 GameObject:
   m_ObjectHideFlags: 0
@@ -7260,6 +7316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &630946215
 GameObject:
   m_ObjectHideFlags: 0
@@ -7382,6 +7439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &641100096
 GameObject:
   m_ObjectHideFlags: 0
@@ -7504,6 +7562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &643262960
 GameObject:
   m_ObjectHideFlags: 0
@@ -7734,6 +7793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &653806519
 GameObject:
   m_ObjectHideFlags: 0
@@ -7992,6 +8052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &665086052
 GameObject:
   m_ObjectHideFlags: 0
@@ -8264,6 +8325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &669846538
 GameObject:
   m_ObjectHideFlags: 0
@@ -8386,6 +8448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &687536948
 GameObject:
   m_ObjectHideFlags: 0
@@ -8508,6 +8571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &691225132
 GameObject:
   m_ObjectHideFlags: 0
@@ -8630,6 +8694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &711763824
 GameObject:
   m_ObjectHideFlags: 0
@@ -8752,6 +8817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &712285726
 GameObject:
   m_ObjectHideFlags: 0
@@ -8874,6 +8940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &729773889
 GameObject:
   m_ObjectHideFlags: 0
@@ -8996,6 +9063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &738270112
 GameObject:
   m_ObjectHideFlags: 0
@@ -9118,6 +9186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &740897120
 GameObject:
   m_ObjectHideFlags: 0
@@ -9240,6 +9309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &755288026
 GameObject:
   m_ObjectHideFlags: 0
@@ -9362,6 +9432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &769210604
 GameObject:
   m_ObjectHideFlags: 0
@@ -9538,6 +9609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &789987495
 GameObject:
   m_ObjectHideFlags: 0
@@ -9660,6 +9732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &792571544
 GameObject:
   m_ObjectHideFlags: 0
@@ -9782,6 +9855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &808425530
 GameObject:
   m_ObjectHideFlags: 0
@@ -10176,6 +10250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &818711251
 GameObject:
   m_ObjectHideFlags: 0
@@ -10436,6 +10511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &848486925
 GameObject:
   m_ObjectHideFlags: 0
@@ -10558,6 +10634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &852292552
 GameObject:
   m_ObjectHideFlags: 0
@@ -10680,6 +10757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &863142383
 GameObject:
   m_ObjectHideFlags: 0
@@ -10802,6 +10880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &866251857
 GameObject:
   m_ObjectHideFlags: 0
@@ -10924,6 +11003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &869061196
 GameObject:
   m_ObjectHideFlags: 0
@@ -11046,6 +11126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &882115981
 GameObject:
   m_ObjectHideFlags: 0
@@ -11168,6 +11249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &886268580
 GameObject:
   m_ObjectHideFlags: 0
@@ -11290,6 +11372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &899847004
 GameObject:
   m_ObjectHideFlags: 0
@@ -11412,6 +11495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &899965034
 GameObject:
   m_ObjectHideFlags: 0
@@ -11534,6 +11618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &907080156
 GameObject:
   m_ObjectHideFlags: 0
@@ -11656,6 +11741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &921636226
 GameObject:
   m_ObjectHideFlags: 0
@@ -11809,6 +11895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &928664714
 GameObject:
   m_ObjectHideFlags: 0
@@ -11931,6 +12018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &932395093
 GameObject:
   m_ObjectHideFlags: 0
@@ -12053,6 +12141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &932883314
 GameObject:
   m_ObjectHideFlags: 0
@@ -12175,6 +12264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &933269654
 GameObject:
   m_ObjectHideFlags: 0
@@ -12297,6 +12387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &935126216
 GameObject:
   m_ObjectHideFlags: 0
@@ -12552,6 +12643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &944856331
 GameObject:
   m_ObjectHideFlags: 0
@@ -12674,6 +12766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &958572047
 GameObject:
   m_ObjectHideFlags: 0
@@ -12796,6 +12889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &958643217
 GameObject:
   m_ObjectHideFlags: 0
@@ -12918,6 +13012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &958782118
 GameObject:
   m_ObjectHideFlags: 0
@@ -13040,6 +13135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &966391696
 GameObject:
   m_ObjectHideFlags: 0
@@ -13516,6 +13612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &993045392
 GameObject:
   m_ObjectHideFlags: 0
@@ -13638,6 +13735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1001228205
 GameObject:
   m_ObjectHideFlags: 0
@@ -14081,6 +14179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1031425811
 GameObject:
   m_ObjectHideFlags: 0
@@ -14473,6 +14572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1047337544
 GameObject:
   m_ObjectHideFlags: 0
@@ -14595,6 +14695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1061608476
 GameObject:
   m_ObjectHideFlags: 0
@@ -14792,6 +14893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1075713686
 GameObject:
   m_ObjectHideFlags: 0
@@ -15052,6 +15154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1107021830
 GameObject:
   m_ObjectHideFlags: 0
@@ -15370,6 +15473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1109877066
 GameObject:
   m_ObjectHideFlags: 0
@@ -15492,6 +15596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1110978404
 GameObject:
   m_ObjectHideFlags: 0
@@ -15614,6 +15719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1129130965
 GameObject:
   m_ObjectHideFlags: 0
@@ -15736,6 +15842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1136244120
 GameObject:
   m_ObjectHideFlags: 0
@@ -15858,6 +15965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1139628999
 GameObject:
   m_ObjectHideFlags: 0
@@ -15980,6 +16088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1151029574
 GameObject:
   m_ObjectHideFlags: 0
@@ -16102,6 +16211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1152616401
 GameObject:
   m_ObjectHideFlags: 0
@@ -16224,6 +16334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1157202140
 GameObject:
   m_ObjectHideFlags: 0
@@ -16346,6 +16457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1196592526
 GameObject:
   m_ObjectHideFlags: 0
@@ -16606,6 +16718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1203122089
 GameObject:
   m_ObjectHideFlags: 0
@@ -16845,6 +16958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1253838056
 GameObject:
   m_ObjectHideFlags: 0
@@ -17044,6 +17158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1261475278
 GameObject:
   m_ObjectHideFlags: 0
@@ -17213,6 +17328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1265639320
 GameObject:
   m_ObjectHideFlags: 0
@@ -17335,6 +17451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1278373114
 GameObject:
   m_ObjectHideFlags: 0
@@ -17457,6 +17574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1283984220
 GameObject:
   m_ObjectHideFlags: 0
@@ -17579,6 +17697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1295103801
 GameObject:
   m_ObjectHideFlags: 0
@@ -17787,6 +17906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1308657627
 GameObject:
   m_ObjectHideFlags: 0
@@ -17909,6 +18029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1321602860
 GameObject:
   m_ObjectHideFlags: 0
@@ -18062,6 +18183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1326880432
 GameObject:
   m_ObjectHideFlags: 0
@@ -18184,6 +18306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1341291496
 GameObject:
   m_ObjectHideFlags: 0
@@ -18306,6 +18429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1353637872
 GameObject:
   m_ObjectHideFlags: 0
@@ -18459,6 +18583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1364080214
 GameObject:
   m_ObjectHideFlags: 0
@@ -18581,6 +18706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1379890219
 GameObject:
   m_ObjectHideFlags: 0
@@ -18703,6 +18829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1380049805
 GameObject:
   m_ObjectHideFlags: 0
@@ -18825,6 +18952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1382043412
 GameObject:
   m_ObjectHideFlags: 0
@@ -18947,6 +19075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1382082962
 GameObject:
   m_ObjectHideFlags: 0
@@ -19069,6 +19198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1392253544
 GameObject:
   m_ObjectHideFlags: 0
@@ -19191,6 +19321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1397903659
 GameObject:
   m_ObjectHideFlags: 0
@@ -19313,6 +19444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1406940383
 GameObject:
   m_ObjectHideFlags: 0
@@ -19435,6 +19567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1409070792
 GameObject:
   m_ObjectHideFlags: 0
@@ -19557,6 +19690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1416070074
 GameObject:
   m_ObjectHideFlags: 0
@@ -19679,6 +19813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1432922564
 GameObject:
   m_ObjectHideFlags: 0
@@ -19801,6 +19936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1434564544
 GameObject:
   m_ObjectHideFlags: 0
@@ -19923,6 +20059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1438680604
 GameObject:
   m_ObjectHideFlags: 0
@@ -20045,6 +20182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1445058217
 GameObject:
   m_ObjectHideFlags: 0
@@ -20334,6 +20472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1449430855
 GameObject:
   m_ObjectHideFlags: 0
@@ -20542,6 +20681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1455092471
 GameObject:
   m_ObjectHideFlags: 0
@@ -20726,6 +20866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1467617828
 GameObject:
   m_ObjectHideFlags: 0
@@ -20848,6 +20989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1469184927
 GameObject:
   m_ObjectHideFlags: 0
@@ -20970,6 +21112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1487604640
 GameObject:
   m_ObjectHideFlags: 0
@@ -21209,6 +21352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1515625488
 GameObject:
   m_ObjectHideFlags: 0
@@ -21331,6 +21475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1515779523
 GameObject:
   m_ObjectHideFlags: 0
@@ -21453,6 +21598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1541360482
 GameObject:
   m_ObjectHideFlags: 0
@@ -21575,6 +21721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1542710962
 GameObject:
   m_ObjectHideFlags: 0
@@ -21833,6 +21980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1554245187
 GameObject:
   m_ObjectHideFlags: 0
@@ -21955,6 +22103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1575433748
 GameObject:
   m_ObjectHideFlags: 0
@@ -22077,6 +22226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1587034581
 GameObject:
   m_ObjectHideFlags: 0
@@ -22199,6 +22349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1588569777
 GameObject:
   m_ObjectHideFlags: 0
@@ -22321,6 +22472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1589144798
 GameObject:
   m_ObjectHideFlags: 0
@@ -22443,6 +22595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1605707639
 GameObject:
   m_ObjectHideFlags: 0
@@ -22565,6 +22718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1622167997
 GameObject:
   m_ObjectHideFlags: 0
@@ -22687,6 +22841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1622973557
 GameObject:
   m_ObjectHideFlags: 0
@@ -22942,6 +23097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1626735989
 GameObject:
   m_ObjectHideFlags: 0
@@ -23064,6 +23220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1628552522
 GameObject:
   m_ObjectHideFlags: 0
@@ -23272,6 +23429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1633686766
 GameObject:
   m_ObjectHideFlags: 0
@@ -23394,6 +23552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1646248431
 GameObject:
   m_ObjectHideFlags: 0
@@ -23516,6 +23675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1653019154
 GameObject:
   m_ObjectHideFlags: 0
@@ -23638,6 +23798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1654035941
 GameObject:
   m_ObjectHideFlags: 0
@@ -23760,6 +23921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1675798252
 GameObject:
   m_ObjectHideFlags: 0
@@ -23882,6 +24044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1679262864
 GameObject:
   m_ObjectHideFlags: 0
@@ -24062,6 +24225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1690859077
 GameObject:
   m_ObjectHideFlags: 0
@@ -24184,6 +24348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1694035944
 GameObject:
   m_ObjectHideFlags: 0
@@ -24440,6 +24605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1714368293
 GameObject:
   m_ObjectHideFlags: 0
@@ -24562,6 +24728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1718191939
 GameObject:
   m_ObjectHideFlags: 0
@@ -24684,6 +24851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1723691060
 GameObject:
   m_ObjectHideFlags: 0
@@ -24806,6 +24974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1727362810
 GameObject:
   m_ObjectHideFlags: 0
@@ -24928,6 +25097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1734360884
 GameObject:
   m_ObjectHideFlags: 0
@@ -25050,6 +25220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1741137647
 GameObject:
   m_ObjectHideFlags: 0
@@ -25228,6 +25399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1774244834
 GameObject:
   m_ObjectHideFlags: 0
@@ -25350,6 +25522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1790333336
 GameObject:
   m_ObjectHideFlags: 0
@@ -25558,6 +25731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1796521698
 GameObject:
   m_ObjectHideFlags: 0
@@ -25680,6 +25854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1798217345
 GameObject:
   m_ObjectHideFlags: 0
@@ -25802,6 +25977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1824373771
 GameObject:
   m_ObjectHideFlags: 0
@@ -25924,6 +26100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1827922143
 GameObject:
   m_ObjectHideFlags: 0
@@ -26046,6 +26223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1834444898
 GameObject:
   m_ObjectHideFlags: 0
@@ -26243,6 +26421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1842845591
 GameObject:
   m_ObjectHideFlags: 0
@@ -26555,6 +26734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1862325008
 GameObject:
   m_ObjectHideFlags: 0
@@ -26677,6 +26857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1862602624
 GameObject:
   m_ObjectHideFlags: 0
@@ -26799,6 +26980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1870715168
 GameObject:
   m_ObjectHideFlags: 0
@@ -27277,6 +27459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1919711345
 GameObject:
   m_ObjectHideFlags: 0
@@ -27661,6 +27844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1944674556
 GameObject:
   m_ObjectHideFlags: 0
@@ -27783,6 +27967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1949783749
 GameObject:
   m_ObjectHideFlags: 0
@@ -27905,6 +28090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1953238632
 GameObject:
   m_ObjectHideFlags: 0
@@ -28027,6 +28213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1976523321
 GameObject:
   m_ObjectHideFlags: 0
@@ -28149,6 +28336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1983388143
 GameObject:
   m_ObjectHideFlags: 0
@@ -28271,6 +28459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &1986056901
 GameObject:
   m_ObjectHideFlags: 0
@@ -28582,6 +28771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2002269023
 GameObject:
   m_ObjectHideFlags: 0
@@ -28704,6 +28894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2004498254
 GameObject:
   m_ObjectHideFlags: 0
@@ -28826,6 +29017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2004716051
 GameObject:
   m_ObjectHideFlags: 0
@@ -28948,6 +29140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2008796429
 GameObject:
   m_ObjectHideFlags: 0
@@ -29070,6 +29263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2008881180
 GameObject:
   m_ObjectHideFlags: 0
@@ -29192,6 +29386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2015126205
 GameObject:
   m_ObjectHideFlags: 0
@@ -29314,6 +29509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2046692771
 GameObject:
   m_ObjectHideFlags: 0
@@ -29436,6 +29632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2050717359
 GameObject:
   m_ObjectHideFlags: 0
@@ -29644,6 +29841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2059118185
 GameObject:
   m_ObjectHideFlags: 0
@@ -29766,6 +29964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2062727172
 GameObject:
   m_ObjectHideFlags: 0
@@ -30024,6 +30223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2075082172
 GameObject:
   m_ObjectHideFlags: 0
@@ -30146,6 +30346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2096168701
 GameObject:
   m_ObjectHideFlags: 0
@@ -30268,6 +30469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2099116721
 GameObject:
   m_ObjectHideFlags: 0
@@ -30390,6 +30592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2110717898
 GameObject:
   m_ObjectHideFlags: 0
@@ -30512,6 +30715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2113603293
 GameObject:
   m_ObjectHideFlags: 0
@@ -30803,6 +31007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2125627394
 GameObject:
   m_ObjectHideFlags: 0
@@ -31075,6 +31280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.29488537, g: 0.4430777, b: 0.8930817, a: 1}
+  _renderer: {fileID: 0}
 --- !u!1 &2140288768
 GameObject:
   m_ObjectHideFlags: 0
