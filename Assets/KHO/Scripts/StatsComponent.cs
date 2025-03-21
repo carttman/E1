@@ -14,7 +14,7 @@ public class StatsComponent : MonoBehaviour
     private float health;
     public float Health { get; }
     
-    PopUpManager PopUp;
+    //PopUpManager PopUp;
     public Transform PopupTransform;
     
     private void Awake()
@@ -36,7 +36,7 @@ public class StatsComponent : MonoBehaviour
         health -= damage;
         
         // 데미지 팝업 호출
-        PopUpManager.Instance.PopUpDamageUI(damage, PopupTransform);
+        PopUpManager.Instance.PopUpUI(damage.ToString(), PopupTransform.position, Color.red, 1);
         
         HealthChanged?.Invoke(health);
         if (health <= 0)

@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour, ISelectable
     
     // 적 사망시 드랍되는 골드
     [SerializeField] private float goldDropAmount = 1;
+    public Transform PopupTransform;
+
     // 적이 끝까지 도달시 목숨 데미지
     [SerializeField] private int livesDamage = 1;
 
@@ -51,6 +53,7 @@ public class Enemy : MonoBehaviour, ISelectable
     private void Die()
     {
         OnEnemyDied?.Invoke(this, goldDropAmount);
+        PopUpManager.Instance.PopUpUI("+" + goldDropAmount.ToString(), PopupTransform.position, Color.yellow, 2);
         WaveSpawner.EnemiesAlive--;
         Destroy(gameObject);
     }
