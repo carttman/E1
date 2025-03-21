@@ -44563,6 +44563,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e473c68e16092cd4fb0240e7d7488291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PopUpObject: {fileID: 850266223063086573, guid: 08f04005bd6ecdf4d85fe7a8fcbc3642,
+    type: 3}
 --- !u!4 &1774214790 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2537774297664344541, guid: e8614cdc6ba9de047a4646e79ba738a3,

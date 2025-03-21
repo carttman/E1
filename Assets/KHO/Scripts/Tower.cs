@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class Tower : MonoBehaviour, ISelectable
@@ -56,7 +57,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
     public float TargetingRange => targetingRange;
 
     // 타워가 때릴 수 있는 타겟들
-    [SerializeField] protected List<Transform> potentialTargets = new List<Transform>();
+    [SerializeField] protected SortedSet<Enemy> potentialTargets = new SortedSet<Enemy>(new EnemyComparer());
     
     // 타워 파트들 (좌표 처리용)
     [SerializeField] protected Transform rotatingPart;
@@ -82,12 +83,17 @@ public abstract class Tower : MonoBehaviour, ISelectable
     // 타겟 지정 함수
     protected bool AcquireTarget(out Transform pTarget)
     {
+        potentialTargets.RemoveWhere((t) => !t);
+        
         if (potentialTargets.Count == 0)
         {
             pTarget = null;
             return false;
         }
 
+        pTarget = potentialTargets.First().transform;
+        return true;
+        /*
         for (int i = 0; i < potentialTargets.Count; i++)
         {
             if (potentialTargets[i])
@@ -103,6 +109,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
         }
         pTarget = null;
         return false;
+        */
     }
 
     // 타겟 쳐다보는 함수
@@ -125,16 +132,16 @@ public abstract class Tower : MonoBehaviour, ISelectable
         //Debug.Log($"{other.name} has entered the tower range");
         if (other.CompareTag("Enemy"))
         {
-            potentialTargets.Add(other.transform);
+            potentialTargets.Add(other.GetComponent<Enemy>());
         }
     }
 
     // 범위 나갈시 타겟에서 삭제
     protected void OnTriggerExit(Collider other)
     {
-        if (potentialTargets.Contains(other.transform))
+        if (potentialTargets.Contains(other.GetComponent<Enemy>()))
         {
-            potentialTargets.Remove(other.transform);
+            potentialTargets.Remove(other.GetComponent<Enemy>());
         }
     }
 
@@ -161,5 +168,13 @@ public abstract class Tower : MonoBehaviour, ISelectable
     {
         if (isSelected) return;
         _rangeIndicator.gameObject.SetActive(false);
+    }
+}
+
+public class EnemyComparer : IComparer<Enemy>
+{
+    public int Compare(Enemy a, Enemy b)
+    {
+        return -(a.Age.CompareTo(b.Age));
     }
 }

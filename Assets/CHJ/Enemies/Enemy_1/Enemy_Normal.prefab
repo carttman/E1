@@ -311,6 +311,7 @@ MonoBehaviour:
   PopupTransform: {fileID: 4234604199334752208}
   livesDamage: 1
   _selectionIndicator: {fileID: 2327878959457031367}
+  Age: 0
 --- !u!114 &8234849783101404713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceCheckTolerance: 0.01
-  speed: 7
+  speed: 3.5
   target: {fileID: 0}
 --- !u!54 &4624415098310990532
 Rigidbody:
@@ -365,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520d5163be77d7e429934058c715b3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  MaxHealth: 200
   health: 0
   PopupTransform: {fileID: 4234604199334752208}
 --- !u!114 &6241200190116911929
@@ -395,7 +396,7 @@ GameObject:
   - component: {fileID: 7767860312797614683}
   - component: {fileID: 1314838779554403342}
   - component: {fileID: 6062151168105802827}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
