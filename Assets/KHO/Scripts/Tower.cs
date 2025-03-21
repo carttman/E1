@@ -91,8 +91,17 @@ public abstract class Tower : MonoBehaviour, ISelectable
             return false;
         }
 
-        pTarget = potentialTargets.First().transform;
-        return true;
+        var first = potentialTargets.First();
+        if (first)
+        {
+            pTarget = first.transform;
+        }
+        else
+        {
+            pTarget = null;
+            return false;
+        }
+        return pTarget;
         /*
         for (int i = 0; i < potentialTargets.Count; i++)
         {

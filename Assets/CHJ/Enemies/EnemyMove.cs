@@ -56,12 +56,6 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(GetPredictedPosition(2f), 1f);
-    }
-
     private void Awake()
     {
         _enemy = GetComponent<Enemy>();
