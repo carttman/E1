@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6313ae548dfe484dbfd71a06855a35a, type: 3}
-  m_Name: Arrow Tower
+  m_Name: Dice Tower
   m_EditorClassIdentifier: 
-  towerName: Arrow Tower
-  description: Arrow Tower
-  goldCost: 10
+  towerName: Dice Tower
+  description: Dice Tower
+  goldCost: 20
   sprite: {fileID: 21300000, guid: 09f0df7eb89e33b4e886327a6bd6aed8, type: 3}
-  towerPrefab: {fileID: 3934494808485481923, guid: de77d8b9cb4d6d04993ff2a4e2905bc4,
+  towerPrefab: {fileID: 8966996699036284552, guid: 0a98d10bec7ffbb4f9a1d32312f68102,
     type: 3}
   damage: 10
   upgradesTo:
-  - {fileID: 11400000, guid: 32060235084c6a64db75f0f02394757f, type: 2}
-  - {fileID: 11400000, guid: b723b4a884f32c04e97f97fc67590014, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}

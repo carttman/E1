@@ -35,8 +35,8 @@ public class BezierProjectile : Projectile
         }
         
         transform.position = wantPosition;
-        
-        transform.LookAt(duration <= 0.5 ? middlePos : lastKnownTargetPos);
+        //transform.LookAt(duration <= 0.5 ? middlePos : lastKnownTargetPos);
+        transform.LookAt(Target);
         
         if (age >= duration)
         {

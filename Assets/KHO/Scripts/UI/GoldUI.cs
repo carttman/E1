@@ -16,6 +16,6 @@ public class GoldUI : MonoBehaviour
 
     private void GameOngoldChanged(int newGold)
     {
-        _textMesh.text = $"Gold: {newGold}";
+        _textMesh.text = $"{newGold}";
     }
 }

@@ -90,6 +90,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
         _rangeIndicator.gameObject.SetActive(false);
 
         selectionData = new TowerSelectionData(towerData, kills, dealtDamage);
+        selectionData.tower = this;
         selectionData.OnSelectionDataChanged += data => OnSelectionDataChanged?.Invoke(data);
     }
     
@@ -170,6 +171,17 @@ public abstract class Tower : MonoBehaviour, ISelectable
     {
         if (isSelected) return;
         _rangeIndicator.gameObject.SetActive(false);
+    }
+
+    public void UpgradeTo(TowerData upgradeTowerData)
+    {
+        var newTower = Instantiate(upgradeTowerData.towerPrefab, transform.position, transform.rotation);
+        newTower.GetComponent<Tower>().Kills = kills;
+        newTower.GetComponent<Tower>().DealtDamage = dealtDamage;
+        newTower.GetComponent<BuildingTowerGhost>().enabled = false;
+        newTower.GetComponent<Tower>().enabled = true;
+        SelectionManager.instance.OnSelect(newTower.GetComponent<Tower>());
+        Destroy(gameObject);
     }
 }
 

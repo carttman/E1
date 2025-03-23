@@ -9,4 +9,5 @@ public class TowerData : ScriptableObject
     [SerializeField] public Sprite sprite;
     [SerializeField] public GameObject towerPrefab;
     [SerializeField] public float damage;
+    [SerializeField] public TowerData[] upgradesTo = new TowerData[2];
 }

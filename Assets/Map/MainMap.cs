@@ -21,7 +21,7 @@ public class MainMap : MonoBehaviour
     
     public void OnClickStart()
     {
-        SceneManager.LoadScene("CHJ_NewNewTile");
+        SceneManager.LoadScene("NewNewTile");
     }
 
     public void OnClickExit()

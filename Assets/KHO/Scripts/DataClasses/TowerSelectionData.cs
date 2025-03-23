@@ -5,6 +5,8 @@ using UnityEngine.Serialization;
 [Serializable]
 public class TowerSelectionData: SelectionData
 {
+    public Tower tower;
+    
     public TowerSelectionData(TowerData staticTowerData, int kills, float dealtDamage)
     {
         StaticTowerData = staticTowerData;

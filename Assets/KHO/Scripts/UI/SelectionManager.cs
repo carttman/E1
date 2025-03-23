@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SelectionManager : MonoBehaviour
 {
@@ -44,6 +45,8 @@ public class SelectionManager : MonoBehaviour
         if (selectedObject == null) return;
         if (Input.GetMouseButtonDown(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            
             RaycastHit[] hits = new RaycastHit[50];
             if (Physics.RaycastNonAlloc(TouchRay, hits) > 0)
             {

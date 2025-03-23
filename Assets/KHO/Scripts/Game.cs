@@ -19,12 +19,16 @@ public class Game : MonoBehaviour
     // 게임오버 처리를 위한 UI 레퍼런스
     [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject gameoverUI;
+    [SerializeField] private GameObject pauseButtonUI;
+    [SerializeField] private GameObject pauseUI;
     
     [SerializeField] public TowerData[] towerDatas;
     
     [SerializeField] public GameObject AoeEffectPrefab;
     
-    private int _gold = 10;
+    private float _beforePauseTimeScale = 1f;
+    
+    private int _gold = 25;
     public int Gold
     {
         get => _gold;
@@ -61,6 +65,7 @@ public class Game : MonoBehaviour
     }
 
     private bool CanBuyTower(int idx) => towerDatas[idx].goldCost <= Gold;
+    private bool CanBuyTower(TowerData towerData) => towerData.goldCost <= Gold;
 
     public void AddGold(int amount)
     {
@@ -91,6 +96,7 @@ public class Game : MonoBehaviour
         // 시작시 UI 리프레시 위해 이벤트 호출
         goldChanged?.Invoke(_gold);
         livesChanged?.Invoke(_lives);
+        Time.timeScale = 1f;
     }
 
     private void WaveSpawnerOnEnemySpawned(GameObject obj)
@@ -166,10 +172,39 @@ public class Game : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
+    
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene("MainMap");
+    }
 
     public void SetTimeScale(float newTimeScale)
     {
         if (newTimeScale < 0f) return;
         Time.timeScale = newTimeScale;
+    }
+
+    public void PauseGame()
+    {
+        _beforePauseTimeScale = Time.timeScale;
+        Time.timeScale = 0f;
+        pauseButtonUI.SetActive(false);
+        pauseUI.SetActive(true);
+    }
+    
+    public void UnPauseGame()
+    {
+        Time.timeScale = _beforePauseTimeScale;
+        pauseButtonUI.SetActive(true);
+        pauseUI.SetActive(false);
+    }
+
+    public void UpgradeTower(Tower tower, TowerData towerData)
+    {
+        if (tower == null) return;
+        if (!CanBuyTower(towerData)) return;
+        
+        SpendGold(towerData.goldCost);
+        tower.UpgradeTo(towerData);
     }
 }

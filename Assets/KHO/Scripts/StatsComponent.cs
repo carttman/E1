@@ -22,7 +22,7 @@ public class StatsComponent : MonoBehaviour
         health = MaxHealth;
     }
     
-    public void TakeDamage(float damage, Tower instigator = null)
+    public void TakeDamage(float damage, Tower instigator = null, bool shouldAccumulate = false)
     {
         if (damage <= 0 || health <= 0) return;
         health -= damage;
@@ -31,9 +31,13 @@ public class StatsComponent : MonoBehaviour
         {
             instigator.DealtDamage += damage;
         }
+
+        if (!shouldAccumulate)
+        {
+            // 데미지 팝업 호출
+            PopUpManager.Instance.PopUpUI(damage.ToString(), PopupTransform.position, Color.red, 1);
+        }
         
-        // 데미지 팝업 호출
-        PopUpManager.Instance.PopUpUI(damage.ToString(), PopupTransform.position, Color.red, 1);
         
         HealthChanged?.Invoke(health);
         if (health <= 0)

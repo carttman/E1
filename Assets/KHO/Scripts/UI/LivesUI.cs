@@ -16,6 +16,6 @@ public class LivesUI : MonoBehaviour
 
     private void OnLivesChanged(int newLives)
     {
-        _textMesh.text = $"Lives: {newLives}";
+        _textMesh.text = $"{newLives}";
     }
 }

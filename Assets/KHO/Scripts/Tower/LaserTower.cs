@@ -3,9 +3,10 @@ using UnityEngine;
 public class LaserTower : Tower
 {
     [SerializeField] private Transform laserBeam;
-    [SerializeField] private Vector3 _laserBeamScale = Vector3.one;
     [SerializeField] protected float damagePerSecond = 10f;
-    
+
+    private Vector3 _laserBeamScale = Vector3.one;
+
     private new void Awake()
     {
         base.Awake();
@@ -29,7 +30,9 @@ public class LaserTower : Tower
     private void Shoot(Transform target)
     {
         Vector3 position = target.position;
-        laserBeam.localRotation = turret.localRotation;
+        
+        turret.LookAt(position);
+        laserBeam.rotation = turret.rotation;
         
         float dist = Vector3.Distance(turret.position, position);
         _laserBeamScale.z = dist;
@@ -39,7 +42,7 @@ public class LaserTower : Tower
         StatsComponent sc = target.GetComponent<StatsComponent>();
         if (sc)
         {
-            sc.TakeDamage(damagePerSecond * Time.deltaTime, this);
+            sc.TakeDamage(damagePerSecond * Time.deltaTime, this, true);
         }
     }
 }

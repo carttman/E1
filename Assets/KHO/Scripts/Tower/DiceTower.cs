@@ -12,6 +12,11 @@ public class DiceTower : Tower
 
     [SerializeField] private float damagePerShot;
     [SerializeField] private GameObject projectilePrefab;
+    
+    [SerializeField] private float attackCooldown = 2f;
+    private float launchProgress;
+    
+    private bool _isRolling = false;
 
     private Image diceImageUI;
 
@@ -27,15 +32,22 @@ public class DiceTower : Tower
         rectTransform.position = Camera.main.WorldToScreenPoint(turret.transform.position) + diceUIOffset;
     }
 
-    private void OnMouseDown()
+    private void Update()
     {
-        if (diceImageUI == null) return;
-        StartCoroutine(nameof(RollTheDice));
+        if (_isRolling) return;
+        
+        launchProgress += Time.deltaTime;
+        if (launchProgress >= attackCooldown)
+        {
+          StartCoroutine(RollTheDice());
+          launchProgress -= attackCooldown;
+        }
     }
 
     // Coroutine that rolls the dice
     private IEnumerator RollTheDice()
     {
+        _isRolling = true;
         // Variable to contain random dice side number.
         // It needs to be assigned. Let it be 0 initially
         int randomDiceSide = 0;
@@ -71,13 +83,19 @@ public class DiceTower : Tower
                 }
             }
         }
+        else
+        {
+            launchProgress = attackCooldown - 0.001f;
+        }
+        _isRolling = false;
     }
-
+    
     private void Shoot(Transform pTarget)
     {
         var newProjectile = Instantiate(projectilePrefab, turret.position, Quaternion.identity);
         newProjectile.transform.LookAt(pTarget);
-        newProjectile.transform.Rotate(Vector3.up, Random.Range(50f, 75f));
+        newProjectile.transform.Rotate(Vector3.up, Random.Range(-20f, 20f));
+        newProjectile.transform.Rotate(Vector3.right, Random.Range(-50f, 50f));
         
         var proj = newProjectile.GetComponent<Projectile>();
         proj.Target = pTarget;
