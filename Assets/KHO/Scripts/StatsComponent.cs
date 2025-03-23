@@ -21,19 +21,16 @@ public class StatsComponent : MonoBehaviour
     {
         health = MaxHealth;
     }
-
     
-    
-    
-    private void Update()
-    {
-        
-    }
-
     public void TakeDamage(float damage, Tower instigator = null)
     {
         if (damage <= 0 || health <= 0) return;
         health -= damage;
+
+        if (instigator)
+        {
+            instigator.DealtDamage += damage;
+        }
         
         // 데미지 팝업 호출
         PopUpManager.Instance.PopUpUI(damage.ToString(), PopupTransform.position, Color.red, 1);
@@ -41,7 +38,7 @@ public class StatsComponent : MonoBehaviour
         HealthChanged?.Invoke(health);
         if (health <= 0)
         {
-            if (instigator != null)
+            if (instigator)
             {
                 instigator.Kills++;
             }

@@ -1,0 +1,8 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/KHO/mainui.uss?fileID=7433441132597879392&amp;guid=5b134e1133aecaa4db8fd6da3c76f8c0&amp;type=3#mainui" />
+    <engine:VisualElement name="Panel" class="panel" style="flex-grow: 1;">
+        <engine:VisualElement name="GoldUI" style="flex-grow: 0; flex-shrink: 1; flex-basis: 100px; height: 101px; width: 200px; flex-direction: column; align-items: center; justify-content: space-between; align-self: stretch; top: 20px; left: 20px; background-image: none; background-color: rgb(161, 157, 157); border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;">
+            <engine:Label text="Gold : 45&#10;" name="GoldLabel" style="flex-grow: 1; -unity-text-align: middle-center;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4407885580957024506
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4709322006253467250, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dice Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982708161997046438, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982708161997046438, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982708161997046438, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982708161997046438, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982708161997046438, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982708161997046438, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982708161997046438, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982708161997046438, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982708161997046438, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982708161997046438, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 819716441762515386, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4709322006253467250, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7210177913813072150}
+  m_SourcePrefab: {fileID: 100100000, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
+--- !u!4 &1123900942515915400 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3653282857593457266, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4407885580957024506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2021889956219395247 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2388252123258264661, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4407885580957024506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3284184907471036727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1204766025124422093, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4407885580957024506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8966996699036284552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4709322006253467250, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4407885580957024506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7210177913813072150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8966996699036284552}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be6925f8bce05c4fa447f8f62c66f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectionData:
+    kills: 0
+    dealtDamage: 0
+  kills: 0
+  dealtDamage: 0
+  isSelected: 0
+  towerData: {fileID: 11400000, guid: b723b4a884f32c04e97f97fc67590014, type: 2}
+  targetingRange: 20
+  rotatingPart: {fileID: 1123900942515915400}
+  turret: {fileID: 2021889956219395247}
+  _selectionIndicator: {fileID: 3284184907471036727}
+  diceSprites:
+  - {fileID: 21300000, guid: 0a6dd3a7bca01754a9e27dfe20a54757, type: 3}
+  - {fileID: 21300000, guid: 5ffbdf1a90b30e240b95cd3041e3f386, type: 3}
+  - {fileID: 21300000, guid: ed559546562b53d4089ca1321eb02a16, type: 3}
+  - {fileID: 21300000, guid: 4caed6a9a20eb8243b686af198a784a1, type: 3}
+  - {fileID: 21300000, guid: 44628f4c9160bbe4d982322250a6f6bf, type: 3}
+  - {fileID: 21300000, guid: a96fae87885a992468a9e9360eda28d6, type: 3}
+  diceUIPrefab: {fileID: 1756073696198678024, guid: a974ab32462ff8f43a41ffc0cc66b27c,
+    type: 3}
+  diceUIOffset: {x: 0, y: 5, z: 0}
+  damagePerShot: 50
+  projectilePrefab: {fileID: 1855686018460528733, guid: 3fd525a14a268ef47b04600053c70cc4,
+    type: 3}

@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class Game : MonoBehaviour
 {
     public event Action<int> goldChanged;
     public event Action<int> livesChanged;
+    
+    public static Game Instance { get; private set; }
 
     // 웨이브 스폰 레퍼런스
     [SerializeField] private WaveSpawner waveSpawner;
@@ -17,7 +20,9 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject gameoverUI;
     
-    [SerializeField] private TowerData[] towerDatas;
+    [SerializeField] public TowerData[] towerDatas;
+    
+    [SerializeField] public GameObject AoeEffectPrefab;
     
     private int _gold = 10;
     public int Gold
@@ -69,6 +74,15 @@ public class Game : MonoBehaviour
     
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
         waveSpawner.OnEnemySpawned += WaveSpawnerOnEnemySpawned;
     }
 

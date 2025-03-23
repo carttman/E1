@@ -97,20 +97,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d570c02f56299449dea2b9501b994c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSelected: 0
   selectionData:
-    _kills: 0
+    kills: 0
+    dealtDamage: 0
   kills: 0
-  towerData: {fileID: 11400000, guid: b723b4a884f32c04e97f97fc67590014, type: 2}
+  dealtDamage: 0
+  isSelected: 0
+  towerData: {fileID: 11400000, guid: a349ca89edfc96148a0c62c0ea8616d0, type: 2}
   targetingRange: 5
+  potentialTargets: []
   rotatingPart: {fileID: 3233541156249316929}
   turret: {fileID: 6261195216371197924}
   _selectionIndicator: {fileID: 7455934678572178044}
   projectilePrefab: {fileID: 1855686018460528733, guid: fe2ec3f8467a09b478f4fbb366c0d8e9,
     type: 3}
   shotsPerSecond: 2
-  damagePerShot: 10
-  _launchProgress: 0
+  damagePerShot: 40
+  launchProgress: 0
 --- !u!4 &6261195216371197924 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2388252123258264661, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
