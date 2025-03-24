@@ -101,11 +101,11 @@ public class EnemyMove : MonoBehaviour
             return;
         }
 
-        wavePointIndex++; //다음 웨이포인트 인덱스
-        target = Waypoints.points[wavePointIndex]; //다음 인덱스의 웨이포인트 오브젝트를 받아온다.
+        wavePointIndex++; 
+        target = Waypoints.points[wavePointIndex]; //다음 인덱스의 웨이포인트
     }
     
-    void EndPath() //경로의 끝(목표)에 도달
+    void EndPath() //목표에 도달
     {
         // Enemy 스크립트에서 처리
         _enemy.EndPath();
