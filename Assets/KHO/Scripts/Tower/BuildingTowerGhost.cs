@@ -58,8 +58,6 @@ public class BuildingTowerGhost : MonoBehaviour
         
         GameEventHub.Instance.StopBuildingTower();
         tower.enabled = true;
-        
-
     }
 
     private void OnDestroy()

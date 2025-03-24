@@ -17,6 +17,7 @@ public class MortarTower : Tower
 
     private void OnValidate()
     {
+        base.OnValidate();
         float x = -targetingRange * transform.localScale.x + 0.25001f;
         float y = -mortar.position.y;
         _launchSpeed = Mathf.Sqrt(9.81f * (y + Mathf.Sqrt(x * x + y * y)));
