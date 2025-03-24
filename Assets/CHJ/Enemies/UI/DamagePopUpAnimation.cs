@@ -19,6 +19,7 @@ public class DamagePopUpAnimation : MonoBehaviour
 
     void Update()
     {
+        tmp.color = new Color(tmp.color.r, tmp.color.g, tmp.color.b, opacityCurve.Evaluate(time));
         transform.localScale = Vector3.one * scaleCurve.Evaluate(time);
         transform.position = origin + new Vector3(0, heightCurve.Evaluate(time) + 1, 0);
         time += Time.deltaTime;
