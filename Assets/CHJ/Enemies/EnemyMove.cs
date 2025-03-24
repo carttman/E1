@@ -4,10 +4,10 @@ public class EnemyMove : MonoBehaviour
 {
     // Enemy 스크립트
     private Enemy _enemy;
-
+    private EnemyState _enemyState;
     [SerializeField] private float distanceCheckTolerance = 0.4f;
     
-    public float speed = 10f;
+    //public float speed = 10f;
 
     private Vector3 _fromPosition;
     private float _progress = 0f;
@@ -38,7 +38,7 @@ public class EnemyMove : MonoBehaviour
             {
                 // 이번 구간 거리
                 float segmentDistance = Vector3.Distance(Waypoints.points[nextIndex - 1].position, Waypoints.points[nextIndex].position);
-                float segmentTime = segmentDistance / speed;
+                float segmentTime = segmentDistance / _enemyState.speed;
 
                 if (remainTime <= segmentTime)
                 {
@@ -61,6 +61,8 @@ public class EnemyMove : MonoBehaviour
         _enemy = GetComponent<Enemy>();
         _enemy.OnEnemyDied += (enemy, amount) => DeadToMoveStop();
         Debug.Assert(_enemy, "Enemy 스크립트 없이 EnemyMove 사용됨");
+
+        _enemyState = GetComponent<EnemyState>();
     }
 
     private void Start()
@@ -89,7 +91,7 @@ public class EnemyMove : MonoBehaviour
             
             _fromPosition = transform.position;
             var distance = Vector3.Distance(transform.position, target.position);
-            _thisWaveDuration = distance / speed;
+            _thisWaveDuration = distance / _enemyState.speed;
             _progress = 0f;
         } 
     }

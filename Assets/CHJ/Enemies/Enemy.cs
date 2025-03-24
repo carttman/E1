@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour, ISelectable
             Name = gameObject.name,
             Health = _statsComponent.MaxHealth,
             MaxHealth = _statsComponent.MaxHealth,
-            MoveSpeed = GetComponent<EnemyMove>()?.speed ?? 0f
+            MoveSpeed = GetComponent<EnemyState>()?.speed ?? 0f
         };
         
         _statsComponent.HealthChanged += newHealth =>
