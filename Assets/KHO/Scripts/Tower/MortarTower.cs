@@ -15,7 +15,7 @@ public class MortarTower : Tower
         OnValidate();
     }
 
-    private void OnValidate()
+    private new void OnValidate()
     {
         base.OnValidate();
         float x = -targetingRange * transform.localScale.x + 0.25001f;

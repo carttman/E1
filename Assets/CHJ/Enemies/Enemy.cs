@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour, ISelectable
 
     // 시간
     public float Age;
+    public bool IsDead => GetComponent<StatsComponent>().Health <= 0;
     
     private void Awake()
     {
