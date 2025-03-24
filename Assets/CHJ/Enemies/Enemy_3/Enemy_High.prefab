@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5374094924103635851, guid: 177b26147e7c5d64bb55d616b888bed4,
+        type: 3}
+      propertyPath: goldDropAmount
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 219835893346901403, guid: 177b26147e7c5d64bb55d616b888bed4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 3324753591643179383, guid: 177b26147e7c5d64bb55d616b888bed4,
         type: 3}
       propertyPath: m_Name
-      value: Enemy_High2
+      value: Enemy_High
       objectReference: {fileID: 0}
     - target: {fileID: 3366453323725632895, guid: 177b26147e7c5d64bb55d616b888bed4,
         type: 3}

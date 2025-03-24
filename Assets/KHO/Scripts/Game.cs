@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 
 public class Game : MonoBehaviour
 {
+    public float tooltipDelay = 0.1f;
     public event Action<int> goldChanged;
     public event Action<int> livesChanged;
     

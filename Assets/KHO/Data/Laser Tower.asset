@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: Laser Tower
   description: Laser Tower
-  goldCost: 15
+  goldCost: 30
   sprite: {fileID: 21300000, guid: 09f0df7eb89e33b4e886327a6bd6aed8, type: 3}
   towerPrefab: {fileID: 4709322006253467250, guid: ccd75e4b126990a45bf7970b207c1f1e,
     type: 3}
   damage: 10
+  upgradesTo:
+  - {fileID: 0}
+  - {fileID: 0}
