@@ -21,6 +21,8 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject gameoverUI;
     [SerializeField] private GameObject pauseButtonUI;
     [SerializeField] private GameObject pauseUI;
+    [SerializeField] private GameObject ClearUI;
+    
     
     [SerializeField] public TowerData[] towerDatas;
     
@@ -206,5 +208,21 @@ public class Game : MonoBehaviour
         
         SpendGold(towerData.goldCost);
         tower.UpgradeTo(towerData);
+    }
+    
+    public void OnClickExit()
+    {
+        if (Application.isEditor)
+        {
+            Debug.Log("Application would quit here in a build");
+        }
+        Application.Quit();
+    }
+    
+    public void ClearGame()
+    {
+        _beforePauseTimeScale = Time.timeScale;
+        Time.timeScale = 0f;
+        ClearUI.SetActive(true);
     }
 }
