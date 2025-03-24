@@ -187,7 +187,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
     // 타겟 지정 함수
     protected bool AcquireTarget(out Transform pTarget)
     {
-        potentialTargets.RemoveAll((t) => !t);
+        potentialTargets.RemoveAll((e) => !e || e.IsDead);
         
         if (potentialTargets.Count == 0)
         {

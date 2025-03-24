@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: Homing Tower
   description: Homing Tower
-  goldCost: 25
+  goldCost: 150
   sprite: {fileID: 21300000, guid: 07837712a9a200b4aac70e49cedf113b, type: 3}
   towerPrefab: {fileID: 3934494808485481923, guid: 0b630c1c6d7b5f641b277e84d4f1a6b9,
     type: 3}
   damage: 15
+  upgradesTo:
+  - {fileID: 0}
+  - {fileID: 0}

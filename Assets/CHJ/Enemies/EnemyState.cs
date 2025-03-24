@@ -15,7 +15,6 @@ public class EnemyState : MonoBehaviour
         enemy.OnEnemyDied += (enemyInstance, goldDropAmount) => DeadTrigger();
         
         animator = gameObject.GetComponentInChildren<Animator>();
-        
     }
 
     private void Update()

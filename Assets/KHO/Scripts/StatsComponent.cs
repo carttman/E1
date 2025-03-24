@@ -12,7 +12,10 @@ public class StatsComponent : MonoBehaviour
     public float MaxHealth = 100f;
     [SerializeField]
     private float health;
-    public float Health { get; }
+    public float Health
+    {
+        get => health;
+    }
     
     //PopUpManager PopUp;
     public Transform PopupTransform;

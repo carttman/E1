@@ -31,7 +31,8 @@ public class BuildableTileEvent : MonoBehaviour, IPointerEnterHandler, IPointerE
         GameEventHub.Instance.TilePointerEnter(transform);
         //if (Time.timeScale == 0f) return;
         _renderer.transform.DOComplete();
-        _renderer.transform.DOLocalMoveY(yOffset, 0.15f).SetEase(Ease.InCubic).SetUpdate(true);
+        _renderer.transform.DOLocalMoveY(yOffset, 0.15f).
+            SetEase(Ease.InCubic).SetUpdate(true).SetLink(gameObject);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -39,7 +40,8 @@ public class BuildableTileEvent : MonoBehaviour, IPointerEnterHandler, IPointerE
         GameEventHub.Instance.TilePointerExit(transform);
         //if (Time.timeScale == 0f) return;
         _renderer.transform.DOComplete();
-        _renderer.transform.DOLocalMoveY(0f, 0.1f).SetEase(Ease.InCubic).SetUpdate(true);
+        _renderer.transform.DOLocalMoveY(0f, 0.1f).
+            SetEase(Ease.InCubic).SetUpdate(true).SetLink(gameObject);
     }
 
     public void OnPointerClick(PointerEventData eventData)
