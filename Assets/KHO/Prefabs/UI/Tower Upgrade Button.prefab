@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 5098856901059414751}
   - component: {fileID: 2716860439017013888}
   - component: {fileID: 8081403179691131549}
+  - component: {fileID: 2950268410138065798}
   m_Layer: 5
   m_Name: Tower Upgrade Button
   m_TagString: Untagged
@@ -354,6 +355,20 @@ MonoBehaviour:
   towerData: {fileID: 0}
   _image: {fileID: 5387619278944833554}
   _priceText: {fileID: 8443298803849270414}
+--- !u!114 &2950268410138065798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7200100873363904428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d138d9c6edd2549b4da7476d647cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: 
+  header: 
 --- !u!1 &7729121287907037593
 GameObject:
   m_ObjectHideFlags: 0

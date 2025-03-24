@@ -121,7 +121,7 @@ public class EnemyMove : MonoBehaviour
 
     void DeadToMoveStop()
     {
-        Debug.Log("MoveStop");
+        //Debug.Log("MoveStop");
         this.enabled = false;
     }
 }
