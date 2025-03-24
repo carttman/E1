@@ -81,7 +81,9 @@ public class EnemyMove : MonoBehaviour
         transform.LookAt(target);
         */
         _progress += Time.deltaTime;
-        transform.position = Vector3.Lerp(_fromPosition, target.position, _progress / _thisWaveDuration);
+        
+        //transform.position = Vector3.Lerp(_fromPosition, target.position, _progress / _thisWaveDuration);
+        transform.position = Vector3.MoveTowards(transform.position, target.position, _enemyState.speed * Time.deltaTime);
         transform.LookAt(target);
 
         //웨이포인트 도착 시 다음 웨이포인트로 변경
@@ -89,10 +91,13 @@ public class EnemyMove : MonoBehaviour
         {
             GetNextWayPoint(); //다음 웨이포인트를 타겟으로 변경
             
-            _fromPosition = transform.position;
+            /*
             var distance = Vector3.Distance(transform.position, target.position);
             _thisWaveDuration = distance / _enemyState.speed;
+            
+            _fromPosition = transform.position;
             _progress = 0f;
+            */
         } 
     }
 
