@@ -20,8 +20,9 @@ public class DiceTower : Tower
 
     private Image diceImageUI;
 
-    private void Start()
+    private new void Start()
     {
+        base.Start();
         var mainUI = GameObject.FindGameObjectWithTag("Main UI");
         var diceUI = Instantiate(diceUIPrefab, mainUI.transform);
         diceImageUI = diceUI.GetComponent<Image>();

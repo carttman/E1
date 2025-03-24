@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -56,7 +57,19 @@ public abstract class Tower : MonoBehaviour, ISelectable
         }
     }
     #endregion
-    
+
+    protected enum EnemyCompare
+    {
+        HighestAge,
+        LowestAge,
+        HighestHealth,
+        LowestHealth
+    }
+
+    [SerializeField] protected EnemyCompare enemyComparer = EnemyCompare.HighestAge;
+    protected EnemyComparer _enemyComparer;
+
+    protected bool _isSelectable = false;
     [SerializeField] protected bool isSelected = false;
     protected SphereCollider SphereCollider;
     
@@ -79,6 +92,44 @@ public abstract class Tower : MonoBehaviour, ISelectable
     protected RangeIndicator _rangeIndicator;
     [SerializeField] private GameObject _selectionIndicator;
     
+        
+    protected abstract class EnemyComparer: IComparer<Enemy>
+    {
+        public abstract int Compare(Enemy x, Enemy y);
+    }
+    
+    protected class HighestAge : EnemyComparer
+    {
+        public override int Compare(Enemy a, Enemy b)
+        {
+            return -(a.Age.CompareTo(b.Age));
+        }
+    }
+    
+    protected class LowestAge : EnemyComparer
+    {
+        public override int Compare(Enemy a, Enemy b)
+        {
+            return a.Age.CompareTo(b.Age);
+        }
+    }
+    
+    protected class HighestHealth : EnemyComparer
+    {
+        public override int Compare(Enemy a, Enemy b)
+        {
+            return -(a.GetComponent<StatsComponent>().Health.CompareTo(b.GetComponent<StatsComponent>().Health));
+        }
+    }
+    
+    protected class LowestHealth : EnemyComparer
+    {
+        public override int Compare(Enemy a, Enemy b)
+        {
+            return a.GetComponent<StatsComponent>().Health.CompareTo(b.GetComponent<StatsComponent>().Health);
+        }
+    }
+    
     protected void Awake()
     {
         Debug.Assert(towerData);
@@ -92,8 +143,47 @@ public abstract class Tower : MonoBehaviour, ISelectable
         selectionData = new TowerSelectionData(towerData, kills, dealtDamage);
         selectionData.tower = this;
         selectionData.OnSelectionDataChanged += data => OnSelectionDataChanged?.Invoke(data);
+        
+        ChangeEnemyComparer(enemyComparer);
     }
-    
+
+    protected void ChangeEnemyComparer(EnemyCompare compareEnum)
+    {
+        switch (compareEnum)
+        {
+            case EnemyCompare.HighestAge:
+                _enemyComparer = new HighestAge();
+                return;
+            case EnemyCompare.LowestAge:
+                _enemyComparer = new LowestAge();
+                return;
+            case EnemyCompare.HighestHealth:
+                _enemyComparer = new HighestHealth();
+                return;
+            case EnemyCompare.LowestHealth:
+                _enemyComparer = new LowestHealth();
+                return;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(compareEnum), compareEnum, null);
+        }
+    }
+
+    protected void Start()
+    {
+        StartCoroutine(TurnOnSelectable(0.5f));
+    }
+
+    protected IEnumerator TurnOnSelectable(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _isSelectable = true;
+    }
+
+    protected void OnValidate()
+    {
+        ChangeEnemyComparer(enemyComparer);
+    }
+
     // 타겟 지정 함수
     protected bool AcquireTarget(out Transform pTarget)
     {
@@ -105,7 +195,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
             return false;
         }
         
-        potentialTargets.Sort(new EnemyComparer());
+        potentialTargets.Sort(_enemyComparer);
 
         var first = potentialTargets.First();
         if (first)
@@ -159,6 +249,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
 
     protected void OnMouseUpAsButton()
     {
+        if (!_isSelectable) return;
         OnSelect();
     }
 
@@ -183,12 +274,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
         SelectionManager.instance.OnSelect(newTower.GetComponent<Tower>());
         Destroy(gameObject);
     }
+
 }
 
-public class EnemyComparer : IComparer<Enemy>
-{
-    public int Compare(Enemy a, Enemy b)
-    {
-        return -(a.Age.CompareTo(b.Age));
-    }
-}
+

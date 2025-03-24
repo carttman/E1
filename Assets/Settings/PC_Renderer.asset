@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0bb227037d027438ecf29baade4e94, type: 3}
   m_Name: EdgeDetection
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
     renderPassEvent: 600
-    outlineThickness: 0
-    outlineColor: {r: 0, g: 0, b: 0, a: 1}
+    outlineThickness: 1
+    outlineColor: {r: 0, g: 0, b: 0, a: 0.39215687}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

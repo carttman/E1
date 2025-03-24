@@ -30,14 +30,12 @@ public class LaserTower : Tower
     private void Shoot(Transform target)
     {
         Vector3 position = target.position;
+        laserBeam.LookAt(position);
         
-        turret.LookAt(position);
-        laserBeam.rotation = turret.rotation;
-        
-        float dist = Vector3.Distance(turret.position, position);
+        float dist = Vector3.Distance(laserBeam.position, position);
         _laserBeamScale.z = dist;
         laserBeam.localScale = _laserBeamScale;
-        laserBeam.localPosition = turret.localPosition + laserBeam.forward * (dist * 0.5f);
+        laserBeam.localPosition = turret.localPosition + laserBeam.forward * (dist * 0.6f);
     
         StatsComponent sc = target.GetComponent<StatsComponent>();
         if (sc)
