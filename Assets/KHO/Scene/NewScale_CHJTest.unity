@@ -14266,7 +14266,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1986056902}
         m_TargetAssemblyTypeName: Game, Assembly-CSharp
-        m_MethodName: toggleTowerBuildSelection
+        m_MethodName: ToggleTowerBuildSelection
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24435,7 +24435,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1986056902}
         m_TargetAssemblyTypeName: Game, Assembly-CSharp
-        m_MethodName: toggleTowerBuildSelection
+        m_MethodName: ToggleTowerBuildSelection
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
