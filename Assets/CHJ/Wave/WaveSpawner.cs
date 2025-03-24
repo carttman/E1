@@ -44,18 +44,18 @@ public class WaveSpawner : MonoBehaviour
        for (int i = 0; i < wave.count; i++)  //웨이브 레벨만큼 몬스터 소한
        {
            isSpawnFinished = false;
-           Debug.Log($"isSpawnFinished : {isSpawnFinished},  waveIndex : {waveIndex}");
+           //Debug.Log($"isSpawnFinished : {isSpawnFinished},  waveIndex : {waveIndex}");
            SpawnEnemy(wave.enemy);
            yield return new WaitForSeconds(1f / wave.rate); // 텀 대기
        }
        
        isSpawnFinished = true;
-       Debug.Log($"isSpawnFinished : {isSpawnFinished},  waveIndex : {waveIndex}");
+       //Debug.Log($"isSpawnFinished : {isSpawnFinished},  waveIndex : {waveIndex}");
        Btn_WaveStart.interactable = true;
 
        if (waveIndex == waves.Length) // 모든 웨이브 클리어
        {
-           Debug.Log("All waves finished");
+           //Debug.Log("All waves finished");
        }
    }
 

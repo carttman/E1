@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour, ISelectable
         OnEnemyDied?.Invoke(this, goldDropAmount);
         PopUpManager.Instance.PopUpUI("+" + goldDropAmount.ToString(), PopupTransform.position, Color.yellow, 2);
         WaveSpawner.EnemiesAlive--;
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void EndPath()

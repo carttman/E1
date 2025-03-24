@@ -59,6 +59,7 @@ public class EnemyMove : MonoBehaviour
     private void Awake()
     {
         _enemy = GetComponent<Enemy>();
+        _enemy.OnEnemyDied += (enemy, amount) => DeadToMoveStop();
         Debug.Assert(_enemy, "Enemy 스크립트 없이 EnemyMove 사용됨");
     }
 
@@ -109,5 +110,11 @@ public class EnemyMove : MonoBehaviour
     {
         // Enemy 스크립트에서 처리
         _enemy.EndPath();
+    }
+
+    void DeadToMoveStop()
+    {
+        Debug.Log("MoveStop");
+        this.enabled = false;
     }
 }
