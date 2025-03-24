@@ -1,9 +1,12 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TowerSelectionUI : MonoBehaviour
 {
+    private TowerSelectionData _data;
+    
     [SerializeField] private TextMeshProUGUI towerNameText;
     [SerializeField] private TextMeshProUGUI killsText;
     [SerializeField] private TextMeshProUGUI damageText;
@@ -11,9 +14,12 @@ public class TowerSelectionUI : MonoBehaviour
     [SerializeField] private Image towerSprite;
     [SerializeField] private GameObject towerUpgradeButton1;
     [SerializeField] private GameObject towerUpgradeButton2;
+    [SerializeField] private TMP_Dropdown towerTargetingType;
     
     public void HandleUIChange(TowerSelectionData data)
     {
+        _data = data;
+        
         towerNameText.text = data.StaticTowerData.towerName;
         killsText.text = $"Kills: {data.Kills}";
         towerSprite.sprite = data.StaticTowerData.sprite;
@@ -45,5 +51,17 @@ public class TowerSelectionUI : MonoBehaviour
         {
             towerUpgradeButton2.SetActive(false);
         }
+
+        if (_data?.tower?.TargetingType != null) towerTargetingType.value = (int)_data.tower.TargetingType;
+    }
+
+    public void ChangeTowerTargetingType(Int32 newTargetingType)
+    {
+        if (_data == null || _data.tower == null)
+        {
+            return;
+        }
+        
+        _data.tower.TargetingType = (Tower.EnemyCompareType) newTargetingType;
     }
 }

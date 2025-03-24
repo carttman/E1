@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class Tower : MonoBehaviour, ISelectable
 { 
@@ -58,7 +59,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
     }
     #endregion
 
-    protected enum EnemyCompare
+    public enum EnemyCompareType
     {
         HighestAge,
         LowestAge,
@@ -66,8 +67,19 @@ public abstract class Tower : MonoBehaviour, ISelectable
         LowestHealth
     }
 
-    [SerializeField] protected EnemyCompare enemyComparer = EnemyCompare.HighestAge;
+    [SerializeField] protected EnemyCompareType targetingType = EnemyCompareType.HighestAge;
+    public EnemyCompareType TargetingType
+    {
+        get => targetingType;
+        set
+        {
+            if (value ==  targetingType) return;
+            targetingType = value;
+            ChangeEnemyComparer(targetingType);
+        }
+    }
     protected EnemyComparer _enemyComparer;
+    
 
     protected bool _isSelectable = false;
     [SerializeField] protected bool isSelected = false;
@@ -144,27 +156,27 @@ public abstract class Tower : MonoBehaviour, ISelectable
         selectionData.tower = this;
         selectionData.OnSelectionDataChanged += data => OnSelectionDataChanged?.Invoke(data);
         
-        ChangeEnemyComparer(enemyComparer);
+        ChangeEnemyComparer(targetingType);
     }
 
-    protected void ChangeEnemyComparer(EnemyCompare compareEnum)
+    protected void ChangeEnemyComparer(EnemyCompareType compareTypeType)
     {
-        switch (compareEnum)
+        switch (compareTypeType)
         {
-            case EnemyCompare.HighestAge:
+            case EnemyCompareType.HighestAge:
                 _enemyComparer = new HighestAge();
                 return;
-            case EnemyCompare.LowestAge:
+            case EnemyCompareType.LowestAge:
                 _enemyComparer = new LowestAge();
                 return;
-            case EnemyCompare.HighestHealth:
+            case EnemyCompareType.HighestHealth:
                 _enemyComparer = new HighestHealth();
                 return;
-            case EnemyCompare.LowestHealth:
+            case EnemyCompareType.LowestHealth:
                 _enemyComparer = new LowestHealth();
                 return;
             default:
-                throw new ArgumentOutOfRangeException(nameof(compareEnum), compareEnum, null);
+                throw new ArgumentOutOfRangeException(nameof(compareTypeType), compareTypeType, null);
         }
     }
 
@@ -181,7 +193,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
 
     protected void OnValidate()
     {
-        ChangeEnemyComparer(enemyComparer);
+        ChangeEnemyComparer(targetingType);
     }
 
     // 타겟 지정 함수
