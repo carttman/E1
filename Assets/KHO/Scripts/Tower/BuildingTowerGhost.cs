@@ -6,7 +6,8 @@ using UnityEngine;
 public class BuildingTowerGhost : MonoBehaviour
 {
     private Color _startColor;
-    private Color _selectionColor = new Color(0, 1, 0, 0.25f);
+    private Color _cannotBuildColor = new Color(1, 0, 0, 0.25f);
+    private Color _canBuildColor = new Color(0, 1, 0, 0.25f);
     
     public event Action<TowerData> OnTowerBuilt;
     
@@ -30,10 +31,7 @@ public class BuildingTowerGhost : MonoBehaviour
         GameEventHub.Instance.OnTilePointerExit += OnTilePointerExit;
         GameEventHub.Instance.OnTilePointerClick += OnTilePointerClick;
 
-        foreach (var rend in _renderers)
-        {
-            rend.material.color = _selectionColor;
-        }
+        ChangeColor(_cannotBuildColor);
         
         GameEventHub.Instance.StartBuildingTower();
     }
@@ -50,11 +48,8 @@ public class BuildingTowerGhost : MonoBehaviour
         OnTowerBuilt?.Invoke(tower.towerData);
         OnTowerBuilt = null;
         enabled = false;
-
-        foreach (var rend in _renderers)
-        {
-            rend.material.color = _startColor;
-        }
+        
+        ChangeColor(_startColor);
         
         GameEventHub.Instance.StopBuildingTower();
         tower.enabled = true;
@@ -69,13 +64,26 @@ public class BuildingTowerGhost : MonoBehaviour
         GameEventHub.Instance.StopBuildingTower();
     }
 
-    private void OnTilePointerEnter(Transform obj) => _pointerTile = obj;
+    private void OnTilePointerEnter(Transform obj)
+    {
+        _pointerTile = obj;
+        ChangeColor(_canBuildColor);
+    }
     
     private void OnTilePointerExit(Transform obj)
     {
         if (_pointerTile == obj)
         {
             _pointerTile = null;
+            ChangeColor(_cannotBuildColor);
+        }
+    }
+
+    private void ChangeColor(Color _color)
+    {
+        foreach (var rend in _renderers)
+        {
+            rend.material.color = _color;
         }
     }
 
@@ -83,15 +91,15 @@ public class BuildingTowerGhost : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_pointerTile)
+        if (_pointerTile != null)
         {
             transform.position = _pointerTile.position;
             return;
         }
         
-        if (Physics.Raycast(TouchRay, out RaycastHit hit, 5000f, LayerMask.NameToLayer("Default")))
+        if (Physics.Raycast(TouchRay, out RaycastHit hit, 5000f, LayerMask.GetMask("Default")))
         {
-            Debug.Log("ray hit");
+            //Debug.Log("ray hit");
             transform.position = hit.point;
         }
     }

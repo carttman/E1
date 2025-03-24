@@ -29,16 +29,17 @@ public class BuildableTileEvent : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void OnPointerEnter(PointerEventData eventData)
     {
         GameEventHub.Instance.TilePointerEnter(transform);
+        //if (Time.timeScale == 0f) return;
         _renderer.transform.DOComplete();
-        _renderer.transform.DOLocalMoveY(yOffset, 0.15f).SetEase(Ease.InCubic);
-
+        _renderer.transform.DOLocalMoveY(yOffset, 0.15f).SetEase(Ease.InCubic).SetUpdate(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         GameEventHub.Instance.TilePointerExit(transform);
+        //if (Time.timeScale == 0f) return;
         _renderer.transform.DOComplete();
-        _renderer.transform.DOLocalMoveY(0f, 0.1f).SetEase(Ease.InCubic);
+        _renderer.transform.DOLocalMoveY(0f, 0.1f).SetEase(Ease.InCubic).SetUpdate(true);
     }
 
     public void OnPointerClick(PointerEventData eventData)

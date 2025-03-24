@@ -21,6 +21,6 @@ public class TowerBuildButtonUI : MonoBehaviour
         _image.sprite = _towerData.sprite;
         _priceText.text = _towerData.goldCost.ToString();
 
-        _button.onClick.AddListener(() => Game.Instance.toggleTowerBuildSelection(_towerIndex));
+        _button.onClick.AddListener(() => Game.Instance.ToggleTowerBuildSelection(_towerIndex));
     }
 }

@@ -104,7 +104,7 @@ public class Game : MonoBehaviour
     private void WaveSpawnerOnEnemySpawned(GameObject obj)
     {
         var enemy = obj.GetComponent<Enemy>();
-        if (enemy != null)
+        if (enemy)
         {
             enemy.OnEnemyDied += OnEnemyDied;
             enemy.OnEnemyEndPath += OnEnemyEndPath;
@@ -114,7 +114,7 @@ public class Game : MonoBehaviour
     // 적이 끝 도달시 목숨에 데미지 처리
     private void OnEnemyEndPath(Enemy enemy, int livesdamage)
     {
-        if (enemy != null)
+        if (enemy)
         {
             enemy.OnEnemyEndPath -= OnEnemyEndPath;
         }
@@ -125,7 +125,7 @@ public class Game : MonoBehaviour
     // 적이 죽을시 골드 추가
     private void OnEnemyDied(Enemy enemy, float goldDropAmount)
     {
-        if (enemy != null)
+        if (enemy)
         {
             enemy.OnEnemyDied -= OnEnemyDied;
         }
@@ -133,7 +133,7 @@ public class Game : MonoBehaviour
     }
 
     // 타워 UI 클릭시 건설 토글
-    public void toggleTowerBuildSelection(int button_idx)
+    public void ToggleTowerBuildSelection(int button_idx)
     {
         //Debug.Log($"{button_idx} was selected!");
         if (!buildingTower)
