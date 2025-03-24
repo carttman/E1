@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Enemy_HPUI : MonoBehaviour
 {
-    [Header("Unity Stuff")]
+    [Header("Enemy_HPUI")]
     public Image healthBar;
     public Camera MyCamera;
     public Canvas HPCanvas;
@@ -14,14 +14,16 @@ public class Enemy_HPUI : MonoBehaviour
         MyCamera = Camera.main;
         HPCanvas.worldCamera = MyCamera;
         statsComponent= GetComponent<StatsComponent>();
+        
+        Enemy enemy = gameObject.GetComponent<Enemy>();
+        enemy.OnEnemyDied += (enemyInstance, goldDropAmount) => DeadTriggerToHpBar();
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {   //HealthChanged 이벤트 바인딩
         statsComponent.HealthChanged += hp => HP_Update(hp, statsComponent.MaxHealth);
     }
     
-    // Update is called once per frame
     void Update()
     {
         Vector3 dir = MyCamera.transform.position - HPCanvas.transform.position;
@@ -32,5 +34,11 @@ public class Enemy_HPUI : MonoBehaviour
     void HP_Update(float health, float maxHealth)
     {
         healthBar.fillAmount = health / maxHealth;
+    }
+
+    //사망 이벤트 발생 시 HP바 비활성화
+    void DeadTriggerToHpBar()
+    {
+        HPCanvas.enabled = false;
     }
 }

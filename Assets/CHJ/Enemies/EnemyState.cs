@@ -29,6 +29,7 @@ public class EnemyState : MonoBehaviour
     public void DeadTrigger()
     {
         animator.SetTrigger("Dead");
+        //체력 UI 비활성화
         Destroy(gameObject, 1f);
     }
     
@@ -38,7 +39,7 @@ public class EnemyState : MonoBehaviour
         if (isSlow)
         {
             Debug.Log("isSlow is returned");
-            yield return null;
+            yield break;
         }
         isSlow = true;
         Debug.Log($"isSlow : {isSlow}");
