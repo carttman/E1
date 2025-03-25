@@ -8,6 +8,7 @@ public class TowerSelectionUI : MonoBehaviour
     private TowerSelectionData _data;
     
     [SerializeField] private TextMeshProUGUI towerNameText;
+    [SerializeField] private TextMeshProUGUI towerDescriptionText;
     [SerializeField] private TextMeshProUGUI killsText;
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private TextMeshProUGUI dealtDamageText;
@@ -21,10 +22,11 @@ public class TowerSelectionUI : MonoBehaviour
         _data = data;
         
         towerNameText.text = data.StaticTowerData.towerName;
-        killsText.text = $"Kills: {data.Kills}";
+        towerDescriptionText.text = data.StaticTowerData.description;
+        killsText.text = $"킬 수: {data.Kills}";
         towerSprite.sprite = data.StaticTowerData.sprite;
-        damageText.text = $"Damage: {data.StaticTowerData.damage}";
-        dealtDamageText.text = $"Dealt Damage: {data.DealtDamage}";
+        damageText.text = $"데미지: {data.StaticTowerData.damage}";
+        dealtDamageText.text = $"가한 데미지:\n{data.DealtDamage:0}";
         
         if (data.StaticTowerData.upgradesTo[0] != null)
         {

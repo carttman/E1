@@ -419,8 +419,11 @@ MonoBehaviour:
   _maxTimePrediction: 3
   _deviationSpeed: 3
   _deviationAmount: 30
-  _triggerRadius: 0.25
-  hitChance: 1
+  _triggerRadius: 0.3
+  hitChance: 0.5
+  isAoe: 0
+  aoeRadius: 3
+  explosionColor: {r: 1, g: 1, b: 0, a: 0.3}
 --- !u!54 &7702545555796594855
 Rigidbody:
   m_ObjectHideFlags: 0
