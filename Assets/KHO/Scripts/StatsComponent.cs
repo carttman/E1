@@ -17,7 +17,6 @@ public class StatsComponent : MonoBehaviour
         get => health;
     }
     
-    //PopUpManager PopUp;
     public Transform PopupTransform;
     
     private void Awake()
