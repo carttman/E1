@@ -1,22 +1,30 @@
 using System;
 using System.Text.RegularExpressions;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Tooltip : MonoBehaviour
 {
     public TextMeshProUGUI headerField;
     public TextMeshProUGUI contentField;
+    
+    [SerializeField] private float tweenDuration = 0.07f;
 
     private RectTransform _rectTransform;
     
     public LayoutElement layoutElement;
     public int characterWrapLimit;
 
+    private Tween _tween;
+    private Image _image;
+
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
+        _image = GetComponent<Image>();
     }
 
     public void SetText(string content, string header = "")
@@ -64,5 +72,34 @@ public class Tooltip : MonoBehaviour
         
         _rectTransform.pivot = new Vector2(pivotX, pivotY);
         transform.position = position;
+    }
+    
+    public void Show()
+    {
+        _tween?.Kill();
+        
+        _image.DOKill();
+        headerField.DOKill();
+        contentField.DOKill();
+        
+        //_image.color = new Color(1, 1, 1, 0f);
+        _image.DOFade(1f, tweenDuration).SetLink(gameObject);
+        headerField.DOFade(1f, tweenDuration).SetLink(gameObject);
+        contentField.DOFade(1f, tweenDuration).SetLink(gameObject);
+    }
+    
+    public void Hide()
+    { 
+        _image.DOKill();
+        headerField.DOKill();
+        contentField.DOKill();
+        
+        //_image.color = new Color(1, 1, 1, 1f);
+        _image.DOFade(0f, tweenDuration).SetLink(gameObject);
+        headerField.DOFade(0f, tweenDuration).SetLink(gameObject);
+        contentField.DOFade(0f, tweenDuration).SetLink(gameObject);
+
+        _tween?.Kill();
+        _tween = DOVirtual.DelayedCall(tweenDuration, () => gameObject.SetActive(false)).SetLink(gameObject);
     }
 }

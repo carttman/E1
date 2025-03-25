@@ -9,9 +9,10 @@ public class TowerUpgradeButton : MonoBehaviour
 {
     [SerializeField] public Tower tower;
     [SerializeField] public TowerData towerData;
-    
-    [SerializeField] private Image _image;
-    [SerializeField] private TextMeshProUGUI _priceText;
+
+    [FormerlySerializedAs("_image")] [SerializeField] private Image image;
+    [FormerlySerializedAs("_priceText")] [SerializeField] private TextMeshProUGUI priceText;
+    [FormerlySerializedAs("_nameText")] [SerializeField] private TextMeshProUGUI nameText;
     
     private Button _button;
     private TooltipTrigger _tooltipTrigger;
@@ -31,10 +32,11 @@ public class TowerUpgradeButton : MonoBehaviour
     {
         if (towerData == null) return;
         
-        _image.sprite = towerData.sprite;
-        _priceText.text = towerData.goldCost.ToString();
+        image.sprite = towerData.sprite;
+        priceText.text = towerData.goldCost.ToString();
+        nameText.text = towerData.towerName;
         
-        _tooltipTrigger.header = towerData.name;
+        _tooltipTrigger.header = towerData.towerName;
         _tooltipTrigger.content = towerData.description;
         
         _button.onClick.AddListener(() => Game.Instance.UpgradeTower(tower, towerData));

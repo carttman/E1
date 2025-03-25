@@ -7,7 +7,7 @@ public class AreaTower : Tower
     [SerializeField] protected float blastRadius = int.MinValue;
     [SerializeField] protected Color blastColor = new Color(1, 0, 0, 0.3f);
     
-    protected float AttackProgress = 0f;
+    protected float AttackProgress = 0.999f;
     
     protected new void Start()
     {
