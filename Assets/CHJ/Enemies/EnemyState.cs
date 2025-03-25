@@ -17,14 +17,6 @@ public class EnemyState : MonoBehaviour
         animator = gameObject.GetComponentInChildren<Animator>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            StartCoroutine(Slow(3, 1f));
-        }
-    }
-
     //사망 이벤트 받고 애니메이션 실행 
     public void DeadTrigger()
     {
