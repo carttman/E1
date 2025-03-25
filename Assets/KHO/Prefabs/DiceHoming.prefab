@@ -420,7 +420,10 @@ MonoBehaviour:
   _deviationSpeed: 2
   _deviationAmount: 25
   _triggerRadius: 0.2
-  hitChance: 1
+  hitChance: 0.707
+  isAoe: 1
+  aoeRadius: 2
+  explosionColor: {r: 1, g: 0, b: 0.9647832, a: 0.3}
 --- !u!54 &7702545555796594855
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -467,5 +470,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.25
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}

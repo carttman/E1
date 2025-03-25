@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 4709322006253467250, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
         type: 3}
       propertyPath: m_Name
-      value: Arrow Tower
+      value: Fast Arrow Tower
       objectReference: {fileID: 0}
     - target: {fileID: 8982708161997046438, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
         type: 3}
@@ -105,7 +105,7 @@ MonoBehaviour:
   dealtDamage: 0
   targetingType: 0
   isSelected: 0
-  towerData: {fileID: 11400000, guid: a349ca89edfc96148a0c62c0ea8616d0, type: 2}
+  towerData: {fileID: 11400000, guid: 49195dd5f8b9be34d91faa239730ff76, type: 2}
   targetingRange: 5
   potentialTargets: []
   rotatingPart: {fileID: 3233541156249316929}
@@ -113,7 +113,7 @@ MonoBehaviour:
   _selectionIndicator: {fileID: 7455934678572178044}
   projectilePrefab: {fileID: 1855686018460528733, guid: fe2ec3f8467a09b478f4fbb366c0d8e9,
     type: 3}
-  shotsPerSecond: 2.5
+  shotsPerSecond: 6
   damagePerShot: 15
   launchProgress: 0
 --- !u!4 &6261195216371197924 stripped

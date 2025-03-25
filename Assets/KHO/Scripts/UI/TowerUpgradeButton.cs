@@ -24,19 +24,19 @@ public class TowerUpgradeButton : MonoBehaviour
 
     private void Start()
     {
-        _image.sprite = towerData.sprite;
-        _priceText.text = towerData.goldCost.ToString();
-
-        _button.onClick.AddListener(() => Game.Instance.UpgradeTower(tower, towerData));
-
-        _tooltipTrigger.header = towerData.name;
-        _tooltipTrigger.content = towerData.description;
+        OnEnable();
     }
     
     private void OnEnable()
     {
         if (towerData == null) return;
+        
+        _image.sprite = towerData.sprite;
+        _priceText.text = towerData.goldCost.ToString();
+        
         _tooltipTrigger.header = towerData.name;
         _tooltipTrigger.content = towerData.description;
+        
+        _button.onClick.AddListener(() => Game.Instance.UpgradeTower(tower, towerData));
     }
 }

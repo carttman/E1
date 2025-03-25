@@ -124,7 +124,7 @@ MonoBehaviour:
   rotatingPart: {fileID: 4953520720328531183}
   turret: {fileID: 124815527360777940}
   _selectionIndicator: {fileID: 3469911335174370124}
-  shotsPerSecond: 1
+  shotsPerSecond: 0.75
   mortar: {fileID: 124815527360777940}
   shellPrefab: {fileID: 6791858764434182562, guid: 912255b3a0e913140818fb6708411b1d,
     type: 3}

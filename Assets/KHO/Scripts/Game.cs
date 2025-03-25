@@ -207,6 +207,8 @@ public class Game : MonoBehaviour
         
         SpendGold(towerData.goldCost);
         tower.UpgradeTo(towerData);
+        
+        TooltipSystem.Hide();
     }
     
     public void OnClickExit()

@@ -23,6 +23,11 @@ public class HomingProjectile : Projectile
     [SerializeField] private float _triggerRadius = 0.25f;
 
     [SerializeField, Range(0f, 1f)] private float hitChance = 0.5f;
+
+    [Header("EXPLOSION")]
+    public bool isAoe = false;
+    public float aoeRadius = 3f;
+    [SerializeField] private Color explosionColor = new Color(1, 1, 0, 0.3f);
     
     private Vector3 _standardPrediction;
     private Vector3 _deviatedPrediction;
@@ -79,9 +84,17 @@ public class HomingProjectile : Projectile
     {
         if (Random.Range(0f, 1f) > hitChance) return;
         var enemy = other.GetComponent<Enemy>();
-        Debug.Assert(enemy);
-
-        enemy.GetComponent<StatsComponent>().TakeDamage(Damage, instigator);
+        if (isAoe)
+        {
+            var explosionGO = Instantiate(Game.Instance.explosionPrefab, transform.position, Quaternion.identity);
+            var explosion = explosionGO.GetComponent<Explosion>();
+            explosion.GetComponent<Explosion>().Initialize(0.5f, aoeRadius, new Color(1, 1, 0, 0.3f), false);
+            explosion.OnCollideDetected += col => col.GetComponent<StatsComponent>()?.TakeDamage(Damage, instigator);
+        }
+        else
+        {
+            enemy.GetComponent<StatsComponent>().TakeDamage(Damage, instigator);
+        }
         Destroy(gameObject);
     }
 

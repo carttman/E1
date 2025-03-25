@@ -105,8 +105,8 @@ MonoBehaviour:
   rotatingPart: {fileID: 0}
   turret: {fileID: 0}
   _selectionIndicator: {fileID: 8531108939828887559}
-  attacksPerSecond: 0.75
-  damage: 20
+  attacksPerSecond: 0.3
+  damage: 50
   blastRadius: 4
   blastColor: {r: 1, g: 0, b: 0, a: 0.3}
 --- !u!1 &8531108939828887559 stripped

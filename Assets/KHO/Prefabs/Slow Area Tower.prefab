@@ -105,8 +105,8 @@ MonoBehaviour:
   rotatingPart: {fileID: 0}
   turret: {fileID: 0}
   _selectionIndicator: {fileID: 8531108939828887559}
-  attacksPerSecond: 0.75
-  damage: 20
+  attacksPerSecond: 0.3
+  damage: 50
   blastRadius: -2.1474836e+9
   blastColor: {r: 0.23495899, g: 0.2686895, b: 0.754717, a: 0.3}
   slowPercentage: 0.5

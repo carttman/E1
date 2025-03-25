@@ -278,6 +278,8 @@ public abstract class Tower : MonoBehaviour, ISelectable
 
     public void UpgradeTo(TowerData upgradeTowerData)
     {
+        Debug.Assert(towerData.upgradesTo[0] == upgradeTowerData || towerData.upgradesTo[1] == upgradeTowerData);
+        
         var newTower = Instantiate(upgradeTowerData.towerPrefab, transform.position, transform.rotation);
         newTower.GetComponent<Tower>().Kills = kills;
         newTower.GetComponent<Tower>().DealtDamage = dealtDamage;
