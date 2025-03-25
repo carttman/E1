@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class UIBillboarding : MonoBehaviour
+public class PopUpUIBillboard : MonoBehaviour
 {
     private Camera MyCamera;
     private void Awake()
