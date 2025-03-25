@@ -420,7 +420,7 @@ MonoBehaviour:
   _deviationSpeed: 2
   _deviationAmount: 25
   _triggerRadius: 0.2
-  hitChance: 0.707
+  hitChance: 1
   isAoe: 1
   aoeRadius: 2
   explosionColor: {r: 1, g: 0, b: 0.9647832, a: 0.3}

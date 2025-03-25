@@ -33,7 +33,8 @@ public class ProjectileTower : Tower
     {
         var newProjectile = Instantiate(projectilePrefab, turret.position, Quaternion.identity);
         newProjectile.transform.LookAt(pTarget);
-        newProjectile.transform.Rotate(Vector3.up, Random.Range(50f, 75f));
+        newProjectile.transform.Rotate(Vector3.right, Random.Range(-10f, 10f));
+        //newProjectile.transform.Rotate(Vector3.up, Random.Range(50f, 75f));
         
         var proj = newProjectile.GetComponent<Projectile>();
         proj.Target = pTarget;

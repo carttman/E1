@@ -103,7 +103,7 @@ MonoBehaviour:
     dealtDamage: 0
   kills: 0
   dealtDamage: 0
-  enemyComparer: 0
+  targetingType: 0
   isSelected: 0
   towerData: {fileID: 11400000, guid: 4e4ca3334fd220c499324807f495b470, type: 2}
   targetingRange: 10
@@ -113,7 +113,7 @@ MonoBehaviour:
   _selectionIndicator: {fileID: 7455934678572178044}
   projectilePrefab: {fileID: 1855686018460528733, guid: e1f71f2002fd922469fda6eb8a43a85d,
     type: 3}
-  shotsPerSecond: 5
+  shotsPerSecond: 6
   damagePerShot: 20
   launchProgress: 0
 --- !u!4 &6261195216371197924 stripped
