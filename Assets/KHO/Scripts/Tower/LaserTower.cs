@@ -7,11 +7,13 @@ public class LaserTower : Tower
     [SerializeField] protected float damagePerSecond = 10f;
 
     private Vector3 _laserBeamScale = Vector3.one;
+    private Vector3 _laserBeamStartPos;
     
     private new void Start()
     {
         base.Start();
         _laserBeamScale = laserBeam.localScale;
+        _laserBeamStartPos = laserBeam.localPosition;
     }
 
     private void Update()
@@ -30,15 +32,15 @@ public class LaserTower : Tower
 
     private void Shoot(Transform target)
     {
-        Vector3 position = target.position;
+        var position = target.position;
         laserBeam.LookAt(position);
         
-        float dist = Vector3.Distance(laserBeam.position, position);
+        var dist = Vector3.Distance(laserBeam.position, position);
         _laserBeamScale.z = dist;
         laserBeam.localScale = _laserBeamScale;
-        laserBeam.localPosition = turret.localPosition + laserBeam.forward * (dist * 0.6f);
+        laserBeam.localPosition = _laserBeamStartPos + laserBeam.forward * (dist * 0.5f);
     
-        StatsComponent sc = target.GetComponent<StatsComponent>();
+        var sc = target.GetComponent<StatsComponent>();
         if (sc)
         {
             sc.TakeDamage(damagePerSecond * Time.deltaTime, this, true);
