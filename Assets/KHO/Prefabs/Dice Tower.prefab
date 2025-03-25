@@ -13,11 +13,42 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2107856319766529615, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107856319766529615, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107856319766529615, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107856319766529615, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4709322006253467250, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
         type: 3}
       propertyPath: m_Name
       value: Dice Tower
       objectReference: {fileID: 0}
+    - target: {fileID: 5171187102064971567, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bf8bbbee7394c344a992f377a9105ed8, type: 2}
+    - target: {fileID: 7129702463164921253, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -4067497391551006301, guid: 43cf8219b0ec0d34fb19e067aa64e0dd,
+        type: 3}
     - target: {fileID: 8982708161997046438, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -70,7 +101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 819716441762515386, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 9156955662247567816, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
+    - {fileID: 2528507377505007230, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
+    - {fileID: 663140927143804792, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
+    - {fileID: 6192885085424108915, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4709322006253467250, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
@@ -120,6 +155,7 @@ MonoBehaviour:
     dealtDamage: 0
   kills: 0
   dealtDamage: 0
+  targetingType: 0
   isSelected: 0
   towerData: {fileID: 11400000, guid: 32060235084c6a64db75f0f02394757f, type: 2}
   targetingRange: 20

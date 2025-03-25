@@ -78,26 +78,26 @@ public class Tooltip : MonoBehaviour
     {
         _tween?.Kill();
         
-        _image.DOKill();
-        headerField.DOKill();
-        contentField.DOKill();
+        _image?.DOKill();
+        headerField?.DOKill();
+        contentField?.DOKill();
         
         //_image.color = new Color(1, 1, 1, 0f);
-        _image.DOFade(1f, tweenDuration).SetLink(gameObject);
-        headerField.DOFade(1f, tweenDuration).SetLink(gameObject);
-        contentField.DOFade(1f, tweenDuration).SetLink(gameObject);
+        _image?.DOFade(1f, tweenDuration).SetLink(gameObject);
+        headerField?.DOFade(1f, tweenDuration).SetLink(gameObject);
+        contentField?.DOFade(1f, tweenDuration).SetLink(gameObject);
     }
     
     public void Hide()
     { 
-        _image.DOKill();
-        headerField.DOKill();
-        contentField.DOKill();
+        _image?.DOKill();
+        headerField?.DOKill();
+        contentField?.DOKill();
         
         //_image.color = new Color(1, 1, 1, 1f);
-        _image.DOFade(0f, tweenDuration).SetLink(gameObject);
-        headerField.DOFade(0f, tweenDuration).SetLink(gameObject);
-        contentField.DOFade(0f, tweenDuration).SetLink(gameObject);
+        _image?.DOFade(0f, tweenDuration).SetLink(gameObject);
+        headerField?.DOFade(0f, tweenDuration).SetLink(gameObject);
+        contentField?.DOFade(0f, tweenDuration).SetLink(gameObject);
 
         _tween?.Kill();
         _tween = DOVirtual.DelayedCall(tweenDuration, () => gameObject.SetActive(false)).SetLink(gameObject);
