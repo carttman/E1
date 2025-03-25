@@ -16,8 +16,8 @@ public class PopUpManager : MonoBehaviour
     {
         _instance = this;
     }
-
-    public void PopUpUI(string amount, Vector3 objectTcVector3, Color color, float size)
+    
+    public void CreatePopUpUI(string amount, Vector3 objectTcVector3, Color color, float size)
     {
         Vector3 randomPos = new Vector3(Random.Range(0f, .5f), Random.Range(0f, .5f), Random.Range(0f, .5f));
         

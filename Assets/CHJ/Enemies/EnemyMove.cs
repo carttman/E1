@@ -75,8 +75,8 @@ public class EnemyMove : MonoBehaviour
         /*
         Vector3 dir = target.position - transform.position;
 
-        //방향을 단위벡터로 바꾸기 위해 normalized 진행 후 speed를 곱한만큼 진행 (프레임-시간 보정으로 deltaTime을 사용)
-        transform.Translate(dir.normalized * (speed * Time.deltaTime), Space.World); //World Space에서 이동
+        //방향을 단위벡터로 바꾸기 위해 normalized 진행 후 speed를 곱한만큼 진행, World Space로
+        transform.Translate(dir.normalized * (speed * Time.deltaTime), Space.World);
         transform.LookAt(target);
         */
         _progress += Time.deltaTime;
@@ -88,8 +88,7 @@ public class EnemyMove : MonoBehaviour
         //웨이포인트 도착 시 다음 웨이포인트로 변경
         if (Vector3.Distance(transform.position, target.position) <= distanceCheckTolerance)
         {
-            GetNextWayPoint(); //다음 웨이포인트를 타겟으로 변경
-            
+            GetNextWayPoint();
             /*
             var distance = Vector3.Distance(transform.position, target.position);
             _thisWaveDuration = distance / _enemyState.speed;
@@ -112,7 +111,8 @@ public class EnemyMove : MonoBehaviour
         target = Waypoints.points[_wavePointIndex]; //다음 인덱스의 웨이포인트
     }
     
-    void EndPath() //목표에 도달
+    //목표에 도달
+    void EndPath() 
     {
         // Enemy 스크립트에서 처리
         _enemy.EndPath();
@@ -120,7 +120,6 @@ public class EnemyMove : MonoBehaviour
 
     void DeadToMoveStop()
     {
-        //Debug.Log("MoveStop");
         this.enabled = false;
     }
 }

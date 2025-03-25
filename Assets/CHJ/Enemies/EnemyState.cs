@@ -43,16 +43,13 @@ public class EnemyState : MonoBehaviour
     {
         if (isSlow)
         {
-            //Debug.Log("isSlow is returned");
             yield break;
         }
         isSlow = true;
-        //Debug.Log($"isSlow : {isSlow}");
         speed *= percent;
         yield return new WaitForSeconds(duration);
         
         speed /= percent;
         isSlow = false;
-        //Debug.Log($"isSlow : {isSlow}");
     }
 }

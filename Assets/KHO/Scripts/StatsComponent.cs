@@ -38,7 +38,7 @@ public class StatsComponent : MonoBehaviour
         if (!shouldAccumulate)
         {
             // 데미지 팝업 호출
-            PopUpManager.Instance.PopUpUI(damage.ToString(), PopupTransform.position, Color.red, 1);
+            PopUpManager.Instance.CreatePopUpUI(damage.ToString(), PopupTransform.position, Color.red, 1);
         }
         
         

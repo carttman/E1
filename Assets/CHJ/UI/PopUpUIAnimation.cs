@@ -1,8 +1,9 @@
 using TMPro;
 using UnityEngine;
 
-public class DamagePopUpAnimation : MonoBehaviour
+public class PopUpUIAnimation : MonoBehaviour
 {
+    [Header("AnimationCurve")]
     public AnimationCurve opacityCurve;
     public AnimationCurve scaleCurve;
     public AnimationCurve heightCurve;
@@ -18,6 +19,11 @@ public class DamagePopUpAnimation : MonoBehaviour
     }
 
     void Update()
+    {
+        UpdateTextAnimation();
+    }
+
+    void UpdateTextAnimation()
     {
         tmp.color = new Color(tmp.color.r, tmp.color.g, tmp.color.b, opacityCurve.Evaluate(time));
         transform.localScale = Vector3.one * scaleCurve.Evaluate(time);

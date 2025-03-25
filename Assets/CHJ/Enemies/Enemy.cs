@@ -62,16 +62,15 @@ public class Enemy : MonoBehaviour, ISelectable
     private void Die()
     {
         OnEnemyDied?.Invoke(this, goldDropAmount);
-        PopUpManager.Instance.PopUpUI("+" + goldDropAmount.ToString(), PopupTransform.position, Color.yellow, 2);
+        PopUpManager.Instance.CreatePopUpUI("+" + goldDropAmount.ToString(), PopupTransform.position, Color.yellow, 2);
         WaveSpawner.EnemiesAlive--;
-        //Destroy(gameObject);
     }
 
     public void EndPath()
     {
         OnEnemyEndPath?.Invoke(this, livesDamage);
         WaveSpawner.EnemiesAlive--;
-        Destroy(gameObject); //도착지점 도착 시 오브젝트 파괴
+        Destroy(gameObject);
     }
 
     // Start of ISelectable
