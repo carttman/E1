@@ -60605,13 +60605,13 @@ MonoBehaviour:
   gameoverUI: {fileID: 1849098284}
   pauseButtonUI: {fileID: 1075691831}
   pauseUI: {fileID: 1127857066}
-  ClearUI: {fileID: 780828172}
+  clearUI: {fileID: 0}
   towerDatas:
   - {fileID: 11400000, guid: a349ca89edfc96148a0c62c0ea8616d0, type: 2}
-  - {fileID: 11400000, guid: 4e4ca3334fd220c499324807f495b470, type: 2}
+  - {fileID: 11400000, guid: a03622c45b7294648b713c02d0cd7356, type: 2}
   - {fileID: 11400000, guid: b723b4a884f32c04e97f97fc67590014, type: 2}
   - {fileID: 11400000, guid: 0a025ed51ad3e5f4aa9358a6c81a7bf3, type: 2}
-  AoeEffectPrefab: {fileID: 8650366966890916609, guid: 98cf577691e733b498d7c0144ca9470e,
+  explosionPrefab: {fileID: 8650366966890916609, guid: 98cf577691e733b498d7c0144ca9470e,
     type: 3}
 --- !u!4 &1986056903
 Transform:

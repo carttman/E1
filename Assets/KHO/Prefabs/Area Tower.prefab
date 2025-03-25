@@ -91,17 +91,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7126044a203dbbc4f93fde78071364f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSelected: 0
   selectionData:
-    _kills: 0
+    tower: {fileID: 0}
+    kills: 0
+    dealtDamage: 0
   kills: 0
-  towerData: {fileID: 11400000, guid: b723b4a884f32c04e97f97fc67590014, type: 2}
-  targetingRange: 5
+  dealtDamage: 0
+  targetingType: 0
+  isSelected: 0
+  towerData: {fileID: 11400000, guid: a03622c45b7294648b713c02d0cd7356, type: 2}
+  targetingRange: 4
+  potentialTargets: []
   rotatingPart: {fileID: 0}
   turret: {fileID: 0}
   _selectionIndicator: {fileID: 8531108939828887559}
-  attacksPerSecond: 0.5
-  damage: 20
+  attacksPerSecond: 0.3
+  damage: 50
+  blastRadius: 4
+  blastColor: {r: 1, g: 0, b: 0, a: 0.3}
 --- !u!1 &8531108939828887559 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1204766025124422093, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,

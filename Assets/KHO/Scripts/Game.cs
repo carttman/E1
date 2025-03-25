@@ -22,12 +22,10 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject gameoverUI;
     [SerializeField] private GameObject pauseButtonUI;
     [SerializeField] private GameObject pauseUI;
-    [SerializeField] private GameObject ClearUI;
-    
+    [SerializeField] private GameObject clearUI;
     
     [SerializeField] public TowerData[] towerDatas;
-    
-    [SerializeField] public GameObject AoeEffectPrefab;
+    [SerializeField] public GameObject explosionPrefab;
     
     private float _beforePauseTimeScale = 1f;
     
@@ -209,6 +207,8 @@ public class Game : MonoBehaviour
         
         SpendGold(towerData.goldCost);
         tower.UpgradeTo(towerData);
+        
+        TooltipSystem.Hide();
     }
     
     public void OnClickExit()
@@ -224,6 +224,6 @@ public class Game : MonoBehaviour
     {
         _beforePauseTimeScale = Time.timeScale;
         Time.timeScale = 0f;
-        ClearUI.SetActive(true);
+        clearUI.SetActive(true);
     }
 }

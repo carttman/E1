@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6313ae548dfe484dbfd71a06855a35a, type: 3}
-  m_Name: Laser Tower
+  m_Name: Fast Arrow Tower
   m_EditorClassIdentifier: 
-  towerName: Laser Tower
-  description: Laser Tower
-  goldCost: 5
+  towerName: "\uC18D\uC0AC \uD654\uC0B4 \uD0C0\uC6CC"
+  description: "\uD558\uB098\uC758 \uC801\uC5D0\uAC8C \uBE60\uB974\uAC8C \uD654\uC0B4\uC744
+    \uBC1C\uC0AC\uD569\uB2C8\uB2E4"
+  goldCost: 20
   sprite: {fileID: 21300000, guid: 09f0df7eb89e33b4e886327a6bd6aed8, type: 3}
-  towerPrefab: {fileID: 4709322006253467250, guid: ccd75e4b126990a45bf7970b207c1f1e,
+  towerPrefab: {fileID: 3934494808485481923, guid: b3f08eb0071c8604390b95d18e08539b,
     type: 3}
   damage: 10
   upgradesTo:

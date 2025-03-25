@@ -65,8 +65,9 @@ public class SelectionManager : MonoBehaviour
         selectedObject.OnSelectionDataChanged -= OnSelectionDataChanged;
         selectedObject.OnDeselect();
         selectedObject = null;
-        
+
         _selectionUI.SetActive(false);
+        TooltipSystem.Hide();
     }
 
     private void OnSelectionDataChanged(SelectionData data)

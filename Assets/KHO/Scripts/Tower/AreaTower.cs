@@ -2,15 +2,27 @@ using UnityEngine;
 
 public class AreaTower : Tower
 {
-    [SerializeField] public GameObject attackAreaEffectPrefab;
-    [SerializeField] public float attacksPerSecond;
-    [SerializeField] private float damage;
-    private float _attackProgress = 0f;
+    [SerializeField] protected float attacksPerSecond;
+    [SerializeField] protected float damage;
+    [SerializeField] protected float blastRadius = int.MinValue;
+    [SerializeField] protected Color blastColor = new Color(1, 0, 0, 0.3f);
     
-    private void Update()
+    protected float AttackProgress = 0f;
+    
+    protected new void Start()
     {
-        _attackProgress += attacksPerSecond * Time.deltaTime;
-        while (_attackProgress >= 1f)
+        base.Start();
+        // 기본적으로 폭발 범위 = 타겟 범위로 사용
+        if (Mathf.Approximately(blastRadius, int.MinValue))
+        {
+            blastRadius = targetingRange;
+        }
+    }
+    
+    protected void Update()
+    {
+        AttackProgress += attacksPerSecond * Time.deltaTime;
+        while (AttackProgress >= 1f)
         {
             if (AcquireTarget(out Transform pTarget))
             {
@@ -18,21 +30,27 @@ public class AreaTower : Tower
                 {
                     Attack();
                 }
-                _attackProgress -= 1f;
+                AttackProgress -= 1f;
             }
             else
             {
-                _attackProgress = 0.999f;
+                AttackProgress = 0.999f;
             }
         }
     }
 
-    private void Attack()
+    protected void Attack()
     {
-        Instantiate(attackAreaEffectPrefab, transform.position, Quaternion.identity);
-        foreach (var enemy in potentialTargets)
-        {
-            enemy?.GetComponent<StatsComponent>()?.TakeDamage(damage, this);
-        }
+        var explosionGameObject = Instantiate(Game.Instance.explosionPrefab, transform.position, Quaternion.identity);
+        var explosion = explosionGameObject.GetComponent<Explosion>();
+        explosion.Initialize(0.5f, blastRadius, blastColor, false);
+        explosion.OnCollideDetected += OnCollideDetected;
+    }
+
+    protected virtual void OnCollideDetected(Collider col)
+    {
+        var stats = col.GetComponent<StatsComponent>();
+        if (!stats) return;
+        stats.TakeDamage(damage, this);
     }
 }

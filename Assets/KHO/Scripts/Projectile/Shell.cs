@@ -5,6 +5,8 @@ using RaycastHit = UnityEngine.RaycastHit;
 
 public class Shell : MonoBehaviour
 {
+    [SerializeField] private Color blastColor = new Color(1f, 0.64f, 0f, 0.3f);
+    
     private Vector3 launchPoint;
     private Vector3 targetPoint;
     private Vector3 launchVelocity;
@@ -33,25 +35,23 @@ public class Shell : MonoBehaviour
 
         if (p.y < 0f)
         {
-            RaycastHit[] hits = new RaycastHit[100];
+            var explosionGameObject = Instantiate(Game.Instance.explosionPrefab, transform.position, Quaternion.identity);
+            var explosion = explosionGameObject.GetComponent<Explosion>();
+            explosion.Initialize(0.5f, blastRadius, blastColor,false);
+            explosion.OnCollideDetected += OnCollideDetected;
             
-            var size = Physics.SphereCastNonAlloc(origin: transform.position, radius: blastRadius, direction: Vector3.up, hits);
-            if (size > 0)
-            {
-                for (int i = 0; i < size; i++)
-                {
-                    GameObject go = hits[i].transform.gameObject;
-                    go.GetComponent<StatsComponent>()?.TakeDamage(damage, instigator);
-                }
-            }
-            
-            var aoeEffectGO = Instantiate(Game.Instance.AoeEffectPrefab, transform.position, Quaternion.identity);
-            aoeEffectGO.GetComponent<AoeEffect>().Initialize(0.5f, blastRadius);
             Destroy(gameObject);
         }
 
         Vector3 d = launchVelocity;
         d.y -= 9.81f * age;
         transform.localRotation = Quaternion.LookRotation(d);
+    }
+
+    private void OnCollideDetected(Collider col)
+    {
+        var stats = col.GetComponent<StatsComponent>();
+        if (!stats) return;
+        stats.TakeDamage(damage, instigator);
     }
 }

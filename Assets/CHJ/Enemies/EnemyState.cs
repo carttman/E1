@@ -33,21 +33,26 @@ public class EnemyState : MonoBehaviour
         Destroy(gameObject, 1f);
     }
     
+    public void ApplySlow(float percent, float duration)
+    {
+        StartCoroutine(Slow(percent, duration));
+    }
+    
     // 슬로우 디버프 코루틴
     IEnumerator Slow(float percent, float duration)
     {
         if (isSlow)
         {
-            Debug.Log("isSlow is returned");
+            //Debug.Log("isSlow is returned");
             yield break;
         }
         isSlow = true;
-        Debug.Log($"isSlow : {isSlow}");
-        speed /= percent;
+        //Debug.Log($"isSlow : {isSlow}");
+        speed *= percent;
         yield return new WaitForSeconds(duration);
         
-        speed *= percent;
+        speed /= percent;
         isSlow = false;
-        Debug.Log($"isSlow : {isSlow}");
+        //Debug.Log($"isSlow : {isSlow}");
     }
 }

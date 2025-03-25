@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class TooltipSystem : MonoBehaviour
 {
-    private static TooltipSystem current;
+    private static TooltipSystem _current;
 
     public Tooltip tooltip;
     private Tween _tween;
 
     public void Awake()
     {
-        current = this;
+        _current = this;
     }
 
     public static void Show(string content, string header = "")
     {
-        current.tooltip.SetText(content, header);
-        current.tooltip.gameObject.SetActive(true);
+        _current.tooltip.SetText(content, header);
+        _current.tooltip.gameObject.SetActive(true);
         //_tween = current.tooltip.
     }
 
     public static void Hide()
     {
-        current.tooltip.gameObject.SetActive(false);
+        _current.tooltip.gameObject.SetActive(false);
     }
 }
