@@ -275,7 +275,7 @@ MonoBehaviour:
   rotatingPart: {fileID: 1432465972930606559}
   turret: {fileID: 7675480238110068232}
   _selectionIndicator: {fileID: 7455934678572178044}
-  projectilePrefab: {fileID: 1855686018460528733, guid: fe2ec3f8467a09b478f4fbb366c0d8e9,
+  projectilePrefab: {fileID: 1855686018460528733, guid: bbd75184271295846a0540b0c4dcb545,
     type: 3}
   shotsPerSecond: 6
   damagePerShot: 15
