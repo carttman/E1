@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LaserTower : Tower
@@ -7,9 +8,10 @@ public class LaserTower : Tower
 
     private Vector3 _laserBeamScale = Vector3.one;
 
-    private new void Awake()
+    private Transform _target;
+
+    private new void Start()
     {
-        base.Awake();
         _laserBeamScale = laserBeam.localScale;
     }
 
@@ -29,6 +31,9 @@ public class LaserTower : Tower
 
     private void Shoot(Transform target)
     {
+
+        _target = target;
+        
         Vector3 position = target.position;
         laserBeam.LookAt(position);
         
@@ -42,5 +47,11 @@ public class LaserTower : Tower
         {
             sc.TakeDamage(damagePerSecond * Time.deltaTime, this, true);
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_target.position, 0.5f);
     }
 }
