@@ -18,11 +18,11 @@ public class TooltipSystem : MonoBehaviour
     {
         _current.tooltip.SetText(content, header);
         _current.tooltip.gameObject.SetActive(true);
-        //_tween = current.tooltip.
+        _current.tooltip.Show();
     }
 
     public static void Hide()
     {
-        _current.tooltip.gameObject.SetActive(false);
+        _current.tooltip.Hide();
     }
 }

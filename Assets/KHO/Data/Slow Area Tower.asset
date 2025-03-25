@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6313ae548dfe484dbfd71a06855a35a, type: 3}
   m_Name: Slow Area Tower
   m_EditorClassIdentifier: 
-  towerName: Slow Area Tower
-  description: Slow Area Tower
+  towerName: "\uAC10\uC18D \uBC94\uC704 \uD0C0\uC6CC"
+  description: "\uD0C0\uC6CC\uB97C \uC911\uC2EC\uC73C\uB85C \uB9DE\uC740 \uC801\uC744
+    <u>\uB290\uB9AC\uAC8C \uD558\uB294</u> \uBC94\uC704 \uACF5\uACA9\uC744 \uD569\uB2C8\uB2E4"
   goldCost: 10
   sprite: {fileID: 21300000, guid: 09f0df7eb89e33b4e886327a6bd6aed8, type: 3}
   towerPrefab: {fileID: 2848097239598094264, guid: ce5d4155fa7a3f646a393dddf04ba597,

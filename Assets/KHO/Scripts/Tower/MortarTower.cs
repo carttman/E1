@@ -7,7 +7,7 @@ public class MortarTower : Tower
     [SerializeField] private GameObject shellPrefab;
     [SerializeField] private float leadTime = 0.5f;
     private float _launchSpeed;
-    private float _launchProgress;
+    private float _launchProgress = 0.999f;
 
     private new void Awake()
     {
