@@ -17,7 +17,7 @@ public class EnemySelectionUI : MonoBehaviour
     public void HandleUIChange(EnemySelectionData data)
     {
         _enemyNameText.text = data.Name;
-        _healthText.text = $"HP: {data.Health} / {data.MaxHealth}";
-        _moveSpeedText.text = $"Move Speed: {data.MoveSpeed}";
+        _healthText.text = $"HP: {data.Health:0}/{data.MaxHealth:0}";
+        _moveSpeedText.text = $"이동속도: {data.MoveSpeed}";
     }
 }
