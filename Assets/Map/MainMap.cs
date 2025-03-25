@@ -4,9 +4,6 @@ using UnityEngine.UI;
 
 public class MainMap : MonoBehaviour
 {
-    public Button Btn_Start;
-    public Button Btn_Exit;
-    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
