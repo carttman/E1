@@ -17,6 +17,7 @@ public class ProjectileTower : Tower
             {
                 if (pTarget)
                 {
+                    TrackTarget(ref pTarget);
                     Shoot(pTarget);
                 }
                 launchProgress -= 1f;

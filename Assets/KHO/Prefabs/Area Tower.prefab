@@ -73,6 +73,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1222871823925325172}
   m_SourcePrefab: {fileID: 100100000, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
+--- !u!4 &215468277407313828 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7215287158059519598, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7411981814512296394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2848097239598094264 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4709322006253467250, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
@@ -102,13 +108,19 @@ MonoBehaviour:
   towerData: {fileID: 11400000, guid: a03622c45b7294648b713c02d0cd7356, type: 2}
   targetingRange: 4
   potentialTargets: []
-  rotatingPart: {fileID: 0}
-  turret: {fileID: 0}
+  rotatingPart: {fileID: 6084283208865213368}
+  turret: {fileID: 215468277407313828}
   _selectionIndicator: {fileID: 8531108939828887559}
   attacksPerSecond: 0.33
   damage: 25
   blastRadius: 4
   blastColor: {r: 1, g: 0, b: 0, a: 0.3}
+--- !u!4 &6084283208865213368 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3653282857593457266, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7411981814512296394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8531108939828887559 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1204766025124422093, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,

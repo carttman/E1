@@ -41,4 +41,9 @@ public class TowerUpgradeButton : MonoBehaviour
         
         _button.onClick.AddListener(() => Game.Instance.UpgradeTower(tower, towerData));
     }
+
+    private void OnDisable()
+    {
+        _button.onClick.RemoveAllListeners();
+    }
 }

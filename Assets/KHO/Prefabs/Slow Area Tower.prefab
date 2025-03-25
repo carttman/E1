@@ -8,11 +8,43 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1173346956814147457, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bf8bbbee7394c344a992f377a9105ed8, type: 2}
+    - target: {fileID: 3006172678970397201, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bf8bbbee7394c344a992f377a9105ed8, type: 2}
     - target: {fileID: 4709322006253467250, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
         type: 3}
       propertyPath: m_Name
       value: Slow Area Tower
       objectReference: {fileID: 0}
+    - target: {fileID: 5171187102064971567, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bf8bbbee7394c344a992f377a9105ed8, type: 2}
+    - target: {fileID: 5529801191072725388, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bf8bbbee7394c344a992f377a9105ed8, type: 2}
+    - target: {fileID: 6020752931972465099, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2157466232768323783, guid: 457d9a59188ca9542b8ccbfebb850739,
+        type: 3}
+    - target: {fileID: 7832039434413939285, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6944454289571412642, guid: 4ddb11c4cac26b8459dd0279f35afde9,
+        type: 3}
     - target: {fileID: 8982708161997046438, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -63,6 +95,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9057813063727274238, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bf8bbbee7394c344a992f377a9105ed8, type: 2}
     m_RemovedComponents:
     - {fileID: 819716441762515386, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
     m_RemovedGameObjects: []
@@ -73,6 +110,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2764515979247015227}
   m_SourcePrefab: {fileID: 100100000, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
+--- !u!4 &215468277407313828 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7215287158059519598, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7411981814512296394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2848097239598094264 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4709322006253467250, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
@@ -102,8 +145,8 @@ MonoBehaviour:
   towerData: {fileID: 11400000, guid: 7cf797bfaf8bdf244b25dfcef79696bd, type: 2}
   targetingRange: 4
   potentialTargets: []
-  rotatingPart: {fileID: 0}
-  turret: {fileID: 0}
+  rotatingPart: {fileID: 215468277407313828}
+  turret: {fileID: 5186001174977363359}
   _selectionIndicator: {fileID: 8531108939828887559}
   attacksPerSecond: 0.33
   damage: 25
@@ -111,6 +154,12 @@ MonoBehaviour:
   blastColor: {r: 0.23495899, g: 0.2686895, b: 0.754717, a: 0.3}
   slowPercentage: 0.5
   slowDuration: 3.5
+--- !u!4 &5186001174977363359 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2388252123258264661, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7411981814512296394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8531108939828887559 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1204766025124422093, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
