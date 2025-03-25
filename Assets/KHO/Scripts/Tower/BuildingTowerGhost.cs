@@ -16,8 +16,26 @@ public class BuildingTowerGhost : MonoBehaviour
 
     private Renderer[] _renderers;
 
+    void Update()
+    {
+        // 마우스 닿은 타일이 있을 경우 타일에 스냅
+        if (_pointerTile != null)
+        {
+            transform.position = _pointerTile.position;
+            return;
+        }
+        
+        // 아닐시 바닥에서 마우스 따라감
+        if (Physics.Raycast(TouchRay, out RaycastHit hit, 5000f, LayerMask.GetMask("Default")))
+        {
+            //Debug.Log("ray hit");
+            transform.position = hit.point;
+        }
+    }
+    
     private void Awake()
     {
+        // 태그 비교로 맞는 렌더러만 색깔 바꿈
         _renderers = GetComponentsInChildren<Renderer>().Where(r => r.CompareTag("TowerMesh")).ToArray();
         if (_renderers != null && _renderers.Length > 0)
         {
@@ -88,19 +106,5 @@ public class BuildingTowerGhost : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (_pointerTile != null)
-        {
-            transform.position = _pointerTile.position;
-            return;
-        }
-        
-        if (Physics.Raycast(TouchRay, out RaycastHit hit, 5000f, LayerMask.GetMask("Default")))
-        {
-            //Debug.Log("ray hit");
-            transform.position = hit.point;
-        }
-    }
+    
 }

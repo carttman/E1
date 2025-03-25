@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 800394580981271568}
   - component: {fileID: 5574016661633746553}
   m_Layer: 0
-  m_Name: AoeEffect
+  m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

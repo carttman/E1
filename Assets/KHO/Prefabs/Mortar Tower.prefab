@@ -116,7 +116,7 @@ MonoBehaviour:
     dealtDamage: 0
   kills: 0
   dealtDamage: 0
-  enemyComparer: 0
+  targetingType: 0
   isSelected: 0
   towerData: {fileID: 11400000, guid: 0a025ed51ad3e5f4aa9358a6c81a7bf3, type: 2}
   targetingRange: 5
@@ -124,7 +124,7 @@ MonoBehaviour:
   rotatingPart: {fileID: 4953520720328531183}
   turret: {fileID: 124815527360777940}
   _selectionIndicator: {fileID: 3469911335174370124}
-  shotsPerSecond: 0.3
+  shotsPerSecond: 1
   mortar: {fileID: 124815527360777940}
   shellPrefab: {fileID: 6791858764434182562, guid: 912255b3a0e913140818fb6708411b1d,
     type: 3}

@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 4709322006253467250, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
         type: 3}
       propertyPath: m_Name
-      value: Area Tower
+      value: Slow Area Tower
       objectReference: {fileID: 0}
     - target: {fileID: 8982708161997046438, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
         type: 3}
@@ -71,7 +71,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4709322006253467250, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1222871823925325172}
+      addedObject: {fileID: 2764515979247015227}
   m_SourcePrefab: {fileID: 100100000, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
 --- !u!1 &2848097239598094264 stripped
 GameObject:
@@ -79,16 +79,16 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7411981814512296394}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1222871823925325172
+--- !u!114 &2764515979247015227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2848097239598094264}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7126044a203dbbc4f93fde78071364f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 646e7e7fae48a8448ac9b437b62a6124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   selectionData:
@@ -99,7 +99,7 @@ MonoBehaviour:
   dealtDamage: 0
   targetingType: 0
   isSelected: 0
-  towerData: {fileID: 11400000, guid: a03622c45b7294648b713c02d0cd7356, type: 2}
+  towerData: {fileID: 11400000, guid: 7cf797bfaf8bdf244b25dfcef79696bd, type: 2}
   targetingRange: 4
   potentialTargets: []
   rotatingPart: {fileID: 0}
@@ -107,8 +107,10 @@ MonoBehaviour:
   _selectionIndicator: {fileID: 8531108939828887559}
   attacksPerSecond: 0.75
   damage: 20
-  blastRadius: 4
-  blastColor: {r: 1, g: 0, b: 0, a: 0.3}
+  blastRadius: -2.1474836e+9
+  blastColor: {r: 0.23495899, g: 0.2686895, b: 0.754717, a: 0.3}
+  slowPercentage: 0.5
+  slowDuration: 3.5
 --- !u!1 &8531108939828887559 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1204766025124422093, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,

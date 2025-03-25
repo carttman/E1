@@ -7,21 +7,20 @@ public class EnemyMove : MonoBehaviour
     private EnemyState _enemyState;
     [SerializeField] private float distanceCheckTolerance = 0.4f;
     
-    //public float speed = 10f;
-
     private Vector3 _fromPosition;
     private float _progress = 0f;
-    private float _thisWaveDuration = 0f;
     
     [SerializeField] private Transform target;
-    private int wavePointIndex = 0;//현재 목표로하는 웨이포인트 인덱스
+    //현재 목표로하는 웨이포인트 인덱스
+    private int _wavePointIndex = 0;
 
     // 일정 시간후 도달할 위치 예측
     public Vector3 GetPredictedPosition(float timeAheadInSeconds)
     {
         if (timeAheadInSeconds <= 0f) return transform.position;
         
-        float timeToNextWaypoint = _thisWaveDuration - _progress;
+        float distanceToNextWaypoint = Vector3.Distance(transform.position, target.position);
+        float timeToNextWaypoint = distanceToNextWaypoint / _enemyState.speed;
 
         // 시간내 다음 웨이포인트 도달한다면
         if (timeAheadInSeconds <= timeToNextWaypoint)
@@ -32,7 +31,7 @@ public class EnemyMove : MonoBehaviour
         {
             // 다음 웨이포인트 이후로 도착하지 않으면
             float remainTime = timeAheadInSeconds - timeToNextWaypoint;
-            int nextIndex = wavePointIndex + 1;
+            int nextIndex = _wavePointIndex + 1;
 
             while (nextIndex < Waypoints.points.Length)
             {
@@ -103,14 +102,14 @@ public class EnemyMove : MonoBehaviour
 
     void GetNextWayPoint()
     {
-        if (wavePointIndex >= Waypoints.points.Length - 1) //모든 웨이포인트를 방문
+        if (_wavePointIndex >= Waypoints.points.Length - 1) //모든 웨이포인트를 방문
         {
             EndPath();
             return;
         }
 
-        wavePointIndex++; 
-        target = Waypoints.points[wavePointIndex]; //다음 인덱스의 웨이포인트
+        _wavePointIndex++; 
+        target = Waypoints.points[_wavePointIndex]; //다음 인덱스의 웨이포인트
     }
     
     void EndPath() //목표에 도달
