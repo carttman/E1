@@ -22,7 +22,7 @@ public class Enemy_HPUI : MonoBehaviour
     
     void Update()
     {
-        HPCanvas.transform.forward = MyCamera.transform.forward;
+        HPCanvas.transform.forward = -MyCamera.transform.forward;
     }
 
     void HP_Update(float health, float maxHealth)
