@@ -8,50 +8,57 @@ using Button = UnityEngine.UI.Button;
 public class WaveSpawner : MonoBehaviour
 { 
     public event Action<GameObject> OnEnemySpawned;
-    public static int EnemiesAlive = 0;
+    public event Action OnThisWaveFinished; 
    
-   public Wave[] waves; // 웨이브 클래스
+   [SerializeField] private Wave[] waves; // 웨이브 클래스
+   [SerializeField] private Transform spawnPoint;
+   [SerializeField] private TextMeshProUGUI waveCountdownText;
+   [SerializeField] private Button Btn_WaveStart;
 
-   public Transform spawnPoint;
-   public TextMeshProUGUI waveCountdownText;
-
-   private int waveIndex = 0;
+    private int WaveIndex = 0; 
+    private bool isSpawnFinished = false;
     
-   public Button Btn_WaveStart;
-
-   private bool isSpawnFinished = false;
+    public static int CurrentEnemiesAlive = 0;
+    
+    public static List<int> WaveList = new List<int>();
    
-   //private List<List<Enemy>> WaveList = new List<List<Enemy>>();
-   
-
+   private void Awake()
+   {
+        SetWaveList();
+   }
    private void Update()
    {
-      CheckWaveFinished();
+        CheckWaveFinished();
+   }
+
+   //게임 시작 시, 웨이브, 몬스터 수 저장
+   private void SetWaveList()
+   {
+       for (int i = 0; i < waves.Length; i++)
+       {
+           WaveList.Add(waves[i].SpawnCount);
+       }
    }
 
    public void OnClickWaveStart() //웨이브 시작 버튼 이벤트
    {
-       if (waveIndex != waves.Length) // 모든 웨이브 클리어
+       if (WaveIndex != waves.Length) // 모든 웨이브 클리어
        { 
            Btn_WaveStart.interactable = false;
-           waveCountdownText.text = string.Format("{0}", waveIndex + 1); //출력 형식을 지정
-
-           // List<Enemy> enemies = new List<Enemy>();
-           // WaveList.Add(enemies);
-           
+           waveCountdownText.text = string.Format("{0}", WaveIndex + 1); //출력 형식을 지정
            StartCoroutine(SpawnWave());
        }
    }
 
     IEnumerator SpawnWave()
    {
-       Wave wave = waves[waveIndex];
+       Wave wave = waves[WaveIndex];
        
-       waveIndex++; //웨이브 카운트 증가
+       WaveIndex++; //웨이브 카운트 증가
        for (int i = 0; i < wave.SpawnCount; i++)  //웨이브 레벨만큼 몬스터 소한
        {
            isSpawnFinished = false;
-           SpawnEnemy(wave.enemy);
+           WaveToSpawnEnemy(wave.enemy);
            yield return new WaitForSeconds(1f / wave.SpawnRate); // 텀 대기
        }
        
@@ -59,44 +66,38 @@ public class WaveSpawner : MonoBehaviour
        Btn_WaveStart.interactable = true;
    }
 
-   void SpawnEnemy(GameObject enemy)
+   private void WaveToSpawnEnemy(GameObject enemy)
    {
        var newEnemyGO = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
        OnEnemySpawned?.Invoke(newEnemyGO);
        
-       // 사망 이벤트 바인딩
        var newEnemy = newEnemyGO.GetComponent<Enemy>();
-       //newEnemy.OnEnemyDied += NewEnemyOnOnEnemyDied;
+       newEnemy.MyWaveIndex = WaveIndex;
        
-       //  enemy 객체 카운팅
-       //WaveList[waveIndex-1].Add(newEnemy);
+       // 사망 이벤트
+       newEnemy.OnEnemyDied += (enemy, _) => OnNewEnemyDied(enemy);
+       newEnemy.OnEnemyEndPath += (enemy, _) => OnNewEnemyDied(enemy);
        
-       EnemiesAlive++; //몬스터 카운트 증가
+       CurrentEnemiesAlive++; //몬스터 카운트 증가
    }
 
-   // private void NewEnemyOnOnEnemyDied(Enemy enemy, float golddropamount)
-   // {
-   //     
-   //     foreach (var Wave in WaveList)
-   //     {
-   //         if (Wave.Contains(enemy))
-   //         {
-   //              Wave.Remove(enemy);
-   //              if (Wave.Count <= 0)
-   //              {
-   //                  
-   //              }
-   //              break;
-   //         }
-   //     }
-   // }
-
-
-   void CheckWaveFinished()
+   private void OnNewEnemyDied(Enemy enemy)
    {
-       if (waveIndex == waves.Length)
+       WaveList[enemy.MyWaveIndex - 1]--;
+       if (WaveList[enemy.MyWaveIndex - 1] <= 0)
        {
-           if (EnemiesAlive <= 0)
+           OnThisWaveFinished?.Invoke();
+           //Debug.Log($"{enemy.MyWaveIndex} :: OnThisWaveFinished");
+       }
+       
+   }
+   
+   // 설정된 모든 웨이브 클리어 했는지 판단
+   private void CheckWaveFinished()
+   {
+       if (WaveIndex == waves.Length)
+       {
+           if (CurrentEnemiesAlive <= 0)
            {  
                if (isSpawnFinished)
                { 
@@ -107,10 +108,5 @@ public class WaveSpawner : MonoBehaviour
            }
        }
    }
-   
-   // 각 웨이브에 스폰된 몬스터들 체크
-   // 해당 웨이브에 있는 몬스터를 전부 처리하면 작동되는 이벤트 필요
-   
-   // 해당 웨이브의 몬스터가 스폰될때 각 몬스터 객체에 웨이브카운트 저장한다.
    
 }

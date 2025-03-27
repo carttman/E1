@@ -11,10 +11,9 @@ public class Enemy : MonoBehaviour, ISelectable
     // 적이 끝까지 도달시 호출되는 이벤트
     public event EnemyEndPathEventHandler OnEnemyEndPath;
     
-    
     // 적 사망시 드랍되는 골드
     [SerializeField] private float goldDropAmount = 1;
-    public Transform PopupTransform;
+    [SerializeField] private Transform PopupTransform;
 
     // 적이 끝까지 도달시 목숨 데미지
     [SerializeField] private int livesDamage = 1;
@@ -28,6 +27,8 @@ public class Enemy : MonoBehaviour, ISelectable
     // 시간
     public float Age;
     public bool IsDead => GetComponent<StatsComponent>().Health <= 0;
+
+    public int MyWaveIndex;
     
     private void Awake()
     {
@@ -63,13 +64,13 @@ public class Enemy : MonoBehaviour, ISelectable
     {
         OnEnemyDied?.Invoke(this, goldDropAmount);
         PopUpManager.Instance.CreatePopUpUI("+" + goldDropAmount.ToString(), PopupTransform.position, Color.yellow, 2);
-        WaveSpawner.EnemiesAlive--;
+        WaveSpawner.CurrentEnemiesAlive--;
     }
 
     public void EndPath()
     {
         OnEnemyEndPath?.Invoke(this, livesDamage);
-        WaveSpawner.EnemiesAlive--;
+        WaveSpawner.CurrentEnemiesAlive--;
         Destroy(gameObject);
     }
 
