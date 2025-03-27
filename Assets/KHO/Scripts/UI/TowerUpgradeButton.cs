@@ -9,16 +9,21 @@ public class TowerUpgradeButton : MonoBehaviour
 {
     [SerializeField] public Tower tower;
     [SerializeField] public TowerData towerData;
-
-    [FormerlySerializedAs("_image")] [SerializeField] private Image image;
-    [FormerlySerializedAs("_priceText")] [SerializeField] private TextMeshProUGUI priceText;
-    [FormerlySerializedAs("_nameText")] [SerializeField] private TextMeshProUGUI nameText;
     
+    [SerializeField] private Image towerImage;
+    [SerializeField] private TextMeshProUGUI priceText;
+    [SerializeField] private TextMeshProUGUI nameText;
+    
+    [SerializeField] private Color canAffordColor;
+    [SerializeField] private Color cannotAffordColor;
+
+    private Image _image;
     private Button _button;
     private TooltipTrigger _tooltipTrigger;
 
     private void Awake()
     {
+        _image = GetComponent<Image>();
         _button = GetComponent<Button>();
         _tooltipTrigger = GetComponent<TooltipTrigger>();
     }
@@ -26,13 +31,22 @@ public class TowerUpgradeButton : MonoBehaviour
     private void Start()
     {
         OnEnable();
+        OnGoldChanged(Game.Instance.Gold);
+        Game.Instance.GoldChanged += OnGoldChanged;
     }
     
+    private void OnGoldChanged(int gold)
+    {
+        var canAfford = gold >= towerData.goldCost;
+        _image.color = canAfford ? canAffordColor : cannotAffordColor;
+        _button.interactable = canAfford;
+    }
+
     private void OnEnable()
     {
         if (towerData == null) return;
         
-        image.sprite = towerData.sprite;
+        towerImage.sprite = towerData.sprite;
         priceText.text = towerData.goldCost.ToString();
         nameText.text = towerData.towerName;
         

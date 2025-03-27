@@ -491,9 +491,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tower: {fileID: 0}
   towerData: {fileID: 0}
-  image: {fileID: 5387619278944833554}
+  towerImage: {fileID: 5387619278944833554}
   priceText: {fileID: 8443298803849270414}
   nameText: {fileID: 1907093010368335534}
+  canAffordColor: {r: 0.9254902, g: 0.9411765, b: 0.94509804, a: 1}
+  cannotAffordColor: {r: 0.49803922, g: 0.54901963, b: 0.5529412, a: 1}
 --- !u!114 &2950268410138065798
 MonoBehaviour:
   m_ObjectHideFlags: 0
