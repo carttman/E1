@@ -5,15 +5,15 @@ using UnityEngine;
 // 타워 건설시 마우스 따라가는 표시하는 컴포넌트
 public class BuildingTowerGhost : MonoBehaviour
 {
-    private Color _startColor;
-    private Color _cannotBuildColor = new Color(1, 0, 0, 0.25f);
-    private Color _canBuildColor = new Color(0, 1, 0, 0.25f);
-    
     public event Action<TowerData> OnTowerBuilt;
     
-    private Ray TouchRay => Camera.main.ScreenPointToRay(Input.mousePosition);
+    [SerializeField] private Color _cannotBuildColor = new Color(1, 0, 0, 0.25f);
+    [SerializeField] private Color _canBuildColor = new Color(0, 1, 0, 0.25f);
+   
+    private Color _startColor;
+    
+    private static Ray TouchRay => Camera.main.ScreenPointToRay(Input.mousePosition);
     private Transform _pointerTile = null;
-
     private Renderer[] _renderers;
 
     void Update()
