@@ -8,10 +8,13 @@ using UnityEngine;
 // 골드 표시 UI
 public class GoldUI : MonoBehaviour
 {
-    private TextMeshProUGUI _textMesh;
     [SerializeField] private float tweenTime = 0.5f;
 
-    private Tween _tween;
+    private TextMeshProUGUI _textMesh;
+    
+    private Tween _valueTween;
+    private Tween _scaleTween;
+    
     private int _displayGold = 0;
     private int _toGold = 0;
     
@@ -29,10 +32,10 @@ public class GoldUI : MonoBehaviour
 
     private void GameOnGoldChanged(int newGold)
     {
-        _tween?.Kill();
-
+        _valueTween?.Kill();
+        
         _toGold = newGold;
-        _tween = DOTween.To(() => _displayGold,
+        _valueTween = DOTween.To(() => _displayGold,
             x =>
         {
             _displayGold = x;
@@ -40,5 +43,10 @@ public class GoldUI : MonoBehaviour
         },
             _toGold,
             tweenTime).SetUpdate(true).SetLink(gameObject);
+
+        _scaleTween?.Kill(true);
+        _scaleTween = _textMesh.rectTransform.DOPunchScale(new Vector3(0.05f, 0.05f, 0.05f), 0.25f)
+                                             .SetUpdate(true).SetLink(gameObject);
+        
     }
 }

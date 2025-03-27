@@ -29,8 +29,6 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject clearUI;
     
-
-    
     private float _beforePauseTimeScale = 1f;
     
     private int _gold = 25;
@@ -72,16 +70,6 @@ public class Game : MonoBehaviour
     private bool CanBuyTower(int idx) => towerData[idx].goldCost <= Gold;
     private bool CanBuyTower(TowerData towerData) => towerData.goldCost <= Gold;
 
-    public void AddGold(int amount)
-    {
-        Gold += amount;
-    }
-
-    public void SpendGold(int amount)
-    {
-        Gold -= amount;
-    }
-    
     private void Awake()
     {
         if (Instance != null)
@@ -100,74 +88,7 @@ public class Game : MonoBehaviour
         LivesChanged?.Invoke(_lives);
         Time.timeScale = 1f;
     }
-
-    private void WaveSpawnerOnEnemySpawned(GameObject obj)
-    {
-        var enemy = obj.GetComponent<Enemy>();
-        if (enemy)
-        {
-            enemy.OnEnemyDied += OnEnemyDied;
-            enemy.OnEnemyEndPath += OnEnemyEndPath;
-        }
-    }
-
-    // 적이 끝 도달시 목숨에 데미지 처리
-    private void OnEnemyEndPath(Enemy enemy, int livesdamage)
-    {
-        if (enemy)
-        {
-            enemy.OnEnemyEndPath -= OnEnemyEndPath;
-        }
-
-        Lives -= livesdamage;
-    }
-
-    // 적이 죽을시 골드 추가
-    private void OnEnemyDied(Enemy enemy, float goldDropAmount)
-    {
-        if (enemy)
-        {
-            enemy.OnEnemyDied -= OnEnemyDied;
-        }
-        AddGold((int)goldDropAmount);
-    }
-
-    // 타워 UI 클릭시 건설 토글
-    public void ToggleTowerBuildSelection(int button_idx)
-    {
-        //Debug.Log($"{button_idx} was selected!");
-        if (!buildingTower)
-        {
-            if (CanBuyTower(button_idx))
-            {
-                var newTower = Instantiate(towerData[button_idx].towerPrefab);
-                newTower.GetComponent<BuildingTowerGhost>().OnTowerBuilt += OnTowerBuilt;
-                buildingTower = newTower;
-            }
-            else
-            {
-                Debug.Log($"Cannot buy tower {button_idx}, not enough gold");
-            }
-        }
-        else if (buildingTower)
-        {
-            var towerGhost = buildingTower.GetComponent<BuildingTowerGhost>();
-            if (towerGhost)
-            {
-                towerGhost.OnTowerBuilt -= OnTowerBuilt;
-            }
-            
-            Destroy(buildingTower);
-            buildingTower = null;
-        }
-    }
-
-    private void OnTowerBuilt(TowerData obj)
-    {
-        SpendGold(obj.goldCost);
-        buildingTower = null;
-    }
-
+    
     // 게임오버 UI 재시작 처리 (현재 신 다시 불러옴)
     public void GameRetry()
     {
@@ -205,8 +126,8 @@ public class Game : MonoBehaviour
     {
         if (tower == null) return;
         if (!CanBuyTower(towerData)) return;
-        
-        SpendGold(towerData.goldCost);
+
+        Gold -= towerData.goldCost;
         tower.UpgradeTo(towerData);
         
         TooltipSystem.Hide();
@@ -226,5 +147,73 @@ public class Game : MonoBehaviour
         _beforePauseTimeScale = Time.timeScale;
         Time.timeScale = 0f;
         clearUI.SetActive(true);
+    }
+
+    private void WaveSpawnerOnEnemySpawned(GameObject obj)
+    {
+        var enemy = obj.GetComponent<Enemy>();
+        if (enemy)
+        {
+            enemy.OnEnemyDied += OnEnemyDied;
+            enemy.OnEnemyEndPath += OnEnemyEndPath;
+        }
+    }
+
+    // 적이 끝 도달시 목숨에 데미지 처리
+    private void OnEnemyEndPath(Enemy enemy, int livesdamage)
+    {
+        if (enemy)
+        {
+            enemy.OnEnemyEndPath -= OnEnemyEndPath;
+        }
+
+        Lives -= livesdamage;
+    }
+
+    // 적이 죽을시 골드 추가
+    private void OnEnemyDied(Enemy enemy, float goldDropAmount)
+    {
+        if (enemy)
+        {
+            enemy.OnEnemyDied -= OnEnemyDied;
+        }
+
+        Gold += (int)goldDropAmount;
+    }
+
+    // 타워 UI 클릭시 건설 토글
+    public void ToggleTowerBuildSelection(int button_idx)
+    {
+        //Debug.Log($"{button_idx} was selected!");
+        if (!buildingTower)
+        {
+            if (CanBuyTower(button_idx))
+            {
+                var newTower = Instantiate(towerData[button_idx].towerPrefab);
+                newTower.GetComponent<BuildingTowerGhost>().OnTowerBuilt += OnTowerBuilt;
+                buildingTower = newTower;
+            }
+            else
+            {
+                Debug.Log($"Cannot buy tower {button_idx}, not enough gold");
+            }
+        }
+        else if (buildingTower)
+        {
+            var towerGhost = buildingTower.GetComponent<BuildingTowerGhost>();
+            if (towerGhost)
+            {
+                towerGhost.OnTowerBuilt -= OnTowerBuilt;
+            }
+            
+            Destroy(buildingTower);
+            buildingTower = null;
+        }
+    }
+
+    private void OnTowerBuilt(TowerData obj)
+    {
+        Gold -= obj.goldCost;
+        buildingTower = null;
     }
 }
