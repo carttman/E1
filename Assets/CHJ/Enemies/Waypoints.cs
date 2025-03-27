@@ -4,14 +4,14 @@ using UnityEngine.UIElements;
 
 public class Waypoints : MonoBehaviour
 {
-    public static Transform[] points;
+    public static Transform[] PointTransforms;
 
     void Awake()
     {
-        points = new Transform[transform.childCount]; // 웨이포인트들의 트랜스폼  
-        for (int i = 0; i < points.Length; i++) // 각 인덱스에 웨이포인트 트랜스폼 대입
+        PointTransforms = new Transform[transform.childCount]; // 웨이포인트들의 트랜스폼  
+        for (int i = 0; i < PointTransforms.Length; i++) // 각 인덱스에 웨이포인트 트랜스폼 대입
         {
-           points[i] = transform.GetChild(i);
+           PointTransforms[i] = transform.GetChild(i);
         }
     }
 }

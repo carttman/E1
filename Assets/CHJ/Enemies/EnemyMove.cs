@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
-    // Enemy 스크립트
     private Enemy _enemy;
     private EnemyState _enemyState;
     [SerializeField] private float distanceCheckTolerance = 0.4f;
@@ -20,7 +19,7 @@ public class EnemyMove : MonoBehaviour
         if (timeAheadInSeconds <= 0f) return transform.position;
         
         float distanceToNextWaypoint = Vector3.Distance(transform.position, target.position);
-        float timeToNextWaypoint = distanceToNextWaypoint / _enemyState.speed;
+        float timeToNextWaypoint = distanceToNextWaypoint / _enemyState.MoveSpeed;
 
         // 시간내 다음 웨이포인트 도달한다면
         if (timeAheadInSeconds <= timeToNextWaypoint)
@@ -33,25 +32,24 @@ public class EnemyMove : MonoBehaviour
             float remainTime = timeAheadInSeconds - timeToNextWaypoint;
             int nextIndex = _wavePointIndex + 1;
 
-            while (nextIndex < Waypoints.points.Length)
+            while (nextIndex < Waypoints.PointTransforms.Length)
             {
                 // 이번 구간 거리
-                float segmentDistance = Vector3.Distance(Waypoints.points[nextIndex - 1].position, Waypoints.points[nextIndex].position);
-                float segmentTime = segmentDistance / _enemyState.speed;
+                float segmentDistance = Vector3.Distance(Waypoints.PointTransforms[nextIndex - 1].position, Waypoints.PointTransforms[nextIndex].position);
+                float segmentTime = segmentDistance / _enemyState.MoveSpeed;
 
                 if (remainTime <= segmentTime)
                 {
-                    return Vector3.Lerp(Waypoints.points[nextIndex - 1].position,
-                        Waypoints.points[nextIndex].position,
+                    return Vector3.Lerp(Waypoints.PointTransforms[nextIndex - 1].position,
+                        Waypoints.PointTransforms[nextIndex].position,
                         remainTime / segmentTime);
                 }
 
                 remainTime -= segmentTime;
                 nextIndex++;
             }
-            
             // 모든 웨이 지난 후 예측시 그냥 마지막 웨이 위치
-            return Waypoints.points[^1].position;
+            return Waypoints.PointTransforms[^1].position;
         }
     }
 
@@ -67,58 +65,43 @@ public class EnemyMove : MonoBehaviour
     private void Start()
     {
         _fromPosition = transform.position;
-        target = Waypoints.points[0]; 
+        target = Waypoints.PointTransforms[0]; 
     }
 
     void Update()
     {
-        /*
-        Vector3 dir = target.position - transform.position;
-
-        //방향을 단위벡터로 바꾸기 위해 normalized 진행 후 speed를 곱한만큼 진행, World Space로
-        transform.Translate(dir.normalized * (speed * Time.deltaTime), Space.World);
-        transform.LookAt(target);
-        */
         _progress += Time.deltaTime;
         
-        //transform.position = Vector3.Lerp(_fromPosition, target.position, _progress / _thisWaveDuration);
-        transform.position = Vector3.MoveTowards(transform.position, target.position, _enemyState.speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target.position, _enemyState.MoveSpeed * Time.deltaTime);
         transform.LookAt(target);
 
         //웨이포인트 도착 시 다음 웨이포인트로 변경
         if (Vector3.Distance(transform.position, target.position) <= distanceCheckTolerance)
         {
             GetNextWayPoint();
-            /*
-            var distance = Vector3.Distance(transform.position, target.position);
-            _thisWaveDuration = distance / _enemyState.speed;
-            
-            _fromPosition = transform.position;
-            _progress = 0f;
-            */
         } 
     }
 
-    void GetNextWayPoint()
+    private void GetNextWayPoint()
     {
-        if (_wavePointIndex >= Waypoints.points.Length - 1) //모든 웨이포인트를 방문
+        if (_wavePointIndex >= Waypoints.PointTransforms.Length - 1) //모든 웨이포인트를 방문
         {
             EndPath();
             return;
         }
 
         _wavePointIndex++; 
-        target = Waypoints.points[_wavePointIndex]; //다음 인덱스의 웨이포인트
+        target = Waypoints.PointTransforms[_wavePointIndex]; //다음 인덱스의 웨이포인트
     }
     
     //목표에 도달
-    void EndPath() 
+    private void EndPath() 
     {
         // Enemy 스크립트에서 처리
         _enemy.EndPath();
     }
 
-    void DeadToMoveStop()
+    private void DeadToMoveStop()
     {
         this.enabled = false;
     }

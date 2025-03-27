@@ -75,8 +75,8 @@ public class WaveSpawner : MonoBehaviour
        newEnemy.MyWaveIndex = WaveIndex;
        
        // 사망 이벤트
-       newEnemy.OnEnemyDied += (enemy, _) => OnNewEnemyDied(enemy);
-       newEnemy.OnEnemyEndPath += (enemy, _) => OnNewEnemyDied(enemy);
+       newEnemy.OnEnemyDied += (enemyInstance, _) => OnNewEnemyDied(enemyInstance);
+       newEnemy.OnEnemyEndPath += (enemyInstance, _) => OnNewEnemyDied(enemyInstance);
        
        CurrentEnemiesAlive++; //몬스터 카운트 증가
    }
@@ -87,9 +87,7 @@ public class WaveSpawner : MonoBehaviour
        if (WaveList[enemy.MyWaveIndex - 1] <= 0)
        {
            OnThisWaveFinished?.Invoke();
-           //Debug.Log($"{enemy.MyWaveIndex} :: OnThisWaveFinished");
        }
-       
    }
    
    // 설정된 모든 웨이브 클리어 했는지 판단

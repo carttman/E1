@@ -10,6 +10,6 @@ public class PopUpUIBillboard : MonoBehaviour
     }
     void Update()
     {
-        transform.forward = MyCamera.transform.forward;
+        transform.forward = Camera.main.transform.forward;
     }
 }

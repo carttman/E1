@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class Enemy_HPUI : MonoBehaviour
 {
     [Header("Enemy_HPUI")]
-    public Image healthBar;
-    public Camera MyCamera;
-    public Canvas HPCanvas;
+    [SerializeField] private Image healthBar;
+    [SerializeField] private Canvas HPCanvas;
+    private Camera MyCamera;
 
     private void Awake()
     {
@@ -22,6 +22,7 @@ public class Enemy_HPUI : MonoBehaviour
     
     void Update()
     {
+        //HPBar의 방향 업데이트
         HPCanvas.transform.forward = -MyCamera.transform.forward;
     }
 

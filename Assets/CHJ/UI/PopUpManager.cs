@@ -9,7 +9,7 @@ public class PopUpManager : MonoBehaviour
         get { return _instance; }
     }
     
-    public GameObject PopUpObject;
+    [SerializeField] private GameObject PopUpObject;
     private TMP_Text PopUpText;
 
     private void Awake()

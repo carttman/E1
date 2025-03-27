@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyState : MonoBehaviour
 {
     private Animator animator;
-    
-    public float speed = 10f;
     private bool isSlow = false;
+    
+    public float MoveSpeed = 10f;
     
     void Start()
     { 
@@ -38,10 +39,10 @@ public class EnemyState : MonoBehaviour
             yield break;
         }
         isSlow = true;
-        speed *= percent;
+        MoveSpeed *= percent;
         yield return new WaitForSeconds(duration);
         
-        speed /= percent;
+        MoveSpeed /= percent;
         isSlow = false;
     }
 }
