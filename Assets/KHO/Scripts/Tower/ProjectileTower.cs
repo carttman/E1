@@ -8,6 +8,12 @@ public class ProjectileTower : Tower
     
     [SerializeField] private float launchProgress = 0f;
 
+    private new void Awake()
+    {
+        base.Awake();
+        damagePerShot = towerData.damage;
+    }
+    
     private void Update()
     {
         launchProgress += shotsPerSecond * Time.deltaTime;

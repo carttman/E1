@@ -6,12 +6,15 @@ public class MortarTower : Tower
     [SerializeField] private Transform mortar;
     [SerializeField] private GameObject shellPrefab;
     [SerializeField] private float leadTime = 0.5f;
+    [SerializeField] private float damage;
+    
     private float _launchSpeed;
     private float _launchProgress = 0.999f;
 
     private new void Awake()
     {
         base.Awake();
+        damage = towerData.damage;
         OnValidate();
     }
 
@@ -73,10 +76,14 @@ public class MortarTower : Tower
         float cosTheta = Mathf.Cos(Mathf.Atan(tanTheta));
         float sinTheta = cosTheta * tanTheta;
 
-        GameObject shell = Instantiate(shellPrefab, launchPoint, Quaternion.identity);
-        Shell shellScript = shell.GetComponent<Shell>();
-        shellScript.Initialize(launchPoint, targetPoint, 
-            new Vector3(s * cosTheta * dir.x, s * sinTheta, s * cosTheta * dir.y), this);
+        GameObject shellGo = Instantiate(shellPrefab, launchPoint, Quaternion.identity);
+        Shell shell = shellGo.GetComponent<Shell>();
+        shell.Initialize(launchPoint,
+            targetPoint, 
+            new Vector3(s * cosTheta * dir.x, s * sinTheta, s * cosTheta * dir.y),
+            damage,
+            this
+            );
         
         /*
         // 경로 그리기

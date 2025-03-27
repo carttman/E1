@@ -20,6 +20,12 @@ public class DiceTower : Tower
 
     private Image diceImageUI;
 
+    private new void Awake()
+    {
+        base.Awake();
+        damagePerShot = towerData.damage;
+    }
+    
     private new void Start()
     {
         base.Start();

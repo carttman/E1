@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -6,11 +7,15 @@ using UnityEngine.Serialization;
 public class Game : MonoBehaviour
 {
     public float tooltipDelay = 0.1f;
-    public event Action<int> goldChanged;
-    public event Action<int> livesChanged;
+    public event Action<int> GoldChanged;
+    public event Action<int> LivesChanged;
     
     public static Game Instance { get; private set; }
-
+    
+    [SerializeField] public GameObject explosionPrefab;
+    [SerializeField] private TowerData[] towerData;
+    public TowerData[] TowerData => towerData;
+    
     // 웨이브 스폰 레퍼런스
     [SerializeField] private WaveSpawner waveSpawner;
     
@@ -24,8 +29,7 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject clearUI;
     
-    [SerializeField] public TowerData[] towerDatas;
-    [SerializeField] public GameObject explosionPrefab;
+
     
     private float _beforePauseTimeScale = 1f;
     
@@ -37,7 +41,7 @@ public class Game : MonoBehaviour
         {
             if (_gold == value) return;
             _gold = value;
-            goldChanged?.Invoke(_gold);
+            GoldChanged?.Invoke(_gold);
         }
     }
 
@@ -50,7 +54,7 @@ public class Game : MonoBehaviour
         {
             if (_lives == value) return;
             _lives = value;
-            livesChanged?.Invoke(_lives);
+            LivesChanged?.Invoke(_lives);
             if (_lives <= 0)
             {
                 GameOver();
@@ -65,7 +69,7 @@ public class Game : MonoBehaviour
         gameoverUI.SetActive(true);
     }
 
-    private bool CanBuyTower(int idx) => towerDatas[idx].goldCost <= Gold;
+    private bool CanBuyTower(int idx) => towerData[idx].goldCost <= Gold;
     private bool CanBuyTower(TowerData towerData) => towerData.goldCost <= Gold;
 
     public void AddGold(int amount)
@@ -80,23 +84,20 @@ public class Game : MonoBehaviour
     
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance != null)
         {
-            Instance = this;
+            Instance = null;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
-        
+
+        Instance = this;
         waveSpawner.OnEnemySpawned += WaveSpawnerOnEnemySpawned;
     }
 
     private void Start()
     {
         // 시작시 UI 리프레시 위해 이벤트 호출
-        goldChanged?.Invoke(_gold);
-        livesChanged?.Invoke(_lives);
+        GoldChanged?.Invoke(_gold);
+        LivesChanged?.Invoke(_lives);
         Time.timeScale = 1f;
     }
 
@@ -139,7 +140,7 @@ public class Game : MonoBehaviour
         {
             if (CanBuyTower(button_idx))
             {
-                var newTower = Instantiate(towerDatas[button_idx].towerPrefab);
+                var newTower = Instantiate(towerData[button_idx].towerPrefab);
                 newTower.GetComponent<BuildingTowerGhost>().OnTowerBuilt += OnTowerBuilt;
                 buildingTower = newTower;
             }
@@ -176,7 +177,7 @@ public class Game : MonoBehaviour
     
     public void ToMainMenu()
     {
-        SceneManager.LoadScene("MainMap");
+        var asyncLoad = SceneManager.LoadSceneAsync("Map/MainMap");
     }
 
     public void SetTimeScale(float newTimeScale)

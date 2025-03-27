@@ -9,28 +9,30 @@ using UnityEngine;
 public class GoldUI : MonoBehaviour
 {
     private TextMeshProUGUI _textMesh;
-    [SerializeField] private Game game;
     [SerializeField] private float tweenTime = 0.5f;
 
-    private TweenerCore<int, int, NoOptions> tween;
-    
+    private Tween _tween;
     private int _displayGold = 0;
     private int _toGold = 0;
     
     private void Awake()
     {
         _textMesh = GetComponent<TextMeshProUGUI>();
-        game.goldChanged += GameOngoldChanged;
-        _displayGold = game.Gold;
+    }
+
+    private void Start()
+    {
+        Game.Instance.GoldChanged += GameOnGoldChanged;
+        _displayGold = Game.Instance.Gold;
         _toGold = _displayGold;
     }
 
-    private void GameOngoldChanged(int newGold)
+    private void GameOnGoldChanged(int newGold)
     {
-        tween?.Kill();
+        _tween?.Kill();
 
         _toGold = newGold;
-        tween = DOTween.To(() => _displayGold,
+        _tween = DOTween.To(() => _displayGold,
             x =>
         {
             _displayGold = x;

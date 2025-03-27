@@ -11,7 +11,7 @@ public class LivesUI : MonoBehaviour
     private void Awake()
     {
         _textMesh = GetComponent<TextMeshProUGUI>();
-        game.livesChanged += OnLivesChanged;
+        game.LivesChanged += OnLivesChanged;
     }
 
     private void OnLivesChanged(int newLives)

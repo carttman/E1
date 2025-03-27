@@ -25,9 +25,9 @@ public class BezierProjectile : Projectile
     {
         lastKnownTargetPos = Target ? Target.position : lastKnownTargetPos;
         
-        var nowPostion = transform.position;
-        var wantPosition = FunctionLibrary.Vezier(startPos, middlePos, lastKnownTargetPos, age / duration);
-        var displacement = Vector3.Distance(nowPostion, wantPosition);
+        var nowPosition = transform.position;
+        var wantPosition = FunctionLibrary.Bezier(startPos, middlePos, lastKnownTargetPos, age / duration);
+        var displacement = Vector3.Distance(nowPosition, wantPosition);
 
         if (displacement > maxAllowedDisplacement)
         {

@@ -6,8 +6,7 @@ using UnityEngine.EventSystems;
 // 타일의 마우스 이벤트 처리하는 컴포넌트
 public class BuildableTileEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    private Vector3 startPosition;
-    private float yOffset = 0.5f;
+    private readonly float _yOffset = 0.5f;
 
     private Color _startColor;
     [SerializeField] private Color highlightColor = Color.blue;
@@ -16,7 +15,6 @@ public class BuildableTileEvent : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void Awake()
     {
         _renderer = GetComponentInChildren<Renderer>();
-        startPosition = transform.position;
         _startColor = _renderer.material.color;
     }
 
@@ -29,16 +27,14 @@ public class BuildableTileEvent : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void OnPointerEnter(PointerEventData eventData)
     {
         GameEventHub.Instance.TilePointerEnter(transform);
-        //if (Time.timeScale == 0f) return;
         _renderer.transform.DOComplete();
-        _renderer.transform.DOLocalMoveY(yOffset, 0.15f).
+        _renderer.transform.DOLocalMoveY(_yOffset, 0.15f).
             SetEase(Ease.InCubic).SetUpdate(true).SetLink(gameObject);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         GameEventHub.Instance.TilePointerExit(transform);
-        //if (Time.timeScale == 0f) return;
         _renderer.transform.DOComplete();
         _renderer.transform.DOLocalMoveY(0f, 0.1f).
             SetEase(Ease.InCubic).SetUpdate(true).SetLink(gameObject);
@@ -49,13 +45,13 @@ public class BuildableTileEvent : MonoBehaviour, IPointerEnterHandler, IPointerE
         GameEventHub.Instance.TilePointerClick(transform);
     }
 
-    public void StartHighlight()
+    private void StartHighlight()
     {
         if (!_renderer) return;
         _renderer.material.DOColor(highlightColor, 0.75f).SetEase(Ease.InCubic).SetLoops(-1, LoopType.Yoyo);
     }
 
-    public void StopHighlight()
+    private void StopHighlight()
     {
         if (!_renderer) return;   
         _renderer.material.DOKill(true);

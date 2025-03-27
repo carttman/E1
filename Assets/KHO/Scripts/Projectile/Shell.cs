@@ -18,12 +18,13 @@ public class Shell : MonoBehaviour
 
     private float age;
 
-    public void Initialize(Vector3 launchPoint, Vector3 targetPoint, Vector3 launchVelocity, Tower instigator)
+    public void Initialize(Vector3 launchPoint, Vector3 targetPoint, Vector3 launchVelocity, float damage, Tower instigator)
     {
         this.launchPoint = launchPoint;
         this.targetPoint = targetPoint;
         this.launchVelocity = launchVelocity;
         this.instigator = instigator;
+        this.damage = damage;
     }
 
     private void Update()

@@ -26,6 +26,11 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        GameEventHub.Instance.OnTilePointerClick += (t) => DeselectSelected();
+    }
+
     public void OnSelect(ISelectable selectable)
     {
         if (selectable == selectedObject || selectable == null) return;

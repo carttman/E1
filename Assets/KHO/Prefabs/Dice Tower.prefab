@@ -38,11 +38,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dice Tower
       objectReference: {fileID: 0}
+    - target: {fileID: 5110557841344513614, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: m_Name
+      value: dice
+      objectReference: {fileID: 0}
     - target: {fileID: 5171187102064971567, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: bf8bbbee7394c344a992f377a9105ed8, type: 2}
+      objectReference: {fileID: 2100000, guid: 63ccf0b2803f0374181993699bd65c87, type: 2}
     - target: {fileID: 7129702463164921253, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
         type: 3}
       propertyPath: m_Mesh
@@ -113,15 +118,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7210177913813072150}
   m_SourcePrefab: {fileID: 100100000, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
---- !u!4 &1123900942515915400 stripped
+--- !u!4 &2336075951319647925 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3653282857593457266, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
-    type: 3}
-  m_PrefabInstance: {fileID: 4407885580957024506}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2021889956219395247 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2388252123258264661, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+  m_CorrespondingSourceObject: {fileID: 2107856319766529615, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
     type: 3}
   m_PrefabInstance: {fileID: 4407885580957024506}
   m_PrefabAsset: {fileID: 0}
@@ -160,8 +159,8 @@ MonoBehaviour:
   towerData: {fileID: 11400000, guid: 32060235084c6a64db75f0f02394757f, type: 2}
   targetingRange: 20
   potentialTargets: []
-  rotatingPart: {fileID: 1123900942515915400}
-  turret: {fileID: 2021889956219395247}
+  rotatingPart: {fileID: 2336075951319647925}
+  turret: {fileID: 2336075951319647925}
   _selectionIndicator: {fileID: 3284184907471036727}
   diceSprites:
   - {fileID: 21300000, guid: 0a6dd3a7bca01754a9e27dfe20a54757, type: 3}

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public abstract class Tower : MonoBehaviour, ISelectable
 { 
@@ -46,6 +45,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
         }
     }
 
+    
     [SerializeField] protected float dealtDamage = 0f;
     public float DealtDamage
     {

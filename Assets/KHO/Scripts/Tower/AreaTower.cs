@@ -8,6 +8,12 @@ public class AreaTower : Tower
     [SerializeField] protected Color blastColor = new Color(1, 0, 0, 0.3f);
     
     protected float AttackProgress = 0.999f;
+
+    private new void Awake()
+    {
+        base.Awake();
+        damage = towerData.damage;
+    }
     
     protected new void Start()
     {

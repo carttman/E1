@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,7 +38,7 @@ public class StatsComponent : MonoBehaviour
         if (!shouldAccumulate)
         {
             // 데미지 팝업 호출
-            PopUpManager.Instance.CreatePopUpUI(damage.ToString(), PopupTransform.position, Color.red, 1);
+            PopUpManager.Instance.CreatePopUpUI(damage.ToString(CultureInfo.CurrentCulture), PopupTransform.position, Color.red, 1);
         }
         
         

@@ -8,6 +8,12 @@ public class LaserTower : Tower
 
     private Vector3 _laserBeamScale = Vector3.one;
     private Vector3 _laserBeamStartPos;
+
+    private new void Awake()
+    {
+        base.Awake();
+        damagePerSecond = towerData.damage;
+    }
     
     private new void Start()
     {
@@ -18,8 +24,7 @@ public class LaserTower : Tower
 
     private void Update()
     {
-        Transform target;
-        if (AcquireTarget(out target))
+        if (AcquireTarget(out var target))
         {
             TrackTarget(ref target);
             Shoot(target);

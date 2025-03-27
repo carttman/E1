@@ -104,7 +104,4 @@ public class BuildingTowerGhost : MonoBehaviour
             rend.material.color = _color;
         }
     }
-
-
-    
 }
