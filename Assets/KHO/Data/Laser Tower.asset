@@ -17,7 +17,7 @@ MonoBehaviour:
     \uACF5\uACA9\uD569\uB2C8\uB2E4"
   goldCost: 5
   sprite: {fileID: 21300000, guid: a68c7ed6bc66bdf4d9cc7e3f0cf578b2, type: 3}
-  towerPrefab: {fileID: 4709322006253467250, guid: ccd75e4b126990a45bf7970b207c1f1e,
+  towerPrefab: {fileID: 2218509119293377957, guid: ccd75e4b126990a45bf7970b207c1f1e,
     type: 3}
   damage: 50
   upgradesTo:

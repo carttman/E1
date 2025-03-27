@@ -47,6 +47,13 @@ public class TowerBuildButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerE
         _button.onClick.AddListener(() => Game.Instance.ToggleTowerBuildSelection(towerIndex));
         
         Game.Instance.GoldChanged += OnGoldChanged;
+        StartCoroutine(WaitForGameGoldSetup());
+    }
+
+    private IEnumerator WaitForGameGoldSetup()
+    {
+        yield return new WaitUntil(() => Game.Instance.didStart);
+        OnGoldChanged(Game.Instance.Gold);
     }
 
     private void OnGoldChanged(int gold)
