@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 public abstract class Tower : MonoBehaviour, ISelectable
@@ -183,6 +184,9 @@ public abstract class Tower : MonoBehaviour, ISelectable
     protected void Start()
     {
         StartCoroutine(TurnOnSelectable(0.5f));
+        //transform.DOShakePosition(0.5f, 0.1f).SetEase(Ease.OutElastic).SetUpdate(true).SetLink(gameObject);
+        transform.DOShakeRotation(0.5f, 0.25f).SetEase(Ease.OutElastic).SetUpdate(true).SetLink(gameObject);
+        transform.DOPunchScale(new Vector3(0.05f, 0.05f, 0.05f), 0.5f).SetEase(Ease.OutElastic).SetUpdate(true).SetLink(gameObject);
     }
 
     protected IEnumerator TurnOnSelectable(float time)
@@ -281,11 +285,14 @@ public abstract class Tower : MonoBehaviour, ISelectable
         Debug.Assert(towerData.upgradesTo[0] == upgradeTowerData || towerData.upgradesTo[1] == upgradeTowerData);
         
         var newTower = Instantiate(upgradeTowerData.towerPrefab, transform.position, transform.rotation);
-        newTower.GetComponent<Tower>().Kills = kills;
-        newTower.GetComponent<Tower>().DealtDamage = dealtDamage;
+        var newTowerComponent = newTower.GetComponent<Tower>();
+        newTowerComponent.Kills = kills;
+        newTowerComponent.DealtDamage = dealtDamage;
         newTower.GetComponent<BuildingTowerGhost>().enabled = false;
-        newTower.GetComponent<Tower>().enabled = true;
+        newTowerComponent.enabled = true;
+        
         SelectionManager.instance.OnSelect(newTower.GetComponent<Tower>());
+        
         Destroy(gameObject);
     }
 
