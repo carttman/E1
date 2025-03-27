@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -6,16 +7,24 @@ using UnityEngine;
 public class LivesUI : MonoBehaviour
 {
     private TextMeshProUGUI _textMesh;
-    [SerializeField] private Game game;
+    private RectTransform _rect;
     
     private void Awake()
     {
         _textMesh = GetComponent<TextMeshProUGUI>();
-        game.LivesChanged += OnLivesChanged;
+        _rect = GetComponent<RectTransform>();
+    }
+
+    private void Start()
+    {
+        Game.Instance.LivesChanged += OnLivesChanged;
     }
 
     private void OnLivesChanged(int newLives)
     {
         _textMesh.text = $"{newLives}";
+        _rect.DOComplete();
+        _rect.DOPunchScale(new Vector3(0.25f, 0.25f, 0.25f), 0.25f)
+             .SetUpdate(true).SetLink(gameObject);
     }
 }

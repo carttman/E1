@@ -18,6 +18,8 @@ public class TowerBuildButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerE
     
     [SerializeField] private Color canAffordColor;
     [SerializeField] private Color cannotAffordColor;
+    [SerializeField] private Color canAffordTextColor;
+    [SerializeField] private Color cannotAffordTextColor;
     [SerializeField] private float pointerTweenOffset = 7f;
     
     private Button _button;
@@ -64,23 +66,21 @@ public class TowerBuildButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerE
 
         if (canAfford)
         {
-            _button.interactable = true;
-            _button.image.color = canAffordColor;
             _goldChangeTween?.Kill();
             _goldChangeTween = _rectTransform.DOLocalMoveY(_startYPosition, 0.2f).SetEase(Ease.OutElastic).SetLink(gameObject);
         }
         else
         {
-            _button.interactable = false;
-            _button.image.color = cannotAffordColor;
             _tween?.Kill();
             _goldChangeTween?.Kill();
             _goldChangeTween = _rectTransform.DOLocalMoveY(_startYPosition - pointerTweenOffset, 0.2f).SetEase(Ease.OutElastic).SetLink(gameObject);
-
         }
+
+        _button.interactable = canAfford;
+        _button.image.color = canAfford ? canAffordColor : cannotAffordColor;
+        priceText.color = canAfford ? canAffordTextColor : cannotAffordTextColor;
     }
-
-
+    
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (!_button.interactable) return;
