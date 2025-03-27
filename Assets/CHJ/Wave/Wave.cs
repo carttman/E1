@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class Wave
 {
     public GameObject enemy; //Spawn 될 Enemy
-    public int count; //Spawn 될 숫자
-    public float rate; //Spawn 주기
+    public int SpawnCount; //Spawn 될 숫자
+    public float SpawnRate; //Spawn 주기
 }
