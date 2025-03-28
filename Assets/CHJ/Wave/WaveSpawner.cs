@@ -31,6 +31,11 @@ public class WaveSpawner : MonoBehaviour
         CheckWaveFinished();
    }
 
+   private void Start()
+   {
+       OnThisWaveFinished += () => Debug.Log("OnThisWaveFinished");
+   }
+
    //게임 시작 시, 웨이브, 몬스터 수 저장
    private void SetWaveList()
    {

@@ -31,7 +31,7 @@ public class Game : MonoBehaviour
     
     private float _beforePauseTimeScale = 1f;
     
-    private int _gold = 25;
+    private int _gold = 1000;
     public int Gold
     {
         get => _gold;
@@ -43,7 +43,7 @@ public class Game : MonoBehaviour
         }
     }
 
-    private int _lives = 10;
+    private int _lives = 1000;
 
     public int Lives
     {

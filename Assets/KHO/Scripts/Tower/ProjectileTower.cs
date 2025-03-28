@@ -37,14 +37,15 @@ public class ProjectileTower : Tower
 
     private void Shoot(Transform pTarget)
     {
-        var newProjectile = Instantiate(projectilePrefab, turret.position, Quaternion.identity);
+        var newProjectile = PoolManager.Instance.GetProjectile(projectilePrefab: projectilePrefab,
+                                                                position: transform.position,
+                                                                rotation: Quaternion.identity,
+                                                                target: pTarget,
+                                                                damage: damagePerShot,
+                                                                instigator: this);
         newProjectile.transform.LookAt(pTarget);
         newProjectile.transform.Rotate(Vector3.right, Random.Range(-10f, 10f));
+        newProjectile.gameObject.SetActive(true);
         //newProjectile.transform.Rotate(Vector3.up, Random.Range(50f, 75f));
-        
-        var proj = newProjectile.GetComponent<Projectile>();
-        proj.Target = pTarget;
-        proj.Damage = damagePerShot;
-        proj.instigator = this;
     }
 }

@@ -16,6 +16,7 @@ public class EnemyMove : MonoBehaviour
     // 일정 시간후 도달할 위치 예측
     public Vector3 GetPredictedPosition(float timeAheadInSeconds)
     {
+        if (!transform) return Vector3.zero;
         if (timeAheadInSeconds <= 0f) return transform.position;
         
         float distanceToNextWaypoint = Vector3.Distance(transform.position, target.position);

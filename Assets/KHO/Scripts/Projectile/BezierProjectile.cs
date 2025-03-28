@@ -14,14 +14,15 @@ public class BezierProjectile : Projectile
 
     private Vector3 targetPos;
     
-    private void Start()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         startPos = transform.position;
         middlePos = Vector3.Lerp(startPos, Target.position, 0.5f) + (Target.position - startPos).magnitude * upwardMovementModifier * Vector3.up;
         duration = (Target.position - startPos).magnitude / speed;
     }
 
-    private void FixedUpdate()
+    protected override void OnUpdate()
     {
         lastKnownTargetPos = Target ? Target.position : lastKnownTargetPos;
         
@@ -31,7 +32,7 @@ public class BezierProjectile : Projectile
 
         if (displacement > maxAllowedDisplacement)
         {
-            Destroy(gameObject);
+            Release();
         }
         
         transform.position = wantPosition;
@@ -49,9 +50,7 @@ public class BezierProjectile : Projectile
                 }
             }
             
-            Destroy(gameObject);
+            Release();
         }
     }
-
-    protected override void OnUpdate() { }
 }

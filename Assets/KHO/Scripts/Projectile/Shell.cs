@@ -1,22 +1,15 @@
-
 using UnityEngine;
-using UnityEngine.Serialization;
-using RaycastHit = UnityEngine.RaycastHit;
 
-public class Shell : MonoBehaviour
+public class Shell : Projectile
 {
     [SerializeField] private Color blastColor = new Color(1f, 0.64f, 0f, 0.3f);
     
     private Vector3 launchPoint;
     private Vector3 targetPoint;
     private Vector3 launchVelocity;
-
-    public Tower instigator;
     
     public float blastRadius = 5f;
     public float damage = 100f;
-
-    private float age;
 
     public void Initialize(Vector3 launchPoint, Vector3 targetPoint, Vector3 launchVelocity, float damage, Tower instigator)
     {
@@ -27,9 +20,8 @@ public class Shell : MonoBehaviour
         this.damage = damage;
     }
 
-    private void Update()
+    protected override void OnUpdate()
     {
-        age += Time.deltaTime;
         Vector3 p = launchPoint + launchVelocity * age;
         p.y -= 0.5f * 9.81f * age * age;
         transform.localPosition = p;
