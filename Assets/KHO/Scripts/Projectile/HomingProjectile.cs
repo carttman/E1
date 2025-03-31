@@ -44,6 +44,7 @@ public class HomingProjectile : Projectile
         _rb.linearVelocity = Vector3.zero;
         _collider.radius = _triggerRadius;
         _enemyMove = Target.GetComponent<EnemyMove>();
+        _collided = false;
     }
 
     private void FixedUpdate()
@@ -94,16 +95,18 @@ public class HomingProjectile : Projectile
         if (Random.Range(0f, 1f) > hitChance) return;
 
         _collided = true;
-        var enemy = other.GetComponent<Enemy>();
         if (isAoe)
         {
             var explosionGO = Instantiate(Game.Instance.explosionPrefab, transform.position, Quaternion.identity);
             var explosion = explosionGO.GetComponent<Explosion>();
             explosion.GetComponent<Explosion>().Initialize(0.5f, aoeRadius, new Color(1, 1, 0, 0.3f), false);
-            explosion.OnCollideDetected += col => col.GetComponent<StatsComponent>()?.TakeDamage(Damage, instigator);
+            float damageCapture = Damage;
+            Tower instigatorCapture = instigator;
+            explosion.OnCollideDetected += col => col.GetComponent<StatsComponent>()?.TakeDamage(damageCapture, instigatorCapture);
         }
         else
         {
+            var enemy = other.GetComponent<Enemy>();
             enemy.GetComponent<StatsComponent>().TakeDamage(Damage, instigator);
         }
         Release();

@@ -40,7 +40,7 @@ public class Shell : Projectile
             explosion.Initialize(0.5f, blastRadius, blastColor,false);
             explosion.OnCollideDetected += OnCollideDetected;
             
-            Destroy(gameObject);
+            Release();
         }
 
         Vector3 d = _launchVelocity;

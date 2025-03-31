@@ -30,12 +30,19 @@ public class Explosion : MonoBehaviour
         if (_effectOnly) return;
         
         RaycastHit[] hitBuffer = new RaycastHit[100];
-        
-        var size = Physics.SphereCastNonAlloc(origin: transform.position, radius: radius, direction: Vector3.up, hitBuffer);
+
+        var size = Physics.SphereCastNonAlloc(
+            origin: transform.position,
+            radius: radius,
+            direction: Vector3.up,
+            hitBuffer,
+            maxDistance: radius);
         if (size <= 0) return;
         for (int i = 0; i < size; i++)
         {
+            //Debug.Log("invoking detonate...");
             OnCollideDetected?.Invoke(hitBuffer[i].collider);
+            //Debug.Log(OnCollideDetected);
         }
     }
 

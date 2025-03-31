@@ -424,13 +424,13 @@ MonoBehaviour:
   isAoe: 1
   aoeRadius: 2
   explosionColor: {r: 1, g: 0, b: 0.9647832, a: 0.3}
-  _rotateSpeed: 140
+  _rotateSpeed: 150
   _minDistancePredict: 3
   _maxDistancePredict: 100
   _maxTimePrediction: 3
   _deviationSpeed: 2
   _deviationAmount: 25
-  _triggerRadius: 0.2
+  _triggerRadius: 0.5
   maxLifetime: 10
   hitChance: 1
 --- !u!54 &7702545555796594855
