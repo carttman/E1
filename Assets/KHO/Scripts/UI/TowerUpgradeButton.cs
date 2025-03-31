@@ -62,6 +62,7 @@ public class TowerUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerE
         _tooltipTrigger.header = towerData.towerName;
         _tooltipTrigger.content = towerData.description;
         
+        _button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(() => Game.Instance.UpgradeTower(tower, towerData));
         OnGoldChanged(Game.Instance.Gold);
     }

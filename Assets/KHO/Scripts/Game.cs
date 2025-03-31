@@ -126,7 +126,7 @@ public class Game : MonoBehaviour
     {
         if (tower == null) return;
         if (!CanBuyTower(towerData)) return;
-
+        
         Gold -= towerData.goldCost;
         tower.UpgradeTo(towerData);
         
