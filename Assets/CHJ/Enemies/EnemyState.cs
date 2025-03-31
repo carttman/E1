@@ -12,9 +12,9 @@ public class EnemyState : MonoBehaviour
     public float MoveSpeed = 10f;
     
     [SerializeField]private AudioClip deathSFX; // 죽음 효과음 클립
-    [SerializeField]private AudioSource audioSource; // 오디오 소스
+    private AudioSource audioSource; // 오디오 소스
 
-    void Start()
+    private void Start()
     { 
         Enemy enemy = gameObject.GetComponent<Enemy>();
         enemy.OnEnemyDied += (enemyInstance, goldDropAmount) => DeadTrigger();
@@ -28,17 +28,16 @@ public class EnemyState : MonoBehaviour
     }
 
     //사망 이벤트 받고 애니메이션 실행 
-    public void DeadTrigger()
+    private void DeadTrigger()
     {
         animator.SetTrigger("Dead");
-        
-        //오브젝트를 1초 동안 아래로 
-        transform.DOMoveY(transform.position.y - 3f, 1f).SetEase(Ease.InOutQuad);
-        
-        audioSource.PlayOneShot(deathSFX);
+    }
 
-        //체력 UI 비활성화
-        Destroy(gameObject, 1f);
+    public void OnDeadAnimationEvent()
+    {
+        // 오브젝트를 1초 동안 아래로 
+        transform.DOMoveY(transform.position.y - 3f, 1f).SetEase(Ease.InOutQuad).onComplete += () => Destroy(gameObject);
+        audioSource.PlayOneShot(deathSFX);
     }
     
     public void ApplySlow(float percent, float duration)
