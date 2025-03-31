@@ -27,8 +27,10 @@ public class Enemy : MonoBehaviour, ISelectable
     // 시간
     public float Age;
     public bool IsDead => GetComponent<StatsComponent>().Health <= 0;
+    //자신의 웨이브 타입
+    [HideInInspector]public int MyWaveIndex;
 
-    public int MyWaveIndex;
+    public string MyName = "";
     
     private void Awake()
     {
