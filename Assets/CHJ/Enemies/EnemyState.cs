@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
+using DG.Tweening;
 
 public class EnemyState : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class EnemyState : MonoBehaviour
     public void DeadTrigger()
     {
         animator.SetTrigger("Dead");
+        
+        // 게임 오브젝트를 1초 동안 아래로 움직이기
+        transform.DOMoveY(transform.position.y - 3f, 1f).SetEase(Ease.InOutQuad);
+
         //체력 UI 비활성화
         Destroy(gameObject, 1f);
     }
