@@ -31,6 +31,7 @@ public class EnemyState : MonoBehaviour
     private void DeadTrigger()
     {
         animator.SetTrigger("Dead");
+        audioSource.PlayOneShot(deathSFX);
     }
 
     public void OnDeadAnimationEvent()
@@ -40,7 +41,6 @@ public class EnemyState : MonoBehaviour
                   SetEase(Ease.InOutQuad).
                   SetLink(gameObject).
                   OnComplete(() => Destroy(gameObject));
-        audioSource.PlayOneShot(deathSFX);
     }
     
     public void ApplySlow(float percent, float duration)
