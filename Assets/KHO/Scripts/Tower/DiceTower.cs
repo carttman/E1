@@ -22,7 +22,7 @@ public class DiceTower : Tower
     private float _launchProgress;
     private bool _isRolling = false;
     private Image _diceImageUI;
-
+    
     private new void Awake()
     {
         base.Awake();
@@ -33,6 +33,7 @@ public class DiceTower : Tower
     {
         base.Start();
         var mainUI = GameObject.FindGameObjectWithTag("Main UI");
+        
         var diceUI = Instantiate(diceUIPrefab, mainUI.transform);
         _diceImageUI = diceUI.GetComponent<Image>();
         var rectTransform = diceUI.GetComponent<RectTransform>();
@@ -44,6 +45,19 @@ public class DiceTower : Tower
 
     private void Update()
     {
+        if (_diceImageUI)
+        {
+            if (Game.Instance.IsPlayingSlowmo)
+            {
+                _diceImageUI.enabled = false;
+            }
+            else if (!Game.Instance.IsPlayingSlowmo)
+            {
+                _diceImageUI.enabled = true;
+                _diceImageUI.transform.position = Camera.main.WorldToScreenPoint(turret.transform.position) + diceUIOffset;
+            }
+        }
+        
         if (_isRolling) return;
         
         _launchProgress += Time.deltaTime;
