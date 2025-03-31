@@ -77,9 +77,7 @@ public class DiceTower : Tower
             // Pause before next itteration
             yield return new WaitForSeconds(DICEROLL_DELAY);
         }
-
-        // Assigning final side so you can use this value later in your game
-        // for player movement for example
+        
         finalSide = randomDiceSide + 1;
 
         if (AcquireTarget(out Transform pTarget))
@@ -87,7 +85,7 @@ public class DiceTower : Tower
             if (pTarget)
             {
                 TrackTarget(ref pTarget);
-                StartCoroutine(ShootDelay(pTarget, finalSide + 1));
+                StartCoroutine(ShootDelay(pTarget, finalSide));
             }
         }
         else
