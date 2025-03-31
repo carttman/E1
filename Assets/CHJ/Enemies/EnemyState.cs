@@ -36,7 +36,10 @@ public class EnemyState : MonoBehaviour
     public void OnDeadAnimationEvent()
     {
         // 오브젝트를 1초 동안 아래로 
-        transform.DOMoveY(transform.position.y - 3f, 1f).SetEase(Ease.InOutQuad).onComplete += () => Destroy(gameObject);
+        transform.DOMoveY(transform.position.y - 3f, 1f).
+                  SetEase(Ease.InOutQuad).
+                  SetLink(gameObject).
+                  OnComplete(() => Destroy(gameObject));
         audioSource.PlayOneShot(deathSFX);
     }
     

@@ -28,9 +28,7 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject pauseButtonUI;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject clearUI;
-    
-    private float _beforePauseTimeScale = 1f;
-    
+
     private int _gold = 1000;
     public int Gold
     {
@@ -42,9 +40,11 @@ public class Game : MonoBehaviour
             GoldChanged?.Invoke(_gold);
         }
     }
+    
+    private bool CanBuyTower(int idx) => towerData[idx].goldCost <= Gold;
+    private bool CanBuyTower(TowerData towerData) => towerData.goldCost <= Gold;
 
     private int _lives = 1000;
-
     public int Lives
     {
         get => _lives;
@@ -60,16 +60,11 @@ public class Game : MonoBehaviour
         }
     }
 
-    // 게임 오버시 호출됨
-    private void GameOver()
-    {
-        mainUI.SetActive(false);
-        gameoverUI.SetActive(true);
-    }
-
-    private bool CanBuyTower(int idx) => towerData[idx].goldCost <= Gold;
-    private bool CanBuyTower(TowerData towerData) => towerData.goldCost <= Gold;
-
+    public bool IsPlayingSlowmo = false;
+    private float _beforePauseTimeScale = 1f;
+    private float _beforeSlowmoTimeScale = 1f;
+    private const float SLOWMO_TIMESCALE = 0.35f;
+    
     private void Awake()
     {
         if (Instance != null)
@@ -89,6 +84,13 @@ public class Game : MonoBehaviour
         Time.timeScale = 1f;
     }
     
+    // 게임 오버시 호출됨
+    private void GameOver()
+    {
+        mainUI.SetActive(false);
+        gameoverUI.SetActive(true);
+    }
+    
     // 게임오버 UI 재시작 처리 (현재 신 다시 불러옴)
     public void GameRetry()
     {
@@ -104,7 +106,22 @@ public class Game : MonoBehaviour
     public void SetTimeScale(float newTimeScale)
     {
         if (newTimeScale < 0f) return;
+        if (IsPlayingSlowmo) return;
+        
         Time.timeScale = newTimeScale;
+    }
+
+    public IEnumerator PlaySlowmo(float time)
+    {
+        if (IsPlayingSlowmo) yield break;
+        
+        _beforeSlowmoTimeScale = Time.timeScale;
+        Time.timeScale = SLOWMO_TIMESCALE;
+        IsPlayingSlowmo = true;
+        yield return new WaitForSecondsRealtime(time);
+        
+        Time.timeScale = _beforeSlowmoTimeScale;
+        IsPlayingSlowmo = false;
     }
 
     public void PauseGame()

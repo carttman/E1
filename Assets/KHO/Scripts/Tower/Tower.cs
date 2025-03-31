@@ -191,7 +191,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
 
     protected IEnumerator TurnOnSelectable(float time)
     {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSecondsRealtime(time);
         _isSelectable = true;
     }
 

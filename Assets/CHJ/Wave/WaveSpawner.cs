@@ -9,7 +9,7 @@ using Button = UnityEngine.UI.Button;
 public class WaveSpawner : MonoBehaviour
 { 
     public event Action<GameObject> OnEnemySpawned;
-    public event Action OnThisWaveFinished; 
+    public event Action<Enemy> OnThisWaveFinished; 
    
    [SerializeField] private Wave[] waves; // 웨이브 클래스
    [SerializeField] private Transform spawnPoint;
@@ -31,11 +31,6 @@ public class WaveSpawner : MonoBehaviour
    private void Update()
    {
         CheckWaveFinished();
-   }
-
-   private void Start()
-   {
-       OnThisWaveFinished += () => Debug.Log("OnThisWaveFinished");
    }
 
    //게임 시작 시, 웨이브, 몬스터 수 저장
@@ -100,7 +95,7 @@ public class WaveSpawner : MonoBehaviour
        
        if (WaveList[enemy.MyWaveIndex - 1] <= 0)
        {
-           OnThisWaveFinished?.Invoke();
+           OnThisWaveFinished?.Invoke(enemy);
        }
    }
    
