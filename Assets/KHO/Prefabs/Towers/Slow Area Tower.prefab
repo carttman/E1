@@ -148,6 +148,7 @@ MonoBehaviour:
   rotatingPart: {fileID: 215468277407313828}
   turret: {fileID: 5186001174977363359}
   _selectionIndicator: {fileID: 8531108939828887559}
+  buildSound: {fileID: 8300000, guid: 66c5ca982cf4023418de540cf6028e9e, type: 3}
   attacksPerSecond: 0.33
   damage: 25
   blastRadius: -2.1474836e+9

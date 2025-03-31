@@ -104,6 +104,9 @@ public abstract class Tower : MonoBehaviour, ISelectable
 
     protected RangeIndicator _rangeIndicator;
     [SerializeField] private GameObject _selectionIndicator;
+
+    [Header("Sound")]
+    [SerializeField] private AudioClip buildSound;
     
         
     protected abstract class EnemyComparer: IComparer<Enemy>
@@ -183,10 +186,12 @@ public abstract class Tower : MonoBehaviour, ISelectable
 
     protected void Start()
     {
-        StartCoroutine(TurnOnSelectable(0.5f));
+        StartCoroutine(TurnOnSelectable(0.3f));
         //transform.DOShakePosition(0.5f, 0.1f).SetEase(Ease.OutElastic).SetUpdate(true).SetLink(gameObject);
         transform.DOShakeRotation(0.5f, 0.25f).SetEase(Ease.OutElastic).SetUpdate(true).SetLink(gameObject);
         transform.DOPunchScale(new Vector3(0.05f, 0.05f, 0.05f), 0.5f).SetEase(Ease.OutElastic).SetUpdate(true).SetLink(gameObject);
+        
+        AudioManager.Instance.PlaySound(buildSound);
     }
 
     protected IEnumerator TurnOnSelectable(float time)

@@ -162,6 +162,7 @@ MonoBehaviour:
   rotatingPart: {fileID: 2336075951319647925}
   turret: {fileID: 2336075951319647925}
   _selectionIndicator: {fileID: 3284184907471036727}
+  buildSound: {fileID: 8300000, guid: 66c5ca982cf4023418de540cf6028e9e, type: 3}
   diceSprites:
   - {fileID: 21300000, guid: 0a6dd3a7bca01754a9e27dfe20a54757, type: 3}
   - {fileID: 21300000, guid: 5ffbdf1a90b30e240b95cd3041e3f386, type: 3}

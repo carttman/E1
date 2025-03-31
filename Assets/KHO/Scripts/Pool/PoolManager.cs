@@ -13,8 +13,17 @@ public class PoolManager : MonoBehaviour
     public List<GameObject> projectilePrefabs;
     private Dictionary<GameObject, ProjectilePool> _projectilePools = new Dictionary<GameObject, ProjectilePool>();
     
+    [Header("Audio")]
+    [SerializeField] public Pool<AudioSource> Audio;
+    
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
         Instance = this;
         
         foreach (var prefab in projectilePrefabs)

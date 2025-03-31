@@ -22,6 +22,9 @@ public class TowerBuildButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerE
     [SerializeField] private Color cannotAffordTextColor;
     [SerializeField] private float pointerTweenOffset = 7f;
     
+    [Header("Sound")]
+    [SerializeField] private AudioClip clickSound;
+    
     private Button _button;
     private TooltipTrigger _tooltipTrigger;
     private float _startYPosition;
@@ -46,10 +49,16 @@ public class TowerBuildButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerE
         
         _startYPosition = _rectTransform.localPosition.y;
 
-        _button.onClick.AddListener(() => Game.Instance.ToggleTowerBuildSelection(towerIndex));
+        _button.onClick.AddListener(OnClick);
         
         Game.Instance.GoldChanged += OnGoldChanged;
         StartCoroutine(WaitForGameGoldSetup());
+    }
+
+    private void OnClick()
+    {
+        AudioManager.Instance.PlaySound(clickSound);
+        Game.Instance.ToggleTowerBuildSelection(towerIndex);
     }
 
     private IEnumerator WaitForGameGoldSetup()

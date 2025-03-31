@@ -275,6 +275,7 @@ MonoBehaviour:
   rotatingPart: {fileID: 1432465972930606559}
   turret: {fileID: 7675480238110068232}
   _selectionIndicator: {fileID: 7455934678572178044}
+  buildSound: {fileID: 8300000, guid: 66c5ca982cf4023418de540cf6028e9e, type: 3}
   projectilePrefab: {fileID: 1855686018460528733, guid: bbd75184271295846a0540b0c4dcb545,
     type: 3}
   shotsPerSecond: 6

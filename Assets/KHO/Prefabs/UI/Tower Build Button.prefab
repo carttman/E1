@@ -496,9 +496,10 @@ MonoBehaviour:
   towerNameText: {fileID: 8010735451639217469}
   canAffordColor: {r: 0.9254902, g: 0.9411765, b: 0.94509804, a: 1}
   cannotAffordColor: {r: 0.49803922, g: 0.54901963, b: 0.5529412, a: 1}
-  pointerTweenOffset: 7
   canAffordTextColor: {r: 0.16078432, g: 0.5019608, b: 0.7254902, a: 1}
   cannotAffordTextColor: {r: 0.90588236, g: 0.29803923, b: 0.23529412, a: 1}
+  pointerTweenOffset: 7
+  clickSound: {fileID: 8300000, guid: e11a74db70e2d7b49a8e30d7fd2c19ef, type: 3}
 --- !u!114 &7276950117302073399
 MonoBehaviour:
   m_ObjectHideFlags: 0

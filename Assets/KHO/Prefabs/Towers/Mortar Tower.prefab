@@ -197,8 +197,10 @@ MonoBehaviour:
   rotatingPart: {fileID: 4953520720328531183}
   turret: {fileID: 1887205882661498124}
   _selectionIndicator: {fileID: 3469911335174370124}
+  buildSound: {fileID: 8300000, guid: 66c5ca982cf4023418de540cf6028e9e, type: 3}
   shotsPerSecond: 0.75
   mortar: {fileID: 1887205882661498124}
   shellPrefab: {fileID: 6791858764434182562, guid: 912255b3a0e913140818fb6708411b1d,
     type: 3}
   leadTime: 0.5
+  damage: 0

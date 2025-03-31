@@ -251,6 +251,7 @@ MonoBehaviour:
   rotatingPart: {fileID: 3653282857593457266}
   turret: {fileID: 2388252123258264661}
   _selectionIndicator: {fileID: 1204766025124422093}
+  buildSound: {fileID: 8300000, guid: 66c5ca982cf4023418de540cf6028e9e, type: 3}
   laserBeam: {fileID: 8637150883866057580}
   damagePerSecond: 50
 --- !u!65 &303210249947105551
@@ -307,6 +308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a7e5f258f3768448a7cfb30a4367be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cannotBuildColor: {r: 1, g: 0, b: 0, a: 0.25}
+  _canBuildColor: {r: 0, g: 1, b: 0, a: 0.25}
 --- !u!1001 &2051769515578825884
 PrefabInstance:
   m_ObjectHideFlags: 0
