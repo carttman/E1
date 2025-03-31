@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520d5163be77d7e429934058c715b3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 200
+  maxHealth: 100
   health: 0
   PopupTransform: {fileID: 4234604199334752208}
 --- !u!114 &6241200190116911929
@@ -396,6 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 10
+  deathSFX: {fileID: 8300000, guid: 954f89960686fd44e9e97318a636b701, type: 3}
 --- !u!1 &7208404059543758196
 GameObject:
   m_ObjectHideFlags: 0
