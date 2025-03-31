@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
 
 public class WaveSpawner : MonoBehaviour
@@ -14,6 +15,7 @@ public class WaveSpawner : MonoBehaviour
    [SerializeField] private Transform spawnPoint;
    [SerializeField] private TextMeshProUGUI waveCountdownText;
    [SerializeField] private Button Btn_WaveStart;
+   [SerializeField] private Slider waveSlider;
 
     private int WaveIndex = 0; 
     private bool isSpawnFinished = false;
@@ -50,8 +52,9 @@ public class WaveSpawner : MonoBehaviour
        if (WaveIndex != waves.Length) // 모든 웨이브 클리어
        { 
            Btn_WaveStart.interactable = false;
-           waveCountdownText.text = string.Format("{0}", WaveIndex + 1); //출력 형식을 지정
+           waveCountdownText.text = $"{WaveIndex + 1} / {waves.Length}";
            StartCoroutine(SpawnWave());
+           waveSlider.value = 0f;
        }
    }
 
@@ -89,6 +92,12 @@ public class WaveSpawner : MonoBehaviour
    private void OnNewEnemyDied(Enemy enemy)
    {
        WaveList[enemy.MyWaveIndex - 1]--;
+
+       if (WaveIndex == enemy.MyWaveIndex)
+       {
+           waveSlider.value = 1.0f - (1.0f * WaveList[enemy.MyWaveIndex - 1] / waves[enemy.MyWaveIndex - 1].SpawnCount);
+       }
+       
        if (WaveList[enemy.MyWaveIndex - 1] <= 0)
        {
            OnThisWaveFinished?.Invoke();
