@@ -41,6 +41,7 @@ public class HomingProjectile : Projectile
     protected override void OnEnable()
     {
         base.OnEnable();
+        _rb.linearVelocity = Vector3.zero;
         _collider.radius = _triggerRadius;
         _enemyMove = Target.GetComponent<EnemyMove>();
     }

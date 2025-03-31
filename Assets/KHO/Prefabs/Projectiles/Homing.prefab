@@ -431,7 +431,7 @@ MonoBehaviour:
   _deviationSpeed: 3
   _deviationAmount: 30
   _triggerRadius: 0.3
-  maxLifetime: 10
+  maxLifetime: 7.5
   hitChance: 0.5
 --- !u!54 &7702545555796594855
 Rigidbody:

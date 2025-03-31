@@ -14,7 +14,7 @@ public class Enemy_HPUI : MonoBehaviour
         HPCanvas.worldCamera = MyCamera;
         
         StatsComponent statsComponent= GetComponent<StatsComponent>();
-        statsComponent.HealthChanged += hp => HP_Update(hp, statsComponent.MaxHealth);
+        statsComponent.HealthChanged += hp => HP_Update(hp, statsComponent.maxHealth);
         
         Enemy enemy = gameObject.GetComponent<Enemy>();
         enemy.OnEnemyDied += (enemyInstance, goldDropAmount) => DeadTriggerToHpBar();

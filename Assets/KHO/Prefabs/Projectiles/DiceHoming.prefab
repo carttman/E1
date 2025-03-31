@@ -421,7 +421,9 @@ MonoBehaviour:
   trail:
   - {fileID: 5849582387167092606}
   - {fileID: 7267302262320322400}
-  maxLifetime: 20
+  isAoe: 1
+  aoeRadius: 2
+  explosionColor: {r: 1, g: 0, b: 0.9647832, a: 0.3}
   _rotateSpeed: 140
   _minDistancePredict: 3
   _maxDistancePredict: 100
@@ -429,10 +431,8 @@ MonoBehaviour:
   _deviationSpeed: 2
   _deviationAmount: 25
   _triggerRadius: 0.2
+  maxLifetime: 10
   hitChance: 1
-  isAoe: 1
-  aoeRadius: 2
-  explosionColor: {r: 1, g: 0, b: 0.9647832, a: 0.3}
 --- !u!54 &7702545555796594855
 Rigidbody:
   m_ObjectHideFlags: 0
