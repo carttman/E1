@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 // HP 등 스탯 처리하는 컴포넌트
@@ -10,7 +11,8 @@ public class StatsComponent : MonoBehaviour
     public event Action Died;
     public event Action<float> HealthChanged;
     
-    public float MaxHealth = 100f;
+    public float maxHealth = 100f;
+    
     [SerializeField]
     private float health;
     public float Health
@@ -22,7 +24,7 @@ public class StatsComponent : MonoBehaviour
     
     private void Awake()
     {
-        health = MaxHealth;
+        health = maxHealth;
     }
     
     public void TakeDamage(float damage, Tower instigator = null, bool shouldAccumulate = false)

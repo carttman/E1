@@ -1,30 +1,37 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Shell : Projectile
 {
-    [SerializeField] private Color blastColor = new Color(1f, 0.64f, 0f, 0.3f);
-    
-    private Vector3 launchPoint;
-    private Vector3 targetPoint;
-    private Vector3 launchVelocity;
     
     public float blastRadius = 5f;
     public float damage = 100f;
-
-    public void Initialize(Vector3 launchPoint, Vector3 targetPoint, Vector3 launchVelocity, float damage, Tower instigator)
+    
+    [SerializeField] private Color blastColor = new Color(1f, 0.64f, 0f, 0.3f);
+    [SerializeField] private bool initialized = false;
+    
+    private Vector3 _launchPoint;
+    private Vector3 _targetPoint;
+    private Vector3 _launchVelocity;
+    
+    public void Initialize(Vector3 launchPoint, Vector3 targetPoint, Vector3 launchVelocity, float inDamage, Tower inInstigator)
     {
-        this.launchPoint = launchPoint;
-        this.targetPoint = targetPoint;
-        this.launchVelocity = launchVelocity;
-        this.instigator = instigator;
-        this.damage = damage;
+        this._launchPoint = launchPoint;
+        this._targetPoint = targetPoint;
+        this._launchVelocity = launchVelocity;
+        this.instigator = inInstigator;
+        this.damage = inDamage;
+        
+        initialized = true;
     }
 
     protected override void OnUpdate()
     {
-        Vector3 p = launchPoint + launchVelocity * age;
+        if (!initialized) return;
+        
+        Vector3 p = _launchPoint + _launchVelocity * age;
         p.y -= 0.5f * 9.81f * age * age;
-        transform.localPosition = p;
+        transform.position = p;
 
         if (p.y < 0f)
         {
@@ -36,7 +43,7 @@ public class Shell : Projectile
             Destroy(gameObject);
         }
 
-        Vector3 d = launchVelocity;
+        Vector3 d = _launchVelocity;
         d.y -= 9.81f * age;
         transform.localRotation = Quaternion.LookRotation(d);
     }
@@ -46,5 +53,11 @@ public class Shell : Projectile
         var stats = col.GetComponent<StatsComponent>();
         if (!stats) return;
         stats.TakeDamage(damage, instigator);
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        initialized = false;
     }
 }

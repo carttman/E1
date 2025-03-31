@@ -75,15 +75,25 @@ public class MortarTower : Tower
         float tanTheta = (s2 + Mathf.Sqrt(r)) / (g * x);
         float cosTheta = Mathf.Cos(Mathf.Atan(tanTheta));
         float sinTheta = cosTheta * tanTheta;
+        Vector3 launchVelocity = new Vector3(s * cosTheta * dir.x, s * sinTheta, s * cosTheta * dir.y);
 
-        GameObject shellGo = Instantiate(shellPrefab, launchPoint, Quaternion.identity);
+        Projectile shellGo = PoolManager.Instance.GetProjectile(
+            projectilePrefab: shellPrefab,
+            position: launchPoint,
+            rotation: Quaternion.identity,
+            target: null,
+            damage: damage,
+            instigator: this
+        );
+        
         Shell shell = shellGo.GetComponent<Shell>();
         shell.Initialize(launchPoint,
             targetPoint, 
-            new Vector3(s * cosTheta * dir.x, s * sinTheta, s * cosTheta * dir.y),
+            launchVelocity,
             damage,
             this
             );
+        shell.gameObject.SetActive(true);
         
         /*
         // 경로 그리기

@@ -41,15 +41,15 @@ public class Enemy : MonoBehaviour, ISelectable
         _enemySelectionData = new EnemySelectionData
         {
             Name = gameObject.name,
-            Health = _statsComponent.MaxHealth,
-            MaxHealth = _statsComponent.MaxHealth,
+            Health = _statsComponent.maxHealth,
+            MaxHealth = _statsComponent.maxHealth,
             MoveSpeed = GetComponent<EnemyState>()?.MoveSpeed ?? 0f
         };
         
         _statsComponent.HealthChanged += newHealth =>
         {
             _enemySelectionData.Health = newHealth;
-            _enemySelectionData.MaxHealth = _statsComponent.MaxHealth;
+            _enemySelectionData.MaxHealth = _statsComponent.maxHealth;
         };
 
         _enemySelectionData.OnSelectionDataChanged += data => OnSelectionDataChanged?.Invoke(data);

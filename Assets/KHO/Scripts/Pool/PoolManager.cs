@@ -49,6 +49,7 @@ public class PoolManager : MonoBehaviour
             proj.Target = target;
             proj.Damage = damage;
             proj.instigator = instigator;
+            proj.enabled = true;
             return proj;
         }
         else
