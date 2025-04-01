@@ -75,6 +75,10 @@ public class Game : MonoBehaviour
         }
     }
 
+    public int MaxBuildLevel => GlobalData.towerRateChance.Length - 1;
+    public bool CanLevelUpBuildLevel => _buildLevel < MaxBuildLevel && 
+                                         Gold >= GlobalData.towerLevelUpCost[_buildLevel];
+    
     public bool IsPlayingSlowmo = false;
     private float _beforePauseTimeScale = 1f;
     private float _beforeSlowmoTimeScale = 1f;
@@ -265,5 +269,12 @@ public class Game : MonoBehaviour
             return Global.Rarity.Uncommon;
         }
         return Global.Rarity.Rare;
+    }
+
+    public void BuildLevelUp()
+    {
+        if (!CanLevelUpBuildLevel) return;
+        Gold -= GlobalData.towerLevelUpCost[_buildLevel];
+        BuildLevel++;
     }
 }

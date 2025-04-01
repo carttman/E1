@@ -37,13 +37,24 @@ public class TowerSelectionUI : MonoBehaviour
         
         towerNameText.text = data.StaticTowerData.towerName;
         towerDescriptionText.text = data.StaticTowerData.description;
-        killsText.text = $"킬 수: {data.Kills}";
         
         towerSprite.sprite = data.StaticTowerData.sprite;
         towerElementSprite.sprite = Game.Instance.GlobalData.GetElementIcon(data.StaticTowerData.elementType);
         
-        damageText.text = $"데미지: {data.StaticTowerData.TowerStats[(int)data.tower.Rarity].damage}";
+        // STATS
+        float damage = _data.StaticTowerData.TowerStats[(int)_data.tower.Rarity].damage;
+        float speed = _data.StaticTowerData.TowerStats[(int)_data.tower.Rarity].attackSpeed;
+        float range = _data.StaticTowerData.TowerStats[(int)_data.tower.Rarity].range;
+        float dps = Mathf.Approximately(speed, 0) ? damage : damage * speed;
+        
+        dpsText.text = $"초당 데미지: {dps:0.#}";
+        damageText.text = $"데미지: {damage:0.#}";
+        attackSpeedText.text = $"공격속도: {speed:0.#}";
+        rangeText.text = $"범위: {range:0.#}미터";
+        
+        // RECORD
         dealtDamageText.text = $"가한 데미지:\n{data.DealtDamage:0}";
+        killsText.text = $"킬 수: {data.Kills}";
         
         if (data.StaticTowerData.upgradesTo[0] != null)
         {
