@@ -10,14 +10,15 @@ public class WaveSpawner : MonoBehaviour
 { 
     public event Action<GameObject> OnEnemySpawned;
     public event Action<Enemy> OnThisWaveFinished; 
+    public event Action OnClickWaveStartEvent;
    
-   [SerializeField] private Wave[] waves; // 웨이브 클래스
+   [SerializeField] public Wave[] Waves; // 웨이브 클래스
    [SerializeField] private Transform spawnPoint;
    [SerializeField] private TextMeshProUGUI waveCountdownText;
    [SerializeField] private Button Btn_WaveStart;
    [SerializeField] private Slider waveSlider;
 
-    private int WaveIndex = 0; 
+    public int WaveIndex = 0; 
     private bool isSpawnFinished = false;
     
     public static int CurrentEnemiesAlive = 0;
@@ -36,18 +37,19 @@ public class WaveSpawner : MonoBehaviour
    //게임 시작 시, 웨이브, 몬스터 수 저장
    private void SetWaveList()
    {
-       for (int i = 0; i < waves.Length; i++)
+       for (int i = 0; i < Waves.Length; i++)
        {
-           WaveList.Add(waves[i].SpawnCount);
+           WaveList.Add(Waves[i].SpawnCount);
        }
    }
 
    public void OnClickWaveStart() //웨이브 시작 버튼 이벤트
    {
-       if (WaveIndex != waves.Length) // 모든 웨이브 클리어
+       if (WaveIndex != Waves.Length) // 모든 웨이브 클리어
        { 
+           OnClickWaveStartEvent?.Invoke();
            Btn_WaveStart.interactable = false;
-           waveCountdownText.text = $"{WaveIndex + 1} / {waves.Length}";
+           waveCountdownText.text = $"{WaveIndex + 1} / {Waves.Length}";
            StartCoroutine(SpawnWave());
            waveSlider.value = 0f;
        }
@@ -55,7 +57,7 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
    {
-       Wave wave = waves[WaveIndex];
+       Wave wave = Waves[WaveIndex];
        
        WaveIndex++; //웨이브 카운트 증가
        for (int i = 0; i < wave.SpawnCount; i++)  //웨이브 레벨만큼 몬스터 소한
@@ -90,7 +92,7 @@ public class WaveSpawner : MonoBehaviour
 
        if (WaveIndex == enemy.MyWaveIndex)
        {
-           waveSlider.value = 1.0f - (1.0f * WaveList[enemy.MyWaveIndex - 1] / waves[enemy.MyWaveIndex - 1].SpawnCount);
+           waveSlider.value = 1.0f - (1.0f * WaveList[enemy.MyWaveIndex - 1] / Waves[enemy.MyWaveIndex - 1].SpawnCount);
        }
        
        if (WaveList[enemy.MyWaveIndex - 1] <= 0)
@@ -102,7 +104,7 @@ public class WaveSpawner : MonoBehaviour
    // 설정된 모든 웨이브 클리어 했는지 판단
    private void CheckWaveFinished()
    {
-       if (WaveIndex == waves.Length)
+       if (WaveIndex == Waves.Length)
        {
            if (CurrentEnemiesAlive <= 0)
            {  
