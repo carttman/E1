@@ -31,7 +31,7 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject clearUI;
 
-    private int _gold = 1000;
+    private int _gold = 50;
     public int Gold
     {
         get => _gold;
