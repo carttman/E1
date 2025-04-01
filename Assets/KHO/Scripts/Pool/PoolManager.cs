@@ -46,7 +46,7 @@ public class PoolManager : MonoBehaviour
         }
     }
     
-    public Projectile GetProjectile(GameObject projectilePrefab, Vector3 position, Quaternion rotation, Transform target, float damage, Tower instigator = null)
+    public Projectile GetProjectile(GameObject projectilePrefab, Vector3 position, Quaternion rotation, Transform target, DamagePacket damagePacket)
     {
         var pool = GetProjectilePool(projectilePrefab);
         if (pool != null)
@@ -55,9 +55,8 @@ public class PoolManager : MonoBehaviour
             proj.pool = pool;
             proj.transform.position = position;
             proj.transform.rotation = rotation;
-            proj.Target = target;
-            proj.Damage = damage;
-            proj.instigator = instigator;
+            proj.target = target;
+            proj.DamagePacket = damagePacket;
             proj.enabled = true;
             return proj;
         }

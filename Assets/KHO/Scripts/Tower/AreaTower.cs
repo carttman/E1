@@ -58,6 +58,8 @@ public class AreaTower : Tower
     {
         var stats = col.GetComponent<StatsComponent>();
         if (!stats) return;
-        stats.TakeDamage(damage, this);
+
+        var damagePacket = new DamagePacket(damage, towerData.elementType, this);
+        stats.TakeDamage(damagePacket);
     }
 }

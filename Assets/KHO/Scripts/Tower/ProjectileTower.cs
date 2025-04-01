@@ -38,12 +38,12 @@ public class ProjectileTower : Tower
 
     private void Shoot(Transform pTarget)
     {
+        var damagePacket = new DamagePacket(damagePerShot, towerData.elementType, this);
         var newProjectile = PoolManager.Instance.GetProjectile(projectilePrefab: projectilePrefab,
                                                                 position: transform.position,
                                                                 rotation: Quaternion.identity,
                                                                 target: pTarget,
-                                                                damage: damagePerShot,
-                                                                instigator: this);
+                                                                damagePacket: damagePacket);
         newProjectile.transform.LookAt(pTarget);
         newProjectile.transform.Rotate(Vector3.right, Random.Range(-10f, 10f));
         newProjectile.gameObject.SetActive(true);

@@ -18,13 +18,13 @@ public class BezierProjectile : Projectile
     {
         base.OnEnable();
         startPos = transform.position;
-        middlePos = Vector3.Lerp(startPos, Target.position, 0.5f) + (Target.position - startPos).magnitude * upwardMovementModifier * Vector3.up;
-        duration = (Target.position - startPos).magnitude / speed;
+        middlePos = Vector3.Lerp(startPos, target.position, 0.5f) + (target.position - startPos).magnitude * upwardMovementModifier * Vector3.up;
+        duration = (target.position - startPos).magnitude / speed;
     }
 
     protected override void OnUpdate()
     {
-        lastKnownTargetPos = Target ? Target.position : lastKnownTargetPos;
+        lastKnownTargetPos = target ? target.position : lastKnownTargetPos;
         
         var nowPosition = transform.position;
         var wantPosition = FunctionLibrary.Bezier(startPos, middlePos, lastKnownTargetPos, age / duration);
@@ -42,12 +42,9 @@ public class BezierProjectile : Projectile
         if (age >= duration)
         {
             // Check if target is still present
-            if (Target && Target.GetComponent<StatsComponent>() is StatsComponent sc)
+            if (target && target.GetComponent<StatsComponent>() is StatsComponent sc)
             {
-                if (!Mathf.Approximately(Damage, float.MinValue))
-                {
-                    sc.TakeDamage(Damage, instigator);
-                }
+                sc.TakeDamage(DamagePacket);
             }
             
             Release();

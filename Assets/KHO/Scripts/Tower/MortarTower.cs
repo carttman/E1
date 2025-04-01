@@ -77,21 +77,20 @@ public class MortarTower : Tower
         float sinTheta = cosTheta * tanTheta;
         Vector3 launchVelocity = new Vector3(s * cosTheta * dir.x, s * sinTheta, s * cosTheta * dir.y);
 
+        var damagePacket = new DamagePacket(damage, towerData.elementType, this);
+        
         Projectile shellGo = PoolManager.Instance.GetProjectile(
             projectilePrefab: shellPrefab,
             position: launchPoint,
             rotation: Quaternion.identity,
             target: null,
-            damage: damage,
-            instigator: this
+            damagePacket: damagePacket
         );
         
         Shell shell = shellGo.GetComponent<Shell>();
         shell.Initialize(launchPoint,
             targetPoint, 
-            launchVelocity,
-            damage,
-            this
+            launchVelocity
             );
         shell.gameObject.SetActive(true);
         

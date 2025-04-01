@@ -10,9 +10,10 @@ public class StatsComponent : MonoBehaviour
 {
     public event Action Died;
     public event Action<float> HealthChanged;
+
+    [SerializeField] public Global.Element element;
     
     public float maxHealth = 100f;
-    
     [SerializeField]
     private float health;
     public float Health
@@ -27,20 +28,50 @@ public class StatsComponent : MonoBehaviour
         health = maxHealth;
     }
     
-    public void TakeDamage(float damage, Tower instigator = null, bool shouldAccumulate = false)
+    public void TakeDamage(DamagePacket damagePacket, bool shouldAccumulate = false)
     {
-        if (damage <= 0 || health <= 0) return;
-        health -= damage;
+        if (damagePacket.Value <= 0 || health <= 0) return;
+        
+        // weakness = 1, resistance = -1, normal = 0
+        int weakness = damagePacket.ElementType.WinsTo(element) ? 1 :
+                       damagePacket.ElementType.LosesTo(element) ? -1 : 0;
+        
+        var multiplier = weakness switch
+        {
+            1 => Global.elementWeaknessMultiplier,
+            -1 => Global.elementResistanceMultiplier,
+            _ => 1f
+        };
+        
+        var finalDamage = multiplier * damagePacket.Value;
 
+        if (finalDamage <= 0) return;
+        health -= finalDamage;
+
+        var instigator = damagePacket.Instigator;
         if (instigator)
         {
-            instigator.DealtDamage += damage;
+            instigator.DealtDamage += finalDamage;
         }
-
+        
         if (!shouldAccumulate)
         {
+            var popupColor = weakness switch
+            {
+                1 => Color.red, // Weakness
+                -1 => Color.grey, // Resistance
+                _ => Color.black // Normal
+            };
+
+            var size = weakness switch
+            {
+                1 => 1.5f, // Weakness
+                -1 => 0.5f, // Resistance
+                _ => 1f // Normal
+            };
+            
             // 데미지 팝업 호출
-            PopUpManager.Instance.CreatePopUpUI(damage.ToString(CultureInfo.CurrentCulture), PopupTransform.position, Color.red, 1);
+            PopUpManager.Instance.CreatePopUpUI(finalDamage.ToString(CultureInfo.CurrentCulture), PopupTransform.position, popupColor, size);
         }
         
         

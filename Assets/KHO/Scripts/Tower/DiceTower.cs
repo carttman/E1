@@ -121,13 +121,14 @@ public class DiceTower : Tower
     
     private void Shoot(Transform pTarget)
     {
+        var damagePacket = new DamagePacket(damagePerShot, towerData.elementType, this);
+        
         var projectile = PoolManager.Instance.GetProjectile(
             projectilePrefab: projectilePrefab,
             position: turret.position,
             rotation: rotatingPart.rotation * Quaternion.Euler(Random.Range(-20f, 20f), Random.Range(-20, 20f), 0),
             target: pTarget,
-            damage: damagePerShot,
-            instigator: this
+            damagePacket: damagePacket
         );
         
         projectile.gameObject.SetActive(true);

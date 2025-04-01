@@ -3,7 +3,6 @@ using UnityEngine.Serialization;
 
 public class Shell : Projectile
 {
-    
     public float blastRadius = 5f;
     public float damage = 100f;
     
@@ -14,13 +13,11 @@ public class Shell : Projectile
     private Vector3 _targetPoint;
     private Vector3 _launchVelocity;
     
-    public void Initialize(Vector3 launchPoint, Vector3 targetPoint, Vector3 launchVelocity, float inDamage, Tower inInstigator)
+    public void Initialize(Vector3 launchPoint, Vector3 targetPoint, Vector3 launchVelocity)
     {
         this._launchPoint = launchPoint;
         this._targetPoint = targetPoint;
         this._launchVelocity = launchVelocity;
-        this.instigator = inInstigator;
-        this.damage = inDamage;
         
         initialized = true;
     }
@@ -38,7 +35,8 @@ public class Shell : Projectile
             var explosionGameObject = Instantiate(Game.Instance.explosionPrefab, transform.position, Quaternion.identity);
             var explosion = explosionGameObject.GetComponent<Explosion>();
             explosion.Initialize(0.5f, blastRadius, blastColor,false);
-            explosion.OnCollideDetected += OnCollideDetected;
+            var damagePacketCapture = DamagePacket;
+            explosion.OnCollideDetected += (col) => OnCollideDetected(col, damagePacketCapture);
             
             Release();
         }
@@ -48,11 +46,11 @@ public class Shell : Projectile
         transform.localRotation = Quaternion.LookRotation(d);
     }
 
-    private void OnCollideDetected(Collider col)
+    private void OnCollideDetected(Collider col, DamagePacket damagePacket)
     {
         var stats = col.GetComponent<StatsComponent>();
         if (!stats) return;
-        stats.TakeDamage(damage, instigator);
+        stats.TakeDamage(damagePacket);
     }
 
     protected override void OnDisable()

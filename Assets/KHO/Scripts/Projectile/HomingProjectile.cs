@@ -43,7 +43,7 @@ public class HomingProjectile : Projectile
         base.OnEnable();
         _rb.linearVelocity = Vector3.zero;
         _collider.radius = _triggerRadius;
-        _enemyMove = Target.GetComponent<EnemyMove>();
+        _enemyMove = target.GetComponent<EnemyMove>();
         _collided = false;
     }
 
@@ -59,11 +59,11 @@ public class HomingProjectile : Projectile
         
         _rb.linearVelocity = transform.forward * speed;
 
-        if (!Target) return;
+        if (!target) return;
         if (!_enemyMove) return;
         
         float leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict,
-            Vector3.Distance(transform.position, Target.transform.position));
+            Vector3.Distance(transform.position, target.transform.position));
         PredictMovement(leadTimePercentage);
         AddDeviation(leadTimePercentage);
         RotateRocket();
@@ -79,7 +79,7 @@ public class HomingProjectile : Projectile
     private void PredictMovement(float leadTimePercentage)
     {
         var predictionTime = Mathf.Lerp(0, _maxTimePrediction, leadTimePercentage);
-        _standardPrediction = _enemyMove?.GetPredictedPosition(predictionTime) ?? Target?.position ?? Vector3.zero;
+        _standardPrediction = _enemyMove?.GetPredictedPosition(predictionTime) ?? target?.position ?? Vector3.zero;
     }
 
     private void AddDeviation(float leadTimePercentage)
@@ -100,14 +100,13 @@ public class HomingProjectile : Projectile
             var explosionGO = Instantiate(Game.Instance.explosionPrefab, transform.position, Quaternion.identity);
             var explosion = explosionGO.GetComponent<Explosion>();
             explosion.GetComponent<Explosion>().Initialize(0.5f, aoeRadius, new Color(1, 1, 0, 0.3f), false);
-            float damageCapture = Damage;
-            Tower instigatorCapture = instigator;
-            explosion.OnCollideDetected += col => col.GetComponent<StatsComponent>()?.TakeDamage(damageCapture, instigatorCapture);
+            var damagePacketCapture = DamagePacket;
+            explosion.OnCollideDetected += col => col.GetComponent<StatsComponent>()?.TakeDamage(damagePacketCapture);
         }
         else
         {
             var enemy = other.GetComponent<Enemy>();
-            enemy.GetComponent<StatsComponent>().TakeDamage(Damage, instigator);
+            enemy.GetComponent<StatsComponent>().TakeDamage(DamagePacket);
         }
         Release();
         enabled = false;

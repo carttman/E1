@@ -11,5 +11,6 @@ public class TowerData : ScriptableObject
     [SerializeField] public float damage;
     [SerializeField] public float range;
     [SerializeField] public float attackSpeed;
+    [SerializeField] public Global.Element elementType = Global.Element.Fire;
     [SerializeField] public TowerData[] upgradesTo = new TowerData[2];
 }

@@ -22,6 +22,7 @@ MonoBehaviour:
   damage: 50
   range: 20
   attackSpeed: 2
+  elementType: 1
   upgradesTo:
   - {fileID: 0}
   - {fileID: 0}
