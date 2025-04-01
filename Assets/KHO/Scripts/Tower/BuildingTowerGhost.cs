@@ -65,6 +65,9 @@ public class BuildingTowerGhost : MonoBehaviour
         Tower tower = GetComponent<Tower>();
         OnTowerBuilt?.Invoke(tower.towerData);
         OnTowerBuilt = null;
+        
+        tower.ChangeRarity(Game.Instance.RollTowerRarity());
+        
         enabled = false;
         
         ChangeColor(_startColor);

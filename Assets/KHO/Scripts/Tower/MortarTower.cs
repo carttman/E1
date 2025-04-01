@@ -14,8 +14,18 @@ public class MortarTower : Tower
     private new void Awake()
     {
         base.Awake();
-        damage = towerData.damage;
         OnValidate();
+    }
+
+    private new void Start()
+    {
+        base.Start();
+        OnRarityChanged();
+    }
+
+    protected override void OnRarityChanged()
+    {
+        damage = towerData.TowerStats[(int)Rarity].damage;
     }
 
     private new void OnValidate()

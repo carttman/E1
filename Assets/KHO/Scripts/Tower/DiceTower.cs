@@ -23,13 +23,12 @@ public class DiceTower : Tower
     private bool _isRolling = false;
     private Image _diceImageUI;
     
-    private new void Awake()
+    protected override void OnRarityChanged()
     {
-        base.Awake();
-        damagePerShot = towerData.damage;
-        attackCooldown = towerData.attackSpeed;
+        damagePerShot = towerData.TowerStats[(int)Rarity].damage;
+        attackCooldown = towerData.TowerStats[(int)Rarity].attackSpeed;
     }
-    
+
     private new void Start()
     {
         base.Start();
@@ -42,6 +41,8 @@ public class DiceTower : Tower
         rectTransform.localScale = Vector3.one;
         rectTransform.anchoredPosition = Vector2.zero;
         rectTransform.position = Camera.main.WorldToScreenPoint(turret.transform.position) + diceUIOffset;
+        
+        OnRarityChanged();
     }
 
     private void Update()

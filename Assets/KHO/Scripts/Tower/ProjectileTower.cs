@@ -8,13 +8,18 @@ public class ProjectileTower : Tower
     
     [SerializeField] private float launchProgress = 0f;
 
-    private new void Awake()
+    private new void Start()
     {
-        base.Awake();
-        damagePerShot = towerData.damage;
-        shotsPerSecond = towerData.attackSpeed;
+        base.Start();
+        OnRarityChanged();
     }
     
+    protected override void OnRarityChanged()
+    {
+        damagePerShot = towerData.TowerStats[(int)Rarity].damage;
+        shotsPerSecond = towerData.TowerStats[(int)Rarity].attackSpeed;
+    }
+
     private void Update()
     {
         launchProgress += shotsPerSecond * Time.deltaTime;

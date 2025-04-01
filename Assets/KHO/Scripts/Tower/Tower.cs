@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class Tower : MonoBehaviour, ISelectable
 { 
@@ -88,6 +89,12 @@ public abstract class Tower : MonoBehaviour, ISelectable
     
     // 타워 static data
     [SerializeField] public TowerData towerData;
+    private Global.Rarity _rarity;
+    public Global.Rarity Rarity
+    {
+        get => _rarity;
+        set => ChangeRarity(value);
+    }
     
     // 타겟 범위
     [SerializeField, Range(1.5f, 100f)]
@@ -162,7 +169,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
         
         ChangeEnemyComparer(targetingType);
 
-        targetingRange = towerData.range;
+        targetingRange = towerData.TowerStats[(int)Rarity].range;
     }
 
     protected void ChangeEnemyComparer(EnemyCompareType compareTypeType)
@@ -302,7 +309,19 @@ public abstract class Tower : MonoBehaviour, ISelectable
         
         Destroy(gameObject);
     }
+    
+    public void ChangeRarity(Global.Rarity newRarity)
+    {
+        if (newRarity == _rarity) return;
+        
+        _rarity = newRarity;
+        targetingRange = towerData.TowerStats[(int)_rarity].range;
+        SphereCollider.radius = targetingRange;
+        
+        OnRarityChanged();
+    }
 
+    protected abstract void OnRarityChanged();
 }
 
 

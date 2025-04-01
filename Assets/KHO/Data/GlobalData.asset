@@ -22,6 +22,37 @@ MonoBehaviour:
   - element: 2
     color: {r: 0.25177002, g: 0.84276724, b: 0.3918727, a: 0}
     icon: {fileID: 21300000, guid: f8f936c416fe6904a91673822e34064e, type: 3}
+  towerRateChance:
+  - oneStarRate: 0.75
+    twoStarRate: 0.2
+    threeStarRate: 0.05
+  - oneStarRate: 0.72
+    twoStarRate: 0.21
+    threeStarRate: 0.07
+  - oneStarRate: 0.68
+    twoStarRate: 0.22
+    threeStarRate: 0.1
+  - oneStarRate: 0.62
+    twoStarRate: 0.23
+    threeStarRate: 0.15
+  - oneStarRate: 0.55
+    twoStarRate: 0.25
+    threeStarRate: 0.2
+  - oneStarRate: 0.43
+    twoStarRate: 0.3
+    threeStarRate: 0.27
+  - oneStarRate: 0.32
+    twoStarRate: 0.35
+    threeStarRate: 0.33
+  - oneStarRate: 0.2
+    twoStarRate: 0.4
+    threeStarRate: 0.4
+  - oneStarRate: 0.1
+    twoStarRate: 0.4
+    threeStarRate: 0.5
+  - oneStarRate: 0
+    twoStarRate: 0.4
+    threeStarRate: 0.6
   ElementWeaknessMultiplier: 1.5
   ElementResistanceMultiplier: 0.5
   WeaknessDamageColor: {r: 1, g: 0, b: 0, a: 1}

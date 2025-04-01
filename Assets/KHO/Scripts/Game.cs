@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class Game : MonoBehaviour
 {
     public float tooltipDelay = 0.1f;
     public event Action<int> GoldChanged;
     public event Action<int> LivesChanged;
+    public event Action<int> BuildLevelChanged;
+    public event Action<float> RarityRolled;
     
     public static Game Instance { get; private set; }
 
@@ -45,7 +46,7 @@ public class Game : MonoBehaviour
     private bool CanBuyTower(int idx) => towerData[idx].goldCost <= Gold;
     private bool CanBuyTower(TowerData towerData) => towerData.goldCost <= Gold;
 
-    private int _lives = 1000;
+    private int _lives = 10;
     public int Lives
     {
         get => _lives;
@@ -58,6 +59,19 @@ public class Game : MonoBehaviour
             {
                 GameOver();
             }
+        }
+    }
+
+    private int _buildLevel = 0;
+
+    public int BuildLevel
+    {
+        get => _buildLevel;
+        set
+        {
+            if (_buildLevel == value) return;
+            _buildLevel = value;
+            BuildLevelChanged?.Invoke(_buildLevel);
         }
     }
 
@@ -233,5 +247,23 @@ public class Game : MonoBehaviour
     {
         Gold -= obj.goldCost;
         buildingTower = null;
+    }
+
+    public Global.Rarity RollTowerRarity()
+    {
+        var rarityChance = GlobalData.towerRateChance[BuildLevel];
+        
+        float randomValue = UnityEngine.Random.Range(0f, 1f);
+        RarityRolled?.Invoke(randomValue);
+        
+        if (randomValue <= rarityChance.oneStarRate)
+        {
+            return Global.Rarity.Common;
+        }
+        else if (randomValue <= rarityChance.oneStarRate + rarityChance.twoStarRate)
+        {
+            return Global.Rarity.Uncommon;
+        }
+        return Global.Rarity.Rare;
     }
 }

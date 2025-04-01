@@ -19,9 +19,16 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 4c0f53bb413a31d43add65be16e9d780, type: 3}
   towerPrefab: {fileID: 2848097239598094264, guid: 53d34d130e96c2440a0ae4a121ebfec0,
     type: 3}
-  damage: 25
-  range: 4
-  attackSpeed: 0.33
+  TowerStats:
+  - damage: 15
+    range: 3
+    attackSpeed: 0.25
+  - damage: 20
+    range: 3.5
+    attackSpeed: 0.28
+  - damage: 25
+    range: 4
+    attackSpeed: 0.33
   elementType: 1
   upgradesTo:
   - {fileID: 11400000, guid: 7cf797bfaf8bdf244b25dfcef79696bd, type: 2}

@@ -12,20 +12,25 @@ public class AreaTower : Tower
     private new void Awake()
     {
         base.Awake();
-        damage = towerData.damage;
-        attacksPerSecond = towerData.attackSpeed;
     }
     
     protected new void Start()
     {
         base.Start();
-        // 기본적으로 폭발 범위 = 타겟 범위로 사용
+        OnRarityChanged();
+    }
+
+    protected override void OnRarityChanged()
+    {
+        // blast radius가 특정되지 않을경우 targetingRange 변수 그대로 사용
         if (Mathf.Approximately(blastRadius, int.MinValue))
         {
             blastRadius = targetingRange;
         }
+        damage = towerData.TowerStats[(int)Rarity].damage;
+        attacksPerSecond = towerData.TowerStats[(int)Rarity].attackSpeed;
     }
-    
+
     protected void Update()
     {
         AttackProgress += attacksPerSecond * Time.deltaTime;

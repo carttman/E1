@@ -8,13 +8,18 @@ public class LaserTower : Tower
 
     private Vector3 _laserBeamScale = Vector3.one;
     private Vector3 _laserBeamStartPos;
-
+    
     private new void Awake()
     {
         base.Awake();
-        damagePerSecond = towerData.damage;
+        OnRarityChanged();
     }
-    
+
+    protected override void OnRarityChanged()
+    {
+        damagePerSecond = towerData.TowerStats[(int)Rarity].damage;
+    }
+
     private new void Start()
     {
         base.Start();

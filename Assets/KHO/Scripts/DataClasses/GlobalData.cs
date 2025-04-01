@@ -13,6 +13,15 @@ public class GlobalData : ScriptableObject
     }
     
     [SerializeField] public ElementData[] elementData;
+
+    [Serializable]
+    public class RateChance
+    {
+        public float oneStarRate;
+        public float twoStarRate;
+        public float threeStarRate;
+    }
+    [SerializeField] public RateChance[] towerRateChance = new RateChance[10];
     
     [Header("Gameplay")]
     // 약점인 속성에게 가하는 배율

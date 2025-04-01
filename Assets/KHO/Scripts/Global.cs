@@ -7,6 +7,13 @@ public static class Global
         Wind
     }
 
+    public enum Rarity
+    {
+        Common,
+        Uncommon,
+        Rare
+    }
+
     public static Element WinsTo(this Element inElement)
     {
         switch (inElement)

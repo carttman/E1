@@ -7,15 +7,28 @@ public class TowerSelectionUI : MonoBehaviour
 {
     private TowerSelectionData _data;
     
+    [Header("Tower Info")]
     [SerializeField] private TextMeshProUGUI towerNameText;
     [SerializeField] private TextMeshProUGUI towerDescriptionText;
-    [SerializeField] private TextMeshProUGUI killsText;
-    [SerializeField] private TextMeshProUGUI damageText;
-    [SerializeField] private TextMeshProUGUI dealtDamageText;
+    [SerializeField] private StarDisplayUI starDisplayUI;
     [SerializeField] private Image towerSprite;
     [SerializeField] private Image towerElementSprite;
+
+    [Header("Tower Stats")]
+    [SerializeField] private TextMeshProUGUI dpsText;
+    [SerializeField] private TextMeshProUGUI damageText;
+    [SerializeField] private TextMeshProUGUI attackSpeedText;
+    [SerializeField] private TextMeshProUGUI rangeText;
+    
+    [Header("Tower Records")]
+    [SerializeField] private TextMeshProUGUI killsText;
+    [SerializeField] private TextMeshProUGUI dealtDamageText;
+    
+    [Header("Upgrade Buttons")]
     [SerializeField] private GameObject towerUpgradeButton1;
     [SerializeField] private GameObject towerUpgradeButton2;
+    
+    [Header("Targeting Type")]
     [SerializeField] private TMP_Dropdown towerTargetingType;
     
     public void HandleUIChange(TowerSelectionData data)
@@ -29,7 +42,7 @@ public class TowerSelectionUI : MonoBehaviour
         towerSprite.sprite = data.StaticTowerData.sprite;
         towerElementSprite.sprite = Game.Instance.GlobalData.GetElementIcon(data.StaticTowerData.elementType);
         
-        damageText.text = $"데미지: {data.StaticTowerData.damage}";
+        damageText.text = $"데미지: {data.StaticTowerData.TowerStats[(int)data.tower.Rarity].damage}";
         dealtDamageText.text = $"가한 데미지:\n{data.DealtDamage:0}";
         
         if (data.StaticTowerData.upgradesTo[0] != null)
@@ -59,6 +72,11 @@ public class TowerSelectionUI : MonoBehaviour
         }
 
         if (_data?.tower?.TargetingType != null) towerTargetingType.value = (int)_data.tower.TargetingType;
+
+        if (_data?.tower)
+        {
+            starDisplayUI.ChangeStar((int)_data.tower.Rarity + 1);
+        }
     }
 
     public void ChangeTowerTargetingType(Int32 newTargetingType)
