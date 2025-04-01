@@ -13,6 +13,7 @@ public class AreaTower : Tower
     {
         base.Awake();
         damage = towerData.damage;
+        attacksPerSecond = towerData.attackSpeed;
     }
     
     protected new void Start()

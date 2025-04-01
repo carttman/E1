@@ -161,6 +161,8 @@ public abstract class Tower : MonoBehaviour, ISelectable
         selectionData.OnSelectionDataChanged += data => OnSelectionDataChanged?.Invoke(data);
         
         ChangeEnemyComparer(targetingType);
+
+        targetingRange = towerData.range;
     }
 
     protected void ChangeEnemyComparer(EnemyCompareType compareTypeType)

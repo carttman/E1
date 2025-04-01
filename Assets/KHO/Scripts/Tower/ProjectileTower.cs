@@ -12,6 +12,7 @@ public class ProjectileTower : Tower
     {
         base.Awake();
         damagePerShot = towerData.damage;
+        shotsPerSecond = towerData.attackSpeed;
     }
     
     private void Update()

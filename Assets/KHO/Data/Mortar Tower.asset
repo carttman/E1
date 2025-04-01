@@ -19,6 +19,8 @@ MonoBehaviour:
   towerPrefab: {fileID: 7045167765027661043, guid: 5b776cfb8a984d741bb55e005c813741,
     type: 3}
   damage: 30
+  range: 5
+  attackSpeed: 0.75
   upgradesTo:
   - {fileID: 11400000, guid: 32060235084c6a64db75f0f02394757f, type: 2}
   - {fileID: 0}

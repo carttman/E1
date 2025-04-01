@@ -27,6 +27,7 @@ public class DiceTower : Tower
     {
         base.Awake();
         damagePerShot = towerData.damage;
+        attackCooldown = towerData.attackSpeed;
     }
     
     private new void Start()
