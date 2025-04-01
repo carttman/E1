@@ -30,6 +30,9 @@ public class TowerSelectionUI : MonoBehaviour
     
     [Header("Targeting Type")]
     [SerializeField] private TMP_Dropdown towerTargetingType;
+
+    [Header("Actions")]
+    [SerializeField] private Button towerDeleteButton;
     
     public void HandleUIChange(TowerSelectionData data)
     {
@@ -88,6 +91,15 @@ public class TowerSelectionUI : MonoBehaviour
         {
             starDisplayUI.ChangeStar((int)_data.tower.Rarity + 1);
         }
+        
+        towerDeleteButton.onClick.RemoveAllListeners();
+        towerDeleteButton.onClick.AddListener(OnTowerDelete);
+    }
+
+    private void OnTowerDelete()
+    {
+        if (_data.tower == null) return;
+        Game.Instance.DeleteTower(_data.tower);
     }
 
     public void ChangeTowerTargetingType(Int32 newTargetingType)

@@ -26,6 +26,7 @@ public class MortarTower : Tower
     protected override void OnRarityChanged()
     {
         damage = towerData.TowerStats[(int)Rarity].damage;
+        shotsPerSecond = towerData.TowerStats[(int)Rarity].attackSpeed;
     }
 
     private new void OnValidate()

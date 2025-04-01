@@ -64,7 +64,7 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    private void DeselectSelected()
+    public void DeselectSelected()
     {
         if (selectedObject == null) return;
         selectedObject.OnSelectionDataChanged -= OnSelectionDataChanged;

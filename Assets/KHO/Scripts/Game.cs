@@ -31,7 +31,7 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject clearUI;
 
-    private int _gold = 50;
+    private int _gold = 1000;
     public int Gold
     {
         get => _gold;
@@ -276,5 +276,12 @@ public class Game : MonoBehaviour
         if (!CanLevelUpBuildLevel) return;
         Gold -= GlobalData.towerLevelUpCost[_buildLevel];
         BuildLevel++;
+    }
+
+    public void DeleteTower(Tower tower)
+    {
+        if (!tower) return;
+        SelectionManager.instance.DeselectSelected();
+        Destroy(tower.gameObject);
     }
 }
