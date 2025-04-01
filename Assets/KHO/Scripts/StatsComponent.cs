@@ -67,13 +67,19 @@ public class StatsComponent : MonoBehaviour
 
             var size = weakness switch
             {
-                1 => 1.5f, // Weakness
-                -1 => 0.5f, // Resistance
+                1 => 1.2f, // Weakness
+                -1 => 0.92f, // Resistance
                 _ => 1f // Normal
             };
             
+            string weaknessText = weakness switch
+            {
+                0 => "",
+                _ => $" ({multiplier}x)"
+            };
+            
             // 데미지 팝업 호출
-            PopUpManager.Instance.CreatePopUpUI(finalDamage.ToString(CultureInfo.CurrentCulture), PopupTransform.position, popupColor, size);
+            PopUpManager.Instance.CreatePopUpUI($"{finalDamage}{weaknessText}", PopupTransform.position, popupColor, size);
         }
         
         
