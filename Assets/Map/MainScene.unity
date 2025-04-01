@@ -68622,6 +68622,12 @@ PrefabInstance:
       objectReference: {fileID: 1127857066}
     - target: {fileID: 1814778054205122614, guid: 171b7155e24acc742896dc6c3185b84f,
         type: 3}
+      propertyPath: GlobalData
+      value: 
+      objectReference: {fileID: 11400000, guid: 50799b754d07ac84f867f9ef77d556a8,
+        type: 2}
+    - target: {fileID: 1814778054205122614, guid: 171b7155e24acc742896dc6c3185b84f,
+        type: 3}
       propertyPath: gameoverUI
       value: 
       objectReference: {fileID: 1849098284}

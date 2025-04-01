@@ -12,7 +12,8 @@ public class TowerBuildButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerE
     [SerializeField] private int towerIndex;
     [SerializeField] private TowerData towerData;
 
-    [SerializeField] private Image image;
+    [SerializeField] private Image towerImage;
+    [SerializeField] private Image elementImage;
     [SerializeField] private TextMeshProUGUI priceText;
     [SerializeField] private TextMeshProUGUI towerNameText;
     
@@ -40,7 +41,10 @@ public class TowerBuildButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerE
         _rectTransform = GetComponent<RectTransform>();
         
         towerData = Game.Instance.TowerData[towerIndex];
-        image.sprite = towerData.sprite;
+        towerImage.sprite = towerData.sprite;
+
+        elementImage.sprite = Game.Instance.GlobalData.GetElementIcon(towerData.elementType);
+        
         priceText.text = towerData.goldCost.ToString();
         towerNameText.text = towerData.towerName;
         

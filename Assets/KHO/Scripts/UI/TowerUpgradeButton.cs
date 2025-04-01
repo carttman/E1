@@ -10,6 +10,7 @@ public class TowerUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerE
     [SerializeField] public TowerData towerData;
     
     [SerializeField] private Image towerImage;
+    [SerializeField] private Image elementImage;
     [SerializeField] private TextMeshProUGUI priceText;
     [SerializeField] private TextMeshProUGUI nameText;
     
@@ -56,6 +57,7 @@ public class TowerUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerE
         if (towerData == null) return;
         
         towerImage.sprite = towerData.sprite;
+        elementImage.sprite = Game.Instance.GlobalData.GetElementIcon(towerData.elementType);
         priceText.text = towerData.goldCost.ToString();
         nameText.text = towerData.towerName;
         

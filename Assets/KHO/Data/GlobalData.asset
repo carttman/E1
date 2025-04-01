@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b096ac8ee2a8aa41aae37a160d06f91, type: 3}
+  m_Name: GlobalData
+  m_EditorClassIdentifier: 
+  elementData:
+  - element: 0
+    color: {r: 0, g: 0.26529503, b: 1, a: 0}
+    icon: {fileID: 21300000, guid: b866371b9a5ae264d97546f83dce5a58, type: 3}
+  - element: 1
+    color: {r: 1, g: 0, b: 0.049011707, a: 0}
+    icon: {fileID: 21300000, guid: 736e76acd502f944da9bcc50bf9bca5f, type: 3}
+  - element: 2
+    color: {r: 0.25177002, g: 0.84276724, b: 0.3918727, a: 0}
+    icon: {fileID: 21300000, guid: f8f936c416fe6904a91673822e34064e, type: 3}
+  ElementWeaknessMultiplier: 1.5
+  ElementResistanceMultiplier: 0.5
+  WeaknessDamageColor: {r: 1, g: 0, b: 0, a: 1}
+  ResistanceDamageColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  NormalDamageColor: {r: 0, g: 0, b: 0, a: 1}

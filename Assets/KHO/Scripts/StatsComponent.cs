@@ -35,11 +35,13 @@ public class StatsComponent : MonoBehaviour
         // weakness = 1, resistance = -1, normal = 0
         int weakness = damagePacket.ElementType.WinsTo(element) ? 1 :
                        damagePacket.ElementType.LosesTo(element) ? -1 : 0;
+
+        var globalData = Game.Instance.GlobalData;
         
         var multiplier = weakness switch
         {
-            1 => Global.elementWeaknessMultiplier,
-            -1 => Global.elementResistanceMultiplier,
+            1 => globalData.ElementWeaknessMultiplier,
+            -1 => globalData.ElementResistanceMultiplier,
             _ => 1f
         };
         
@@ -58,9 +60,9 @@ public class StatsComponent : MonoBehaviour
         {
             var popupColor = weakness switch
             {
-                1 => Color.red, // Weakness
-                -1 => Color.grey, // Resistance
-                _ => Color.black // Normal
+                1 => globalData.WeaknessDamageColor, // Weakness
+                -1 => globalData.ResistanceDamageColor, // Resistance
+                _ => globalData.NormalDamageColor // Normal
             };
 
             var size = weakness switch

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemySelectionData : SelectionData
 {
+    public Global.Element Element;
+    
     private string _name;
     public string Name
     {
@@ -50,5 +52,4 @@ public class EnemySelectionData : SelectionData
             OnSelectionDataChanged?.Invoke(this);
         }
     }
-
 }

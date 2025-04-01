@@ -6,9 +6,6 @@ public static class Global
         Fire,
         Wind
     }
-    
-    public static float elementWeaknessMultiplier = 1.5f;
-    public static float elementResistanceMultiplier = 0.5f;
 
     public static Element WinsTo(this Element inElement)
     {

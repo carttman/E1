@@ -13,6 +13,7 @@ public class TowerSelectionUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private TextMeshProUGUI dealtDamageText;
     [SerializeField] private Image towerSprite;
+    [SerializeField] private Image towerElementSprite;
     [SerializeField] private GameObject towerUpgradeButton1;
     [SerializeField] private GameObject towerUpgradeButton2;
     [SerializeField] private TMP_Dropdown towerTargetingType;
@@ -24,7 +25,10 @@ public class TowerSelectionUI : MonoBehaviour
         towerNameText.text = data.StaticTowerData.towerName;
         towerDescriptionText.text = data.StaticTowerData.description;
         killsText.text = $"킬 수: {data.Kills}";
+        
         towerSprite.sprite = data.StaticTowerData.sprite;
+        towerElementSprite.sprite = Game.Instance.GlobalData.GetElementIcon(data.StaticTowerData.elementType);
+        
         damageText.text = $"데미지: {data.StaticTowerData.damage}";
         dealtDamageText.text = $"가한 데미지:\n{data.DealtDamage:0}";
         

@@ -11,7 +11,8 @@ public class Game : MonoBehaviour
     public event Action<int> LivesChanged;
     
     public static Game Instance { get; private set; }
-    
+
+    [SerializeField] public GlobalData GlobalData;
     [SerializeField] public GameObject explosionPrefab;
     [SerializeField] private TowerData[] towerData;
     public TowerData[] TowerData => towerData;
