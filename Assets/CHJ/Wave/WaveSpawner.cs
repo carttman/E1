@@ -22,12 +22,12 @@ public class WaveSpawner : MonoBehaviour
     private bool isSpawnFinished = false;
     
     public static int CurrentEnemiesAlive = 0;
-    
-    public static List<int> WaveList = new List<int>();
+    private List<int> WaveList = new List<int>();
    
    private void Awake()
    {
         SetWaveList();
+        CurrentEnemiesAlive = 0;
    }
    private void Update()
    {
