@@ -54,8 +54,8 @@ MonoBehaviour:
     twoStarRate: 0.4
     threeStarRate: 0.6
   towerLevelUpCost: 32000000370000003c00000041000000460000004b00000050000000550000005a000000
-  ElementWeaknessMultiplier: 1.5
-  ElementResistanceMultiplier: 0.5
+  ElementWeaknessMultiplier: 1.25
+  ElementResistanceMultiplier: 0.75
   WeaknessDamageColor: {r: 1, g: 0, b: 0, a: 1}
   ResistanceDamageColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   NormalDamageColor: {r: 0, g: 0, b: 0, a: 1}

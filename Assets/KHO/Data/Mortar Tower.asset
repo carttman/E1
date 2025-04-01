@@ -28,7 +28,7 @@ MonoBehaviour:
   - damage: 40
     range: 5
     attackSpeed: 0.25
-  elementType: 1
+  elementType: 0
   upgradesTo:
   - {fileID: 11400000, guid: 32060235084c6a64db75f0f02394757f, type: 2}
   - {fileID: 0}

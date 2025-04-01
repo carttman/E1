@@ -82,6 +82,7 @@ public class ChanceBarController : MonoBehaviour
 
         resultIndicator.DOAnchorPosX(targetAnchoredX, animationDuration)
                        .SetEase(Ease.OutCirc)
+                       .SetUpdate(true)
                        .SetLink(gameObject);
     }
 }
