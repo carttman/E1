@@ -302,6 +302,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
         var newTowerComponent = newTower.GetComponent<Tower>();
         newTowerComponent.Kills = kills;
         newTowerComponent.DealtDamage = dealtDamage;
+        newTowerComponent.Rarity = this._rarity;
         newTower.GetComponent<BuildingTowerGhost>().enabled = false;
         newTowerComponent.enabled = true;
         

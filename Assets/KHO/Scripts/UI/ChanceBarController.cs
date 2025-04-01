@@ -70,8 +70,6 @@ public class ChanceBarController : MonoBehaviour
             return;
         }
         
-        Debug.Log("Rolled : " + roll);
-
         float containerWidth = container.rect.width;
         float targetAnchoredX = roll * containerWidth;
 
