@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class TowerBuildButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler

@@ -6,6 +6,8 @@ public class LaserTower : Tower
     [SerializeField] private Transform laserBeam;
     [SerializeField] protected float damagePerSecond = 10f;
 
+
+    private const float LaserBeamVFXlength = 12f;
     private Vector3 _laserBeamScale = Vector3.one;
     private Vector3 _laserBeamStartPos;
     
@@ -31,24 +33,23 @@ public class LaserTower : Tower
     {
         if (AcquireTarget(out var target))
         {
-            TrackTarget(ref target);
             Shoot(target);
         }
         else
         {
-            laserBeam.localScale = Vector3.zero;
+            laserBeam.gameObject.SetActive(false);
         }
     }
 
     private void Shoot(Transform target)
     {
         var position = target.position;
+        laserBeam.gameObject.SetActive(true);
         laserBeam.LookAt(position);
         
         var dist = Vector3.Distance(laserBeam.position, position);
-        _laserBeamScale.z = dist;
+        _laserBeamScale.z = dist / LaserBeamVFXlength;
         laserBeam.localScale = _laserBeamScale;
-        laserBeam.localPosition = _laserBeamStartPos + laserBeam.forward * (dist * 0.5f);
     
         var sc = target.GetComponent<StatsComponent>();
         if (sc)

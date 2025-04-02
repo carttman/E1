@@ -28,7 +28,6 @@ public class TowerUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerE
     private float _startYPosition;
     private Tween _tween;
 
-
     private void Awake()
     {
         _image = GetComponent<Image>();
