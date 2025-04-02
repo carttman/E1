@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 2.75
-  deathSFX: {fileID: 8300000, guid: 954f89960686fd44e9e97318a636b701, type: 3}
+  deathSFX: 2
 --- !u!95 &6486979535715135402
 Animator:
   serializedVersion: 7
@@ -524,7 +524,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 55fd967a7c6066f4797c6455dab6a524,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 55fd967a7c6066f4797c6455dab6a524,
         type: 3}
@@ -566,6 +566,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 55fd967a7c6066f4797c6455dab6a524,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 55fd967a7c6066f4797c6455dab6a524,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d287dbce5eac8214bb7e43968df5207f, type: 2}
     - target: {fileID: 919132149155446097, guid: 55fd967a7c6066f4797c6455dab6a524,
         type: 3}
       propertyPath: m_Name
@@ -688,7 +698,7 @@ PrefabInstance:
     - target: {fileID: 7994226925501470402, guid: eb6f35107da82a842b872889b4cb6765,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7994226925501470402, guid: eb6f35107da82a842b872889b4cb6765,
         type: 3}

@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -6,9 +5,9 @@ using UnityEngine;
 // 목숨 표시 UI
 public class LivesUI : MonoBehaviour
 {
-    private TextMeshProUGUI _textMesh;
     private RectTransform _rect;
-    
+    private TextMeshProUGUI _textMesh;
+
     private void Awake()
     {
         _textMesh = GetComponent<TextMeshProUGUI>();
@@ -25,6 +24,6 @@ public class LivesUI : MonoBehaviour
         _textMesh.text = $"{newLives}";
         _rect.DOComplete();
         _rect.DOPunchScale(new Vector3(0.25f, 0.25f, 0.25f), 0.25f)
-             .SetUpdate(true).SetLink(gameObject);
+            .SetUpdate(true).SetLink(gameObject);
     }
 }

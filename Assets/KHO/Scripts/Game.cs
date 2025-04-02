@@ -2,25 +2,20 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class Game : MonoBehaviour
 {
+    private const float SLOWMO_TIMESCALE = 0.35f;
     public float tooltipDelay = 0.1f;
-    public event Action<int> GoldChanged;
-    public event Action<int> LivesChanged;
-    public event Action<int> BuildLevelChanged;
-    public event Action<float> RarityRolled;
-    
-    public static Game Instance { get; private set; }
 
     [SerializeField] public GlobalData GlobalData;
     [SerializeField] public GameObject explosionPrefab;
     [SerializeField] private TowerData[] towerData;
-    public TowerData[] TowerData => towerData;
-    
+
     // 웨이브 스폰 레퍼런스
     [SerializeField] private WaveSpawner waveSpawner;
-    
+
     // UI에서 선택한 타워
     [SerializeField] private GameObject buildingTower;
 
@@ -31,7 +26,19 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject clearUI;
 
+    public bool IsPlayingSlowmo;
+    private float _beforePauseTimeScale = 1f;
+    private float _beforeSlowmoTimeScale = 1f;
+
+    private int _buildLevel;
+
     private int _gold = 1000;
+
+    private int _lives = 10;
+
+    public static Game Instance { get; private set; }
+    public TowerData[] TowerData => towerData;
+
     public int Gold
     {
         get => _gold;
@@ -42,11 +49,7 @@ public class Game : MonoBehaviour
             GoldChanged?.Invoke(_gold);
         }
     }
-    
-    private bool CanBuyTower(int idx) => towerData[idx].goldCost <= Gold;
-    private bool CanBuyTower(TowerData towerData) => towerData.goldCost <= Gold;
 
-    private int _lives = 10;
     public int Lives
     {
         get => _lives;
@@ -55,14 +58,9 @@ public class Game : MonoBehaviour
             if (_lives == value) return;
             _lives = value;
             LivesChanged?.Invoke(_lives);
-            if (_lives <= 0)
-            {
-                GameOver();
-            }
+            if (_lives <= 0) GameOver();
         }
     }
-
-    private int _buildLevel = 0;
 
     public int BuildLevel
     {
@@ -76,20 +74,13 @@ public class Game : MonoBehaviour
     }
 
     public int MaxBuildLevel => GlobalData.towerRateChance.Length - 1;
-    public bool CanLevelUpBuildLevel => _buildLevel < MaxBuildLevel && 
-                                         Gold >= GlobalData.towerLevelUpCost[_buildLevel];
-    
-    public bool IsPlayingSlowmo = false;
-    private float _beforePauseTimeScale = 1f;
-    private float _beforeSlowmoTimeScale = 1f;
-    private const float SLOWMO_TIMESCALE = 0.35f;
-    
+
+    public bool CanLevelUpBuildLevel => _buildLevel < MaxBuildLevel &&
+                                        Gold >= GlobalData.towerLevelUpCost[_buildLevel];
+
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Instance = null;
-        }
+        if (Instance != null) Instance = null;
 
         Instance = this;
         waveSpawner.OnEnemySpawned += WaveSpawnerOnEnemySpawned;
@@ -102,21 +93,36 @@ public class Game : MonoBehaviour
         LivesChanged?.Invoke(_lives);
         Time.timeScale = 1f;
     }
-    
+
+    public event Action<int> GoldChanged;
+    public event Action<int> LivesChanged;
+    public event Action<int> BuildLevelChanged;
+    public event Action<float> RarityRolled;
+
+    private bool CanBuyTower(int idx)
+    {
+        return towerData[idx].goldCost <= Gold;
+    }
+
+    private bool CanBuyTower(TowerData towerData)
+    {
+        return towerData.goldCost <= Gold;
+    }
+
     // 게임 오버시 호출됨
     private void GameOver()
     {
         mainUI.SetActive(false);
         gameoverUI.SetActive(true);
     }
-    
+
     // 게임오버 UI 재시작 처리 (현재 신 다시 불러옴)
     public void GameRetry()
     {
-        string currentSceneName = SceneManager.GetActiveScene().name;
+        var currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
-    
+
     public void ToMainMenu()
     {
         var asyncLoad = SceneManager.LoadSceneAsync("Map/MainMap");
@@ -126,19 +132,19 @@ public class Game : MonoBehaviour
     {
         if (newTimeScale < 0f) return;
         if (IsPlayingSlowmo) return;
-        
+
         Time.timeScale = newTimeScale;
     }
 
     public IEnumerator PlaySlowmo(float time)
     {
         if (IsPlayingSlowmo) yield break;
-        
+
         _beforeSlowmoTimeScale = Time.timeScale;
         Time.timeScale = SLOWMO_TIMESCALE;
         IsPlayingSlowmo = true;
         yield return new WaitForSecondsRealtime(time);
-        
+
         Time.timeScale = _beforeSlowmoTimeScale;
         IsPlayingSlowmo = false;
     }
@@ -150,7 +156,7 @@ public class Game : MonoBehaviour
         pauseButtonUI.SetActive(false);
         pauseUI.SetActive(true);
     }
-    
+
     public void UnPauseGame()
     {
         Time.timeScale = _beforePauseTimeScale;
@@ -162,22 +168,19 @@ public class Game : MonoBehaviour
     {
         if (tower == null) return;
         if (!CanBuyTower(towerData)) return;
-        
+
         Gold -= towerData.goldCost;
         tower.UpgradeTo(towerData);
-        
+
         TooltipSystem.Hide();
     }
-    
+
     public void OnClickExit()
     {
-        if (Application.isEditor)
-        {
-            Debug.Log("Application would quit here in a build");
-        }
+        if (Application.isEditor) Debug.Log("Application would quit here in a build");
         Application.Quit();
     }
-    
+
     public void ClearGame()
     {
         _beforePauseTimeScale = Time.timeScale;
@@ -198,10 +201,7 @@ public class Game : MonoBehaviour
     // 적이 끝 도달시 목숨에 데미지 처리
     private void OnEnemyEndPath(Enemy enemy, int livesdamage)
     {
-        if (enemy)
-        {
-            enemy.OnEnemyEndPath -= OnEnemyEndPath;
-        }
+        if (enemy) enemy.OnEnemyEndPath -= OnEnemyEndPath;
 
         Lives -= livesdamage;
     }
@@ -209,10 +209,7 @@ public class Game : MonoBehaviour
     // 적이 죽을시 골드 추가
     private void OnEnemyDied(Enemy enemy, float goldDropAmount)
     {
-        if (enemy)
-        {
-            enemy.OnEnemyDied -= OnEnemyDied;
-        }
+        if (enemy) enemy.OnEnemyDied -= OnEnemyDied;
 
         Gold += (int)goldDropAmount;
     }
@@ -237,11 +234,8 @@ public class Game : MonoBehaviour
         else if (buildingTower)
         {
             var towerGhost = buildingTower.GetComponent<BuildingTowerGhost>();
-            if (towerGhost)
-            {
-                towerGhost.OnTowerBuilt -= OnTowerBuilt;
-            }
-            
+            if (towerGhost) towerGhost.OnTowerBuilt -= OnTowerBuilt;
+
             Destroy(buildingTower);
             buildingTower = null;
         }
@@ -256,18 +250,13 @@ public class Game : MonoBehaviour
     public Global.Rarity RollTowerRarity()
     {
         var rarityChance = GlobalData.towerRateChance[BuildLevel];
-        
-        float randomValue = UnityEngine.Random.Range(0f, 1f);
+
+        var randomValue = Random.Range(0f, 1f);
         RarityRolled?.Invoke(randomValue);
-        
-        if (randomValue <= rarityChance.oneStarRate)
-        {
-            return Global.Rarity.Common;
-        }
-        else if (randomValue <= rarityChance.oneStarRate + rarityChance.twoStarRate)
-        {
-            return Global.Rarity.Uncommon;
-        }
+
+        if (randomValue <= rarityChance.oneStarRate) return Global.Rarity.Common;
+
+        if (randomValue <= rarityChance.oneStarRate + rarityChance.twoStarRate) return Global.Rarity.Uncommon;
         return Global.Rarity.Rare;
     }
 

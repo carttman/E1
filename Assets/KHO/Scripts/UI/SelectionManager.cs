@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,43 +5,25 @@ using UnityEngine.EventSystems;
 public class SelectionManager : MonoBehaviour
 {
     public static SelectionManager instance;
-    private ISelectable selectedObject;
-    
-    private Ray TouchRay => Camera.main.ScreenPointToRay(Input.mousePosition);
 
     [SerializeField] private GameObject _selectionUI;
     [SerializeField] private GameObject _towerUI;
     [SerializeField] private GameObject _enemyUI;
-    
+    private ISelectable selectedObject;
+
+    private Ray TouchRay => Camera.main.ScreenPointToRay(Input.mousePosition);
+
     private void Awake()
     {
-        if (instance ==null)
-        {
+        if (instance == null)
             instance = this;
-        }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
     private void Start()
     {
-        GameEventHub.Instance.OnTilePointerClick += (t) => DeselectSelected();
-    }
-
-    public void OnSelect(ISelectable selectable)
-    {
-        if (selectable == selectedObject || selectable == null) return;
-        if (selectedObject != null)
-        {
-            DeselectSelected();
-        }
-        selectedObject = selectable;
-        selectedObject.OnSelectionDataChanged += OnSelectionDataChanged;
-        OnSelectionDataChanged(selectedObject.GetSelectionData());
-        
-        _selectionUI.SetActive(true);
+        GameEventHub.Instance.OnTilePointerClick += t => DeselectSelected();
     }
 
     private void Update()
@@ -51,17 +32,24 @@ public class SelectionManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
-            
-            RaycastHit[] hits = new RaycastHit[50];
+
+            var hits = new RaycastHit[50];
             if (Physics.RaycastNonAlloc(TouchRay, hits) > 0)
-            {
                 // If we find no selectable,
                 if (hits.All(h => h.collider?.gameObject.GetComponent<ISelectable>() == null))
-                {
                     DeselectSelected();
-                }
-            }
         }
+    }
+
+    public void OnSelect(ISelectable selectable)
+    {
+        if (selectable == selectedObject || selectable == null) return;
+        if (selectedObject != null) DeselectSelected();
+        selectedObject = selectable;
+        selectedObject.OnSelectionDataChanged += OnSelectionDataChanged;
+        OnSelectionDataChanged(selectedObject.GetSelectionData());
+
+        _selectionUI.SetActive(true);
     }
 
     public void DeselectSelected()

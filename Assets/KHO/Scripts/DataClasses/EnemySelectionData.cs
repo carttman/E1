@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class EnemySelectionData : SelectionData
 {
-    public Global.Element Element;
-    
+    private float _health;
+
+    private float _maxHealth;
+
+    private float _moveSpeed;
+
     private string _name;
+    public Global.Element Element;
+
     public string Name
     {
         get => _name;
@@ -15,8 +21,7 @@ public class EnemySelectionData : SelectionData
             OnSelectionDataChanged?.Invoke(this);
         }
     }
-    
-    private float _maxHealth;
+
     public float MaxHealth
     {
         get => _maxHealth;
@@ -28,7 +33,6 @@ public class EnemySelectionData : SelectionData
         }
     }
 
-    private float _health;
     public float Health
     {
         get => _health;
@@ -39,8 +43,6 @@ public class EnemySelectionData : SelectionData
             OnSelectionDataChanged?.Invoke(this);
         }
     }
-
-    private float _moveSpeed;
 
     public float MoveSpeed
     {

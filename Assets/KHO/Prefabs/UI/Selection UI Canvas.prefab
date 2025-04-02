@@ -1970,6 +1970,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1508555801336099297}
   - component: {fileID: 660248013035135158}
+  - component: {fileID: 1066766197175945249}
   m_Layer: 5
   m_Name: Target
   m_TagString: Untagged
@@ -2025,6 +2026,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1066766197175945249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3418816286189447226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d138d9c6edd2549b4da7476d647cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: "\uD0C0\uC6CC\uAC00 \uACF5\uACA9\uD560 \uC801\uC744 \uACB0\uC815\uD569\uB2C8\uB2E4"
+  header: 
 --- !u!1 &3439260988827424067
 GameObject:
   m_ObjectHideFlags: 0
@@ -3769,6 +3784,7 @@ GameObject:
   - component: {fileID: 4122325182372432496}
   - component: {fileID: 3692415586929340935}
   - component: {fileID: 3182196756383762344}
+  - component: {fileID: 6928103391001509412}
   m_Layer: 5
   m_Name: Tower Element Image
   m_TagString: Untagged
@@ -3833,6 +3849,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6928103391001509412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6727292980870819423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d138d9c6edd2549b4da7476d647cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: "\uD0C0\uC6CC \uC18D\uC131"
+  header: 
 --- !u!1 &6840865644200319292
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,12 +28,12 @@ public static class Global
                 return inElement;
         }
     }
-    
+
     public static bool WinsTo(this Element inElement, Element anotherElement)
     {
         return WinsTo(inElement) == anotherElement;
     }
-    
+
     public static Element LosesTo(this Element inElement)
     {
         switch (inElement)
@@ -48,7 +48,7 @@ public static class Global
                 return inElement;
         }
     }
-    
+
     public static bool LosesTo(this Element inElement, Element anotherElement)
     {
         return LosesTo(inElement) == anotherElement;

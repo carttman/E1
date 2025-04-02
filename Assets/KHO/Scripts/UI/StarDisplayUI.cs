@@ -6,7 +6,7 @@ public class StarDisplayUI : MonoBehaviour
     [SerializeField] private Image star1;
     [SerializeField] private Image star2;
     [SerializeField] private Image star3;
-    
+
     public void ChangeStar(int starCount)
     {
         star1.gameObject.SetActive(starCount >= 1);

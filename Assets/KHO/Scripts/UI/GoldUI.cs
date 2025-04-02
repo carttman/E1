@@ -1,7 +1,4 @@
-using System;
 using DG.Tweening;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Options;
 using TMPro;
 using UnityEngine;
 
@@ -10,14 +7,14 @@ public class GoldUI : MonoBehaviour
 {
     [SerializeField] private float tweenTime = 0.5f;
 
-    private TextMeshProUGUI _textMesh;
-    
-    private Tween _valueTween;
+    private int _displayGold;
     private Tween _scaleTween;
-    
-    private int _displayGold = 0;
-    private int _toGold = 0;
-    
+
+    private TextMeshProUGUI _textMesh;
+    private int _toGold;
+
+    private Tween _valueTween;
+
     private void Awake()
     {
         _textMesh = GetComponent<TextMeshProUGUI>();
@@ -33,20 +30,19 @@ public class GoldUI : MonoBehaviour
     private void GameOnGoldChanged(int newGold)
     {
         _valueTween?.Kill();
-        
+
         _toGold = newGold;
         _valueTween = DOTween.To(() => _displayGold,
             x =>
-        {
-            _displayGold = x;
-            _textMesh.text = _displayGold.ToString();
-        },
+            {
+                _displayGold = x;
+                _textMesh.text = _displayGold.ToString();
+            },
             _toGold,
             tweenTime).SetUpdate(true).SetLink(gameObject);
 
         _scaleTween?.Kill(true);
         _scaleTween = _textMesh.rectTransform.DOPunchScale(new Vector3(0.05f, 0.05f, 0.05f), 0.25f)
-                                             .SetUpdate(true).SetLink(gameObject);
-        
+            .SetUpdate(true).SetLink(gameObject);
     }
 }

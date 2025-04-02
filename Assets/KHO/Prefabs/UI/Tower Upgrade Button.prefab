@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2408833978018166099}
   - component: {fileID: 1425770350955927742}
   - component: {fileID: 5335997609889706737}
+  - component: {fileID: 3760733234444396139}
   m_Layer: 5
   m_Name: Coin Image
   m_TagString: Untagged
@@ -76,6 +77,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3760733234444396139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514338145822801374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d138d9c6edd2549b4da7476d647cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: "\uAD6C\uB9E4 \uBE44\uC6A9"
+  header: 
 --- !u!1 &1890946600094250866
 GameObject:
   m_ObjectHideFlags: 0

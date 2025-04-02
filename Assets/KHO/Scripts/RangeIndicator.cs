@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class RangeIndicator : MonoBehaviour
 {
-    private Tower _tower;
+    [SerializeField] [Range(0.1f, 1f)] private float yScale = 0.2f;
     private Renderer _renderer;
-    [SerializeField, Range(0.1f, 1f)] private float yScale = 0.2f;
-    
+    private Tower _tower;
+
     private void Awake()
     {
         _tower = GetComponentInParent<Tower>();

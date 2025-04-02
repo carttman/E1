@@ -9,7 +9,7 @@ public class SlowAreaTower : AreaTower
     {
         var stats = col.GetComponent<StatsComponent>();
         if (!stats) return;
-        
+
         // Apply damage and slow effect
         var damagePacket = new DamagePacket(damage, towerData.elementType, this);
         stats.TakeDamage(damagePacket);

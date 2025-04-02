@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,42 +5,35 @@ using Random = UnityEngine.Random;
 
 public class DiceTower : Tower
 {
-    [SerializeField] private Sprite[] diceSprites;
-    [SerializeField] private GameObject diceUIPrefab;
-    [SerializeField] private Vector3 diceUIOffset = new Vector3(0, 5, 0);
-
-    [SerializeField] private float damagePerShot;
-    [SerializeField] private GameObject projectilePrefab;
-    
-    [SerializeField] private float attackCooldown = 2f;
-
     private const int DICE_ROLLS = 20;
     private const float DICEROLL_DELAY = 0.05f;
     private const float DURINGSHOT_DELAY = 0.05f;
-    
-    private float _launchProgress;
-    private bool _isRolling = false;
+    [SerializeField] private Sprite[] diceSprites;
+    [SerializeField] private GameObject diceUIPrefab;
+    [SerializeField] private Vector3 diceUIOffset = new(0, 5, 0);
+
+    [SerializeField] private float damagePerShot;
+    [SerializeField] private GameObject projectilePrefab;
+
+    [SerializeField] private float attackCooldown = 2f;
     private Image _diceImageUI;
-    
-    protected override void OnRarityChanged()
-    {
-        damagePerShot = towerData.TowerStats[(int)Rarity].damage;
-        attackCooldown = towerData.TowerStats[(int)Rarity].attackSpeed;
-    }
+    private bool _isRolling;
+
+    private float _launchProgress;
 
     private new void Start()
     {
         base.Start();
         var mainUI = GameObject.FindGameObjectWithTag("Main UI");
-        
+
         var diceUI = Instantiate(diceUIPrefab, mainUI.transform);
         _diceImageUI = diceUI.GetComponent<Image>();
         var rectTransform = diceUI.GetComponent<RectTransform>();
-        
+
         rectTransform.localScale = Vector3.one;
         rectTransform.anchoredPosition = Vector2.zero;
         rectTransform.position = Camera.main.WorldToScreenPoint(turret.transform.position) + diceUIOffset;
-        
+
         OnRarityChanged();
     }
 
@@ -56,18 +48,25 @@ public class DiceTower : Tower
             else if (!Game.Instance.IsPlayingSlowmo)
             {
                 _diceImageUI.enabled = true;
-                _diceImageUI.transform.position = Camera.main.WorldToScreenPoint(turret.transform.position) + diceUIOffset;
+                _diceImageUI.transform.position =
+                    Camera.main.WorldToScreenPoint(turret.transform.position) + diceUIOffset;
             }
         }
-        
+
         if (_isRolling) return;
-        
+
         _launchProgress += Time.deltaTime;
         if (_launchProgress >= attackCooldown)
         {
-          StartCoroutine(RollTheDice());
-          _launchProgress -= attackCooldown;
+            StartCoroutine(RollTheDice());
+            _launchProgress -= attackCooldown;
         }
+    }
+
+    protected override void OnRarityChanged()
+    {
+        damagePerShot = towerData.TowerStats[(int)Rarity].damage;
+        attackCooldown = towerData.TowerStats[(int)Rarity].attackSpeed;
     }
 
     // Coroutine that rolls the dice
@@ -76,13 +75,13 @@ public class DiceTower : Tower
         _isRolling = true;
         // Variable to contain random dice side number.
         // It needs to be assigned. Let it be 0 initially
-        int randomDiceSide = 0;
+        var randomDiceSide = 0;
 
         // Final side or value that dice reads in the end of coroutine
-        int finalSide = 0;
+        var finalSide = 0;
 
         // Loop to switch dice sides ramdomly
-        for (int i = 0; i <= DICE_ROLLS; i++)
+        for (var i = 0; i <= DICE_ROLLS; i++)
         {
             // Pick up random value from 0 to 5 (All inclusive)
             randomDiceSide = Random.Range(0, 6);
@@ -93,10 +92,10 @@ public class DiceTower : Tower
             // Pause before next itteration
             yield return new WaitForSeconds(DICEROLL_DELAY);
         }
-        
+
         finalSide = randomDiceSide + 1;
 
-        if (AcquireTarget(out Transform pTarget))
+        if (AcquireTarget(out var pTarget))
         {
             if (pTarget)
             {
@@ -108,30 +107,31 @@ public class DiceTower : Tower
         {
             _launchProgress = attackCooldown - 0.001f;
         }
+
         _isRolling = false;
     }
 
     private IEnumerator ShootDelay(Transform pTarget, int time)
     {
-        for (int i = 0; i < time; i++)
+        for (var i = 0; i < time; i++)
         {
             yield return new WaitForSeconds(DURINGSHOT_DELAY);
             Shoot(pTarget);
         }
     }
-    
+
     private void Shoot(Transform pTarget)
     {
         var damagePacket = new DamagePacket(damagePerShot, towerData.elementType, this);
-        
+
         var projectile = PoolManager.Instance.GetProjectile(
-            projectilePrefab: projectilePrefab,
-            position: turret.position,
-            rotation: rotatingPart.rotation * Quaternion.Euler(Random.Range(-20f, 20f), Random.Range(-20, 20f), 0),
-            target: pTarget,
-            damagePacket: damagePacket
+            projectilePrefab,
+            turret.position,
+            rotatingPart.rotation * Quaternion.Euler(Random.Range(-20f, 20f), Random.Range(-20, 20f), 0),
+            pTarget,
+            damagePacket
         );
-        
+
         projectile.gameObject.SetActive(true);
     }
 }

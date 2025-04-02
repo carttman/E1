@@ -1,12 +1,17 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [Serializable]
-public class TowerSelectionData: SelectionData
+public class TowerSelectionData : SelectionData
 {
     public Tower tower;
-    
+
+    [SerializeField] private int kills;
+
+    [SerializeField] private float dealtDamage;
+
+    public readonly TowerData StaticTowerData;
+
     public TowerSelectionData(TowerData staticTowerData, int kills, float dealtDamage)
     {
         StaticTowerData = staticTowerData;
@@ -14,9 +19,6 @@ public class TowerSelectionData: SelectionData
         this.dealtDamage = dealtDamage;
     }
 
-    public readonly TowerData StaticTowerData;
-    
-    [SerializeField] private int kills;
     public int Kills
     {
         get => kills;
@@ -29,8 +31,7 @@ public class TowerSelectionData: SelectionData
             }
         }
     }
-    
-    [SerializeField] private float dealtDamage;
+
     public float DealtDamage
     {
         get => dealtDamage;

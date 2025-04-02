@@ -20,13 +20,13 @@ MonoBehaviour:
   towerPrefab: {fileID: 2218509119293377957, guid: ccd75e4b126990a45bf7970b207c1f1e,
     type: 3}
   TowerStats:
-  - damage: 7
+  - damage: 10
     range: 5
     attackSpeed: 0
-  - damage: 8
+  - damage: 15
     range: 6
     attackSpeed: 0
-  - damage: 9
+  - damage: 30
     range: 7
     attackSpeed: 0
   elementType: 1

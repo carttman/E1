@@ -10,8 +10,8 @@ public class EnemyState : MonoBehaviour
     private bool isSlow = false;
     
     public float MoveSpeed = 10f;
-    
-    [SerializeField]private AudioClip deathSFX; // 죽음 효과음 클립
+
+    [SerializeField] private SoundEffect deathSFX; // 죽음 효과음 클립
 
     private void Start()
     { 
@@ -25,7 +25,7 @@ public class EnemyState : MonoBehaviour
     private void DeadTrigger()
     {
         animator.SetTrigger("Dead");
-        AudioManager.Instance.PlaySound(deathSFX);
+        AudioManager.instance.PlaySound(deathSFX);
     }
 
     public void OnDeadAnimationEvent()

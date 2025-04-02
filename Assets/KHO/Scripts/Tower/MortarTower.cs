@@ -7,9 +7,9 @@ public class MortarTower : Tower
     [SerializeField] private GameObject shellPrefab;
     [SerializeField] private float leadTime = 0.5f;
     [SerializeField] private float damage;
-    
-    private float _launchSpeed;
     private float _launchProgress = 0.999f;
+
+    private float _launchSpeed;
 
     private new void Awake()
     {
@@ -23,88 +23,85 @@ public class MortarTower : Tower
         OnRarityChanged();
     }
 
-    protected override void OnRarityChanged()
-    {
-        damage = towerData.TowerStats[(int)Rarity].damage;
-        shotsPerSecond = towerData.TowerStats[(int)Rarity].attackSpeed;
-    }
-
-    private new void OnValidate()
-    {
-        base.OnValidate();
-        float x = -targetingRange * transform.localScale.x + 0.25001f;
-        float y = -mortar.position.y;
-        _launchSpeed = Mathf.Sqrt(9.81f * (y + Mathf.Sqrt(x * x + y * y)));
-    }
-
     private void Update()
     {
         _launchProgress += shotsPerSecond * Time.deltaTime;
         while (_launchProgress >= 1f)
-        {
-            if (AcquireTarget(out Transform pTarget))
+            if (AcquireTarget(out var pTarget))
             {
                 if (pTarget)
                 {
                     TrackTarget(ref pTarget);
                     Launch(pTarget);
                 }
+
                 _launchProgress -= 1f;
             }
             else
             {
                 _launchProgress = 0.999f;
             }
-        }
+    }
+
+    private new void OnValidate()
+    {
+        base.OnValidate();
+        var x = -targetingRange * transform.localScale.x + 0.25001f;
+        var y = -mortar.position.y;
+        _launchSpeed = Mathf.Sqrt(9.81f * (y + Mathf.Sqrt(x * x + y * y)));
+    }
+
+    protected override void OnRarityChanged()
+    {
+        damage = towerData.TowerStats[(int)Rarity].damage;
+        shotsPerSecond = towerData.TowerStats[(int)Rarity].attackSpeed;
     }
 
     private void Launch(Transform target)
     {
-        Vector3 launchPoint = mortar.position;
-        Vector3 targetPoint = target.GetComponent<EnemyMove>().GetPredictedPosition(leadTime);
+        var launchPoint = mortar.position;
+        var targetPoint = target.GetComponent<EnemyMove>().GetPredictedPosition(leadTime);
         targetPoint.y = 0f;
 
         Vector2 dir;
         dir.x = targetPoint.x - launchPoint.x;
         dir.y = targetPoint.z - launchPoint.z;
-        float x = dir.magnitude;
-        float y = -launchPoint.y;
+        var x = dir.magnitude;
+        var y = -launchPoint.y;
         dir /= x;
-        
-        float g = 9.81f;
-        float s = _launchSpeed;
-        float s2 = s * s;
 
-        float r = s2 * s2 - g * (g * x * x + 2f * y * s2);
+        var g = 9.81f;
+        var s = _launchSpeed;
+        var s2 = s * s;
+
+        var r = s2 * s2 - g * (g * x * x + 2f * y * s2);
 
         if (r < 0f)
-        {
             //Debug.Log("Launch velocity insufficient for range!");
             return;
-        }
-        
-        float tanTheta = (s2 + Mathf.Sqrt(r)) / (g * x);
-        float cosTheta = Mathf.Cos(Mathf.Atan(tanTheta));
-        float sinTheta = cosTheta * tanTheta;
-        Vector3 launchVelocity = new Vector3(s * cosTheta * dir.x, s * sinTheta, s * cosTheta * dir.y);
+
+        var tanTheta = (s2 + Mathf.Sqrt(r)) / (g * x);
+        var cosTheta = Mathf.Cos(Mathf.Atan(tanTheta));
+        var sinTheta = cosTheta * tanTheta;
+        var launchVelocity = new Vector3(s * cosTheta * dir.x, s * sinTheta, s * cosTheta * dir.y);
 
         var damagePacket = new DamagePacket(damage, towerData.elementType, this);
-        
-        Projectile shellGo = PoolManager.Instance.GetProjectile(
-            projectilePrefab: shellPrefab,
-            position: launchPoint,
-            rotation: Quaternion.identity,
-            target: null,
-            damagePacket: damagePacket
+
+        var shellGo = PoolManager.Instance.GetProjectile(
+            shellPrefab,
+            launchPoint,
+            Quaternion.identity,
+            null,
+            damagePacket
         );
-        
-        Shell shell = shellGo.GetComponent<Shell>();
+
+        var shell = shellGo.GetComponent<Shell>();
         shell.Initialize(launchPoint,
-            targetPoint, 
+            targetPoint,
             launchVelocity
-            );
+        );
         shell.gameObject.SetActive(true);
-        
+
         /*
         // 경로 그리기
         Vector3 prev = launchPoint;
@@ -120,7 +117,7 @@ public class MortarTower : Tower
             Debug.DrawLine(prev, next, Color.blue, 1f);
             prev = next;
         }
-        
+
         Debug.DrawLine(launchPoint, targetPoint, Color.yellow, 1f);
         Debug.DrawLine(
             new Vector3(launchPoint.x, 0.01f, launchPoint.z),

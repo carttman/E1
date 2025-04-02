@@ -5,50 +5,42 @@ public class AreaTower : Tower
     [SerializeField] protected float attacksPerSecond;
     [SerializeField] protected float damage;
     [SerializeField] protected float blastRadius = int.MinValue;
-    [SerializeField] protected Color blastColor = new Color(1, 0, 0, 0.3f);
-    
+    [SerializeField] protected Color blastColor = new(1, 0, 0, 0.3f);
+
     protected float AttackProgress = 0.999f;
 
     private new void Awake()
     {
         base.Awake();
     }
-    
+
     protected new void Start()
     {
         base.Start();
         OnRarityChanged();
     }
 
-    protected override void OnRarityChanged()
-    {
-        // blast radius가 특정되지 않을경우 targetingRange 변수 그대로 사용
-        if (Mathf.Approximately(blastRadius, int.MinValue))
-        {
-            blastRadius = targetingRange;
-        }
-        damage = towerData.TowerStats[(int)Rarity].damage;
-        attacksPerSecond = towerData.TowerStats[(int)Rarity].attackSpeed;
-    }
-
     protected void Update()
     {
         AttackProgress += attacksPerSecond * Time.deltaTime;
         while (AttackProgress >= 1f)
-        {
-            if (AcquireTarget(out Transform pTarget))
+            if (AcquireTarget(out var pTarget))
             {
-                if (pTarget)
-                {
-                    Attack();
-                }
+                if (pTarget) Attack();
                 AttackProgress -= 1f;
             }
             else
             {
                 AttackProgress = 0.999f;
             }
-        }
+    }
+
+    protected override void OnRarityChanged()
+    {
+        // blast radius가 특정되지 않을경우 targetingRange 변수 그대로 사용
+        if (Mathf.Approximately(blastRadius, int.MinValue)) blastRadius = targetingRange;
+        damage = towerData.TowerStats[(int)Rarity].damage;
+        attacksPerSecond = towerData.TowerStats[(int)Rarity].attackSpeed;
     }
 
     protected void Attack()

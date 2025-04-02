@@ -5,9 +5,9 @@ public abstract class Projectile : MonoBehaviour
     public ProjectilePool pool;
     public Transform target;
     public DamagePacket DamagePacket;
-    
+
     [SerializeField] protected float speed = 10f;
-    [SerializeField] protected float age = 0f;
+    [SerializeField] protected float age;
     [SerializeField] protected TrailRenderer[] trail;
 
     private void Awake()
@@ -15,33 +15,29 @@ public abstract class Projectile : MonoBehaviour
         trail = transform.GetComponentsInChildren<TrailRenderer>();
     }
 
-    protected virtual void OnEnable()
-    {
-        if (trail != null)
-        {
-            foreach (var t in trail)
-            {
-                t.Clear();
-            }
-        }
-    }
-    
     private void Update()
     {
         age += Time.deltaTime;
         OnUpdate();
     }
 
-    public void Release()
+    protected virtual void OnEnable()
     {
-        pool?.Release(this);
+        if (trail != null)
+            foreach (var t in trail)
+                t.Clear();
     }
-    
+
     protected virtual void OnDisable()
     {
         age = 0f;
         DamagePacket = new DamagePacket();
         target = null;
+    }
+
+    public void Release()
+    {
+        pool?.Release(this);
     }
 
     protected abstract void OnUpdate();
