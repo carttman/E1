@@ -314,7 +314,7 @@ MonoBehaviour:
   _selectionIndicator: {fileID: 2327878959457031367}
   Age: 0
   MyWaveIndex: 0
-  MyName: 
+  MyName: "\uACE0\uBE14\uB9B0"
 --- !u!114 &8234849783101404713
 MonoBehaviour:
   m_ObjectHideFlags: 0

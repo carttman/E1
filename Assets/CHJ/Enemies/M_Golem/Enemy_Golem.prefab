@@ -115,6 +115,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5374094924103635851, guid: 177b26147e7c5d64bb55d616b888bed4,
         type: 3}
+      propertyPath: MyName
+      value: "\uACE8\uB818"
+      objectReference: {fileID: 0}
+    - target: {fileID: -5374094924103635851, guid: 177b26147e7c5d64bb55d616b888bed4,
+        type: 3}
       propertyPath: _selectionIndicator
       value: 
       objectReference: {fileID: 2838959959707484683}

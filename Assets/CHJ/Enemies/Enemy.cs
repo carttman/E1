@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour, ISelectable
 
         _enemySelectionData = new EnemySelectionData
         {
-            Name = gameObject.name,
+            Name = MyName,
             Health = _statsComponent.maxHealth,
             MaxHealth = _statsComponent.maxHealth,
             MoveSpeed = GetComponent<EnemyState>()?.MoveSpeed ?? 0f,

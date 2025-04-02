@@ -32,7 +32,7 @@ public class Game : MonoBehaviour
 
     private int _buildLevel;
 
-    private int _gold = 1000;
+    private int _gold = 20;
 
     private int _lives = 10;
 
