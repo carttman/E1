@@ -177,12 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d570c02f56299449dea2b9501b994c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionData:
-    tower: {fileID: 0}
-    kills: 0
-    dealtDamage: 0
-  kills: 0
-  dealtDamage: 0
   targetingType: 0
   isSelected: 0
   towerData: {fileID: 11400000, guid: a349ca89edfc96148a0c62c0ea8616d0, type: 2}
@@ -191,12 +185,18 @@ MonoBehaviour:
   rotatingPart: {fileID: 6886167171745578559}
   turret: {fileID: 6886167171745578559}
   _selectionIndicator: {fileID: 7455934678572178044}
-  buildSound: {fileID: 8300000, guid: 66c5ca982cf4023418de540cf6028e9e, type: 3}
+  selectionData:
+    tower: {fileID: 0}
+    kills: 0
+    dealtDamage: 0
+  kills: 0
+  dealtDamage: 0
   projectilePrefab: {fileID: 1855686018460528733, guid: fe2ec3f8467a09b478f4fbb366c0d8e9,
     type: 3}
   shotsPerSecond: 2.5
   damagePerShot: 15
   launchProgress: 0
+  soundEffect: 7
 --- !u!1 &7455934678572178044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1204766025124422093, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,

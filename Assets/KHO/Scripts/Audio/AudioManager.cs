@@ -50,7 +50,10 @@ public class AudioManager : MonoBehaviour
             
             var clip = soundMapping.clip;
             var audioSource = PoolManager.Instance.Audio.Get();
-            audioSource.PlayOneShot(clip);
+            
+            // 맵 이동시 오디오가 사라지지 않게 함
+            DontDestroyOnLoad(audioSource.gameObject);
+            audioSource.PlayOneShot(clip, soundMapping.volume);
             DOVirtual.DelayedCall(clip.length, () => PoolManager.Instance.Audio.Release(audioSource));
             
             _soundMappingCount[soundMapping]++;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,19 +17,20 @@ public class DiceTower : Tower
     [SerializeField] private GameObject projectilePrefab;
 
     [SerializeField] private float attackCooldown = 2f;
+    
     private Image _diceImageUI;
     private bool _isRolling;
-
     private float _launchProgress;
-
+    private GameObject _diceUI;
+    
     private new void Start()
     {
         base.Start();
         var mainUI = GameObject.FindGameObjectWithTag("Main UI");
 
-        var diceUI = Instantiate(diceUIPrefab, mainUI.transform);
-        _diceImageUI = diceUI.GetComponent<Image>();
-        var rectTransform = diceUI.GetComponent<RectTransform>();
+        _diceUI = Instantiate(diceUIPrefab, mainUI.transform);
+        _diceImageUI = _diceUI.GetComponent<Image>();
+        var rectTransform = _diceUI.GetComponent<RectTransform>();
 
         rectTransform.localScale = Vector3.one;
         rectTransform.anchoredPosition = Vector2.zero;
@@ -133,5 +135,10 @@ public class DiceTower : Tower
         );
 
         projectile.gameObject.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(_diceUI);
     }
 }

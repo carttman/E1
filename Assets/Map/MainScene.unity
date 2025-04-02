@@ -68636,6 +68636,16 @@ PrefabInstance:
       propertyPath: backgroundMusicSource
       value: 
       objectReference: {fileID: 2133176291}
+    - target: {fileID: 2758078470921080058, guid: 297284e5c3570cd459c37ebfa808dd8f,
+        type: 3}
+      propertyPath: soundMappings.Array.data[3].volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758078470921080058, guid: 297284e5c3570cd459c37ebfa808dd8f,
+        type: 3}
+      propertyPath: soundMappings.Array.data[6].volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3044275765150185380, guid: 297284e5c3570cd459c37ebfa808dd8f,
         type: 3}
       propertyPath: m_Name

@@ -7,6 +7,7 @@ public class ProjectileTower : Tower
     [SerializeField] private float damagePerShot = 25f;
 
     [SerializeField] private float launchProgress;
+    [SerializeField] private SoundEffect soundEffect;
 
     private new void Start()
     {
@@ -52,5 +53,7 @@ public class ProjectileTower : Tower
         newProjectile.transform.Rotate(Vector3.right, Random.Range(-10f, 10f));
         newProjectile.gameObject.SetActive(true);
         //newProjectile.transform.Rotate(Vector3.up, Random.Range(50f, 75f));
+        
+        AudioManager.instance.PlaySound(soundEffect);
     }
 }

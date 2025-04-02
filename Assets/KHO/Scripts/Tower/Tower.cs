@@ -32,16 +32,12 @@ public abstract class Tower : MonoBehaviour, ISelectable
     [SerializeField] protected Transform turret;
     [SerializeField] private GameObject _selectionIndicator;
 
-    [Header("Sound")] [SerializeField] private AudioClip buildSound;
-
     protected EnemyComparer _enemyComparer;
-
-
     protected bool _isSelectable;
-
     protected RangeIndicator _rangeIndicator;
-    private Global.Rarity _rarity;
     protected SphereCollider SphereCollider;
+    
+    private Global.Rarity _rarity;
 
     public EnemyCompareType TargetingType
     {

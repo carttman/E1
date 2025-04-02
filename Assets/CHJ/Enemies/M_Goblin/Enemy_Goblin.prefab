@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 2.75
-  deathSFX: 2
+  deathSFX: 4
 --- !u!95 &6486979535715135402
 Animator:
   serializedVersion: 7

@@ -1185,7 +1185,7 @@ MonoBehaviour:
   towerUpgradeButton1: {fileID: 7847060820792533777}
   towerUpgradeButton2: {fileID: 6369246900037034665}
   towerTargetingType: {fileID: 8268569036277498680}
-  towerDeleteButton: {fileID: 3206495494401876869}
+  towerDeleteButton: {fileID: 5117922338970466896}
 --- !u!1 &1616547441686895766
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,6 +1198,7 @@ GameObject:
   - component: {fileID: 3332630304917666855}
   - component: {fileID: 1507094856518717361}
   - component: {fileID: 3206495494401876869}
+  - component: {fileID: 5117922338970466896}
   m_Layer: 5
   m_Name: Tower Delete Button
   m_TagString: Untagged
@@ -1307,6 +1308,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5117922338970466896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616547441686895766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476b56441c1dc774fbc9f7b6e71e4cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointerTweenOffset: 7
+  button: {fileID: 3206495494401876869}
 --- !u!1 &1647057951676402568
 GameObject:
   m_ObjectHideFlags: 0
