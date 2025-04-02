@@ -1,18 +1,26 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMapButtons : MonoBehaviour
 {
+    [SerializeField]private UIFadeController fadeController;
     public void OnClickStart()
     {
-        AudioManager.instance.PlaySound(SoundEffect.ButtonClick);
-        SceneManager.LoadScene("MainScene");
+        fadeController.FadeIn();
+        
+        StartCoroutine(LoadSceneAfterFade("MainScene"));
+    }
+
+    private IEnumerator LoadSceneAfterFade(string sceneName)
+    {
+        yield return new WaitForSeconds(1.5f); 
+        SceneManager.LoadScene(sceneName);
     }
 
     public void OnClickExit()
     {
-        AudioManager.instance.PlaySound(SoundEffect.ButtonClick);
         if (Application.isEditor)
         {
             Debug.Log("Application would quit here in a build");
