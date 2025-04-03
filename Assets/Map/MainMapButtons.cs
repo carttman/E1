@@ -9,13 +9,13 @@ public class MainMapButtons : MonoBehaviour
     public void OnClickStart()
     {
         fadeController.FadeIn();
-        
+        Debug.Log("Start");
         StartCoroutine(LoadSceneAfterFade("MainScene"));
     }
 
     private IEnumerator LoadSceneAfterFade(string sceneName)
     {
-        yield return new WaitForSeconds(1.5f); 
+        yield return new WaitForSecondsRealtime(1.5f); 
         SceneManager.LoadScene(sceneName);
     }
 

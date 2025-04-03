@@ -24,10 +24,17 @@ public class PopUpManager : MonoBehaviour
         GameObject popUp = Instantiate(PopUpObject, objectTcVector3 + randomPos, Quaternion.identity);
         
         TextMeshProUGUI temp = popUp.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        
+        // amount를 소수점 1자리로 변환
+        if (float.TryParse(amount, out float parsedAmount))
+        {
+            amount = parsedAmount.ToString("F1"); // 소수점 1자리까지만 출력
+        }
+
         temp.text = amount;
         temp.color = color;
         temp.fontSize = size;
-
+        
         Destroy(popUp, 1f);
     }
 }

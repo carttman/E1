@@ -7,9 +7,10 @@ public class PopUpUIBillboard : MonoBehaviour
     private void Awake()
     {
         MyCamera = Camera.main;
+        transform.forward = MyCamera.transform.forward;
     }
     void Update()
     {
-        transform.forward = Camera.main.transform.forward;
+        transform.forward = MyCamera.transform.forward;
     }
 }
