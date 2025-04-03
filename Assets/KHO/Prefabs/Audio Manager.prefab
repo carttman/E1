@@ -113,5 +113,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9a1b5b42350f9484f8fa0302eb688564, type: 3}
     maximumCount: 2
     volume: 1
+  - sound: 18
+    clip: {fileID: 8300000, guid: 686760db609a6164fbee15f1a64bf019, type: 3}
+    maximumCount: 0
+    volume: 1.2
+  - sound: 19
+    clip: {fileID: 8300000, guid: daad485d1aafea64d937fea5b01ad32d, type: 3}
+    maximumCount: 0
+    volume: 0.9
   backgroundMusicSource: {fileID: 0}
   gameBGM: {fileID: 8300000, guid: cf885bbbe21763f458d5f1ff0e7d8c2c, type: 3}

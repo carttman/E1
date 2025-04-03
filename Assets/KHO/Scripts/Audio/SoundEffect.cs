@@ -17,5 +17,7 @@
     SpellCast,
     DiceRoll,
     Explode,
-    ProjLaunch
+    ProjLaunch,
+    RareTower,
+    RarestTower
 }

@@ -265,10 +265,12 @@ public abstract class Tower : MonoBehaviour, ISelectable
             case Global.Rarity.Common:
                 break;
             case Global.Rarity.Uncommon:
-                Instantiate(Game.Instance.rareTowerEffectPrefab, effectTransform) ;
+                Instantiate(Game.Instance.rareTowerEffectPrefab, effectTransform.position, Quaternion.identity, transform);
+                AudioManager.instance.PlaySound(SoundEffect.RareTower);
                 break;
             case Global.Rarity.Rare:
-                Instantiate(Game.Instance.rarestTowerEffectPrefab, effectTransform);
+                Instantiate(Game.Instance.rarestTowerEffectPrefab, effectTransform.position, Quaternion.identity, transform);
+                AudioManager.instance.PlaySound(SoundEffect.RarestTower);
                 break;
         }
 
