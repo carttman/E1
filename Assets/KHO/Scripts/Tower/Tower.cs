@@ -67,7 +67,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
 
         _rangeIndicator = GetComponentInChildren<RangeIndicator>();
         _rangeIndicator.gameObject.SetActive(false);
-
+        
         selectionData = new TowerSelectionData(towerData, kills, dealtDamage);
         selectionData.tower = this;
         selectionData.OnSelectionDataChanged += data => OnSelectionDataChanged?.Invoke(data);

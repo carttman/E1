@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yScale: 0.2
+  plusVisualRange: 0.225
 --- !u!1 &4709322006253467250
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,12 +238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591684e7c46620d46882f4719cf88ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionData:
-    tower: {fileID: 0}
-    kills: 0
-    dealtDamage: 0
-  kills: 0
-  dealtDamage: 0
   targetingType: 0
   isSelected: 0
   towerData: {fileID: 11400000, guid: b723b4a884f32c04e97f97fc67590014, type: 2}
@@ -251,7 +246,12 @@ MonoBehaviour:
   rotatingPart: {fileID: 3653282857593457266}
   turret: {fileID: 2388252123258264661}
   _selectionIndicator: {fileID: 1204766025124422093}
-  buildSound: {fileID: 8300000, guid: 66c5ca982cf4023418de540cf6028e9e, type: 3}
+  selectionData:
+    tower: {fileID: 0}
+    kills: 0
+    dealtDamage: 0
+  kills: 0
+  dealtDamage: 0
   laserBeam: {fileID: 8637150883866057580}
   damagePerSecond: 50
 --- !u!65 &303210249947105551

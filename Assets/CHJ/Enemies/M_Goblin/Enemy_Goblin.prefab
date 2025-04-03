@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dadc71929a124a9439ad82fedf8f775d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldDropAmount: 7
+  goldDropAmount: 5
   PopupTransform: {fileID: 4234604199334752208}
   livesDamage: 1
   _selectionIndicator: {fileID: 2327878959457031367}
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   element: 0
-  maxHealth: 100
+  maxHealth: 75
   health: 0
   PopupTransform: {fileID: 4234604199334752208}
 --- !u!114 &6241200190116911929
@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31afeb0d550dfc5468f09c37476d08fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 2.75
+  MoveSpeed: 2.5
   deathSFX: 4
 --- !u!95 &6486979535715135402
 Animator:
