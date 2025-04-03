@@ -76,7 +76,7 @@ MonoBehaviour:
   - sound: 8
     clip: {fileID: 8300000, guid: 73ab3b5237fa0574188b6e6adb891d53, type: 3}
     maximumCount: 0
-    volume: 3
+    volume: 5
   - sound: 9
     clip: {fileID: 8300000, guid: f2e867726f8bcc34eaf204c71dce40b3, type: 3}
     maximumCount: 2
@@ -85,5 +85,33 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: d4f056148bebda44b95ba2134ce40b2f, type: 3}
     maximumCount: 0
     volume: 0.5
+  - sound: 11
+    clip: {fileID: 8300000, guid: e72473398e3767342b7e27a1941c3682, type: 3}
+    maximumCount: 1
+    volume: 0.8
+  - sound: 12
+    clip: {fileID: 8300000, guid: 304223b3336f8004989c6e33afc3db06, type: 3}
+    maximumCount: 2
+    volume: 1.2
+  - sound: 13
+    clip: {fileID: 8300000, guid: 2c7435e0620ae844cba610a85765868c, type: 3}
+    maximumCount: 2
+    volume: 1
+  - sound: 14
+    clip: {fileID: 8300000, guid: 0161083dd29eb934193972eca483514d, type: 3}
+    maximumCount: 4
+    volume: 1
+  - sound: 15
+    clip: {fileID: 8300000, guid: d246b77ceb2bdc34ab2bea255efc6019, type: 3}
+    maximumCount: 2
+    volume: 1
+  - sound: 16
+    clip: {fileID: 8300000, guid: 94475a5b6ae0d044284d4f51a5352a08, type: 3}
+    maximumCount: 2
+    volume: 1
+  - sound: 17
+    clip: {fileID: 8300000, guid: 9a1b5b42350f9484f8fa0302eb688564, type: 3}
+    maximumCount: 2
+    volume: 1
   backgroundMusicSource: {fileID: 0}
   gameBGM: {fileID: 8300000, guid: cf885bbbe21763f458d5f1ff0e7d8c2c, type: 3}

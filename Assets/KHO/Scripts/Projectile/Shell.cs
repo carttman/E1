@@ -43,6 +43,7 @@ public class Shell : Projectile
             explosion.Initialize(0.5f, blastRadius, blastColor, false);
             var damagePacketCapture = DamagePacket;
             explosion.OnCollideDetected += col => OnCollideDetected(col, damagePacketCapture);
+            AudioManager.instance.PlaySound(SoundEffect.Explode);
 
             Release();
         }

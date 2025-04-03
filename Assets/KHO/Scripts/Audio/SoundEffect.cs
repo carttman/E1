@@ -12,5 +12,10 @@
     AreaAttack,
     BuildLevelUp,
     LaserBeam,
-    CoinGet
+    CoinGet,
+    ProjImpact,
+    SpellCast,
+    DiceRoll,
+    Explode,
+    ProjLaunch
 }

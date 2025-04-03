@@ -67,7 +67,9 @@ public class ChanceBarController : MonoBehaviour
         {
             _disappearTimer.Kill();
         }
-        _disappearTimer = DOVirtual.DelayedCall(disappearDelay, Disappear);
+        _disappearTimer = DOVirtual.DelayedCall(disappearDelay, Disappear)
+                            .SetUpdate(true)
+                            .SetLink(gameObject);
     }
 
     private void Disappear()

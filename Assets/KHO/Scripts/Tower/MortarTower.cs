@@ -101,6 +101,7 @@ public class MortarTower : Tower
             launchVelocity
         );
         shell.gameObject.SetActive(true);
+        AudioManager.instance.PlaySound(SoundEffect.ProjLaunch);
 
         /*
         // 경로 그리기

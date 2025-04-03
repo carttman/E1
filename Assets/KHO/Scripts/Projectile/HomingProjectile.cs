@@ -84,12 +84,14 @@ public class HomingProjectile : Projectile
             explosion.GetComponent<Explosion>().Initialize(0.5f, aoeRadius, new Color(1, 1, 0, 0.3f), false);
             var damagePacketCapture = DamagePacket;
             explosion.OnCollideDetected += col => col.GetComponent<StatsComponent>()?.TakeDamage(damagePacketCapture);
+            AudioManager.instance.PlaySound(SoundEffect.Explode);
         }
         else
         {
             var enemy = other.GetComponent<Enemy>();
             enemy.GetComponent<StatsComponent>().TakeDamage(DamagePacket);
         }
+        AudioManager.instance.PlaySound(SoundEffect.ProjImpact);
 
         Release();
         enabled = false;

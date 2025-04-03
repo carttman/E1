@@ -135,6 +135,8 @@ public class DiceTower : Tower
         );
 
         projectile.gameObject.SetActive(true);
+        
+        AudioManager.instance.PlaySound(SoundEffect.DiceRoll);
     }
 
     private void OnDestroy()
