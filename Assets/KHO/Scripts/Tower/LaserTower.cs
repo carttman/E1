@@ -24,7 +24,10 @@ public class LaserTower : Tower
     private void Update()
     {
         if (AcquireTarget(out var target))
+        {
+            AudioManager.instance.PlaySound(SoundEffect.LaserBeam);
             Shoot(target);
+        }
         else
             laserBeam.gameObject.SetActive(false);
     }

@@ -49,6 +49,8 @@ public class AreaTower : Tower
         var explosion = explosionGameObject.GetComponent<Explosion>();
         explosion.Initialize(0.5f, blastRadius, blastColor, false);
         explosion.OnCollideDetected += OnCollideDetected;
+        
+        AudioManager.instance.PlaySound(SoundEffect.AreaAttack);
     }
 
     protected virtual void OnCollideDetected(Collider col)

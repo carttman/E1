@@ -60,7 +60,7 @@ MonoBehaviour:
   - sound: 4
     clip: {fileID: 8300000, guid: 954f89960686fd44e9e97318a636b701, type: 3}
     maximumCount: 2
-    volume: 1
+    volume: 0.7
   - sound: 5
     clip: {fileID: 8300000, guid: 11024e853323a9446a808d8b666ccd70, type: 3}
     maximumCount: 2
@@ -72,6 +72,18 @@ MonoBehaviour:
   - sound: 7
     clip: {fileID: 8300000, guid: b34396dfa18081345a50c6ea5f9e411f, type: 3}
     maximumCount: 2
-    volume: 0
+    volume: 1
+  - sound: 8
+    clip: {fileID: 8300000, guid: 73ab3b5237fa0574188b6e6adb891d53, type: 3}
+    maximumCount: 0
+    volume: 3
+  - sound: 9
+    clip: {fileID: 8300000, guid: f2e867726f8bcc34eaf204c71dce40b3, type: 3}
+    maximumCount: 2
+    volume: 0.5
+  - sound: 10
+    clip: {fileID: 8300000, guid: d4f056148bebda44b95ba2134ce40b2f, type: 3}
+    maximumCount: 0
+    volume: 0.5
   backgroundMusicSource: {fileID: 0}
-  gameBGM: {fileID: 0}
+  gameBGM: {fileID: 8300000, guid: cf885bbbe21763f458d5f1ff0e7d8c2c, type: 3}

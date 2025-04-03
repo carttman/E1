@@ -7,5 +7,10 @@
     GoblinDeath,
     DragonDeath,
     GolemDeath,
-    ArrowFire
+    ArrowFire,
+    WaveClear,
+    AreaAttack,
+    BuildLevelUp,
+    LaserBeam,
+    CoinGet
 }

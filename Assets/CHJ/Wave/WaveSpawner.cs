@@ -98,6 +98,7 @@ public class WaveSpawner : MonoBehaviour
        if (WaveList[enemy.MyWaveIndex - 1] <= 0)
        {
            OnThisWaveFinished?.Invoke(enemy);
+           AudioManager.instance.PlaySound(SoundEffect.WaveClear);
        }
    }
    

@@ -56,6 +56,7 @@ public class BuildLevelUpButton : MonoBehaviour, IPointerEnterHandler, IPointerE
     private void OnClick()
     {
         AudioManager.instance.PlaySound(SoundEffect.ButtonClick);
+        AudioManager.instance.PlaySound(SoundEffect.BuildLevelUp);
         Game.Instance.BuildLevelUp();
     }
 

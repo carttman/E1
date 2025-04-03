@@ -66,6 +66,7 @@ public class Enemy : MonoBehaviour, ISelectable
     private void Die()
     {
         OnEnemyDied?.Invoke(this, goldDropAmount);
+        AudioManager.instance.PlaySound(SoundEffect.CoinGet);
         PopUpManager.Instance.CreatePopUpUI("+" + goldDropAmount.ToString(), PopupTransform.position, Color.yellow, 2);
         WaveSpawner.CurrentEnemiesAlive--;
     }
