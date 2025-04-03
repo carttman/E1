@@ -69,8 +69,8 @@ public class StatsComponent : MonoBehaviour
             };
 
             // 데미지 팝업 호출
-            PopUpManager.Instance.CreatePopUpUI($"{finalDamage}{weaknessText}", PopupTransform.position, popupColor,
-                size);
+            PopUpManager.Instance.CreatePopUpUI($"{finalDamage}", PopupTransform.position, popupColor,
+                size, weaknessText);
         }
 
 

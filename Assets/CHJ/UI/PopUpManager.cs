@@ -17,7 +17,7 @@ public class PopUpManager : MonoBehaviour
         _instance = this;
     }
     
-    public void CreatePopUpUI(string amount, Vector3 objectTcVector3, Color color, float size)
+    public void CreatePopUpUI(string amount ,Vector3 objectTcVector3, Color color, float size, string damageScale = " ")
     {
         Vector3 randomPos = new Vector3(Random.Range(0f, .5f), Random.Range(0f, .5f), Random.Range(0f, .5f));
         
@@ -25,13 +25,16 @@ public class PopUpManager : MonoBehaviour
         
         TextMeshProUGUI temp = popUp.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         
-        // amount를 소수점 1자리로 변환
-        if (float.TryParse(amount, out float parsedAmount))
+        // 소수점 1자리로 변환 (골드 색상 제외)
+        if (color != Color.yellow)
         {
-            amount = parsedAmount.ToString("F1"); // 소수점 1자리까지만 출력
+            if (float.TryParse(amount, out float parsedAmount))
+            {
+                amount = parsedAmount.ToString("F1");
+            }
         }
-
-        temp.text = amount;
+        
+        temp.text = $"{amount}<size=60%><color=#00ff00ff>{damageScale}</color></size>";
         temp.color = color;
         temp.fontSize = size;
         
