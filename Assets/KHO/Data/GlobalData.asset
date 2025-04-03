@@ -26,34 +26,34 @@ MonoBehaviour:
   - oneStarRate: 0.75
     twoStarRate: 0.2
     threeStarRate: 0.05
-  - oneStarRate: 0.72
+  - oneStarRate: 0.7
     twoStarRate: 0.21
-    threeStarRate: 0.07
-  - oneStarRate: 0.68
+    threeStarRate: 0.09
+  - oneStarRate: 0.66
     twoStarRate: 0.22
-    threeStarRate: 0.1
-  - oneStarRate: 0.62
+    threeStarRate: 0.12
+  - oneStarRate: 0.6
     twoStarRate: 0.23
-    threeStarRate: 0.15
-  - oneStarRate: 0.55
+    threeStarRate: 0.17
+  - oneStarRate: 0.53
     twoStarRate: 0.25
-    threeStarRate: 0.2
-  - oneStarRate: 0.43
+    threeStarRate: 0.22
+  - oneStarRate: 0.41
     twoStarRate: 0.3
-    threeStarRate: 0.27
-  - oneStarRate: 0.32
+    threeStarRate: 0.29
+  - oneStarRate: 0.3
     twoStarRate: 0.35
-    threeStarRate: 0.33
-  - oneStarRate: 0.2
+    threeStarRate: 0.35
+  - oneStarRate: 0.18
     twoStarRate: 0.4
-    threeStarRate: 0.4
-  - oneStarRate: 0.1
+    threeStarRate: 0.42
+  - oneStarRate: 0.08
     twoStarRate: 0.4
-    threeStarRate: 0.5
+    threeStarRate: 0.52
   - oneStarRate: 0
-    twoStarRate: 0.4
-    threeStarRate: 0.6
-  towerLevelUpCost: 32000000370000003c00000041000000460000004b00000050000000550000005a000000
+    twoStarRate: 0.38
+    threeStarRate: 0.62
+  towerLevelUpCost: 14000000190000001e00000023000000280000002d00000032000000370000003c000000
   ElementWeaknessMultiplier: 1.25
   ElementResistanceMultiplier: 0.75
   WeaknessDamageColor: {r: 1, g: 0, b: 0, a: 1}

@@ -23,10 +23,10 @@ MonoBehaviour:
   - damage: 15
     range: 3
     attackSpeed: 4.5
-  - damage: 15
+  - damage: 20
     range: 3
     attackSpeed: 5
-  - damage: 15
+  - damage: 25
     range: 3
     attackSpeed: 8
   elementType: 2
