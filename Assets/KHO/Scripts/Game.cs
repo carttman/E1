@@ -11,6 +11,8 @@ public class Game : MonoBehaviour
 
     [SerializeField] public GlobalData GlobalData;
     [SerializeField] public GameObject explosionPrefab;
+    [SerializeField] public GameObject rareTowerEffectPrefab;
+    [SerializeField] public GameObject rarestTowerEffectPrefab;
     [SerializeField] private TowerData[] towerData;
 
     // 웨이브 스폰 레퍼런스

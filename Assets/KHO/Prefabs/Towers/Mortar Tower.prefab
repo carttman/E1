@@ -74,6 +74,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2142036380181433063}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &6369085651434140650 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5033198208762345741, guid: 314ac070efc4673408c2be27289c3f2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2142036380181433063}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2350784071714165377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -184,6 +190,7 @@ MonoBehaviour:
   potentialTargets: []
   rotatingPart: {fileID: 4953520720328531183}
   turret: {fileID: 1887205882661498124}
+  effectTransform: {fileID: 6369085651434140650}
   selectionIndicator: {fileID: 0}
   hoverUIPrefab: {fileID: 4468217738738157267, guid: 1fc66ae177e6af1449b91958dbe938ee,
     type: 3}

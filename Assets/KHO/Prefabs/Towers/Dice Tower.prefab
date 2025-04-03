@@ -149,6 +149,7 @@ MonoBehaviour:
   potentialTargets: []
   rotatingPart: {fileID: 2336075951319647925}
   turret: {fileID: 2336075951319647925}
+  effectTransform: {fileID: 2336075951319647925}
   selectionIndicator: {fileID: 0}
   hoverUIPrefab: {fileID: 4468217738738157267, guid: 1fc66ae177e6af1449b91958dbe938ee,
     type: 3}

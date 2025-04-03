@@ -30,11 +30,13 @@ public abstract class Tower : MonoBehaviour, ISelectable
     // 타워 파트들 (좌표 처리용)
     [SerializeField] protected Transform rotatingPart;
     [SerializeField] protected Transform turret;
-    
+    [SerializeField] private Transform effectTransform;
+
     // UI
     [SerializeField] private GameObject selectionIndicator;
     [SerializeField] private GameObject hoverUIPrefab;
     [SerializeField] private Vector3 hoverUIOffset = new(0, 100, 0);
+
 
     protected TowerHoverUI _hoverUI;
     private RectTransform _hoverUIRectTransform;
@@ -257,6 +259,18 @@ public abstract class Tower : MonoBehaviour, ISelectable
         _rarity = newRarity;
         targetingRange = towerData.TowerStats[(int)_rarity].range;
         SphereCollider.radius = targetingRange;
+
+        switch (_rarity)
+        {
+            case Global.Rarity.Common:
+                break;
+            case Global.Rarity.Uncommon:
+                Instantiate(Game.Instance.rareTowerEffectPrefab, effectTransform) ;
+                break;
+            case Global.Rarity.Rare:
+                Instantiate(Game.Instance.rarestTowerEffectPrefab, effectTransform);
+                break;
+        }
 
         OnRarityChanged();
     }

@@ -68,6 +68,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b664fbf55a0bce45adea9b0c10706ec, type: 3}
+--- !u!4 &5361752753386873718 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1329380249762036386, guid: 9b664fbf55a0bce45adea9b0c10706ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 6348437149005945300}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6886167171745578559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9b664fbf55a0bce45adea9b0c10706ec,
@@ -184,6 +190,7 @@ MonoBehaviour:
   potentialTargets: []
   rotatingPart: {fileID: 6886167171745578559}
   turret: {fileID: 6886167171745578559}
+  effectTransform: {fileID: 5361752753386873718}
   selectionIndicator: {fileID: 0}
   hoverUIPrefab: {fileID: 4468217738738157267, guid: 1fc66ae177e6af1449b91958dbe938ee,
     type: 3}
