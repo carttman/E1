@@ -39,7 +39,6 @@ public class UIFadeController : MonoBehaviour
 
             color.a = Mathf.Lerp(startAlpha, endAlpha, t);
             image.color = color;
-            Debug.Log(time);
             yield return null;
         }
 

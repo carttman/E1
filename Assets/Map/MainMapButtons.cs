@@ -9,7 +9,6 @@ public class MainMapButtons : MonoBehaviour
     public void OnClickStart()
     {
         fadeController.FadeIn();
-        Debug.Log("Start");
         StartCoroutine(LoadSceneAfterFade("MainScene"));
     }
 
