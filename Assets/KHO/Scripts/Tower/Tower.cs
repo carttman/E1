@@ -115,10 +115,8 @@ public abstract class Tower : MonoBehaviour, ISelectable
 
     protected void OnDestroy()
     {
-        if (_hoverUI?.gameObject)
-        {
-            Destroy(_hoverUI.gameObject);
-        }
+        if (!_hoverUI) return;
+        Destroy(_hoverUI?.gameObject);
     }
 
     // 범위 시각화
