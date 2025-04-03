@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using TMPro;
@@ -7,6 +8,9 @@ using UnityEngine.UI;
 
 public class TowerBuildButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public event Action HoveredOnTowerBuildButton;
+    public event Action ExitedTowerBuildButton;
+    
     [SerializeField] private int towerIndex;
     [SerializeField] private TowerData towerData;
 
@@ -63,6 +67,7 @@ public class TowerBuildButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerE
         _tween?.Kill();
         _tween = _rectTransform.DOLocalMoveY(_startYPosition + pointerTweenOffset, 0.2f).SetEase(Ease.OutElastic)
             .SetLink(gameObject);
+        HoveredOnTowerBuildButton?.Invoke();
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -71,6 +76,7 @@ public class TowerBuildButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerE
         _goldChangeTween?.Kill();
         _tween?.Kill();
         _tween = _rectTransform.DOLocalMoveY(_startYPosition, 0.2f).SetEase(Ease.OutElastic).SetLink(gameObject);
+        ExitedTowerBuildButton?.Invoke();
     }
 
     private void OnClick()

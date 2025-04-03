@@ -16,19 +16,74 @@ public class ChanceBarController : MonoBehaviour
 
     [Header("Result Indicator")] [SerializeField]
     private RectTransform resultIndicator;
-
     [SerializeField] private float animationDuration = 0.75f;
-
     [SerializeField] private RectTransform container;
 
+    [Header("Appear Tweening")]
+    private Tween _appearTween;
+    private Tween _disappearTimer;
+
+    [SerializeField] private float appearEndY = 15f;
+    [SerializeField] private float appearStartY = -30f;
+    [SerializeField] private Ease appearEaseType = Ease.OutCubic;
+    [SerializeField] private float appearDuration = 0.5f;
+    
+    [SerializeField] private Ease disappearEaseType = Ease.InCubic;
+    [SerializeField] private float disappearDelay = 3f;
+    
     private void Start()
     {
         OnBuildLevelChanged(Game.Instance.BuildLevel);
         Game.Instance.BuildLevelChanged += OnBuildLevelChanged;
         Game.Instance.RarityRolled += OnRarityRolled;
+
+        resultIndicator.gameObject.SetActive(false);
+        
+        var buildButtons = FindObjectsByType<TowerBuildButtonUI>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (var button in buildButtons)
+        {
+            button.HoveredOnTowerBuildButton += Appear;
+            button.ExitedTowerBuildButton += StartDisappearTimer;
+        }
     }
 
-    public void UpdateGauge(float chance1, float chance2, float chance3)
+    private void Appear()
+    {
+        // 끝까지 사라졌을때만 실행
+        if (_appearTween != null)
+        {
+            return;
+        }
+        
+        _appearTween = transform.DOLocalMoveY(appearEndY, appearDuration)
+            .SetEase(appearEaseType)
+            .SetUpdate(true)
+            .SetLink(gameObject);
+    }
+
+    private void StartDisappearTimer()
+    {
+        if (_disappearTimer != null && _disappearTimer.IsActive())
+        {
+            _disappearTimer.Kill();
+        }
+        _disappearTimer = DOVirtual.DelayedCall(disappearDelay, Disappear);
+    }
+
+    private void Disappear()
+    {
+        transform.DOKill(true);
+        
+        transform.DOLocalMoveY(appearStartY, appearDuration)
+            .SetEase(disappearEaseType)
+            .SetUpdate(true)
+            .SetLink(gameObject);
+        
+        _appearTween?.Kill();
+        _appearTween = null;
+    }
+
+    private void UpdateGauge(float chance1, float chance2, float chance3)
     {
         var totalChance = chance1 + chance2 + chance3;
         if (!Mathf.Approximately(totalChance, 1f))
@@ -69,6 +124,8 @@ public class ChanceBarController : MonoBehaviour
             Debug.LogError($"Invalid roll value: {roll}");
             return;
         }
+        
+        resultIndicator.gameObject.SetActive(true);
 
         var containerWidth = container.rect.width;
         var targetAnchoredX = roll * containerWidth;
