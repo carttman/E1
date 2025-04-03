@@ -30,8 +30,14 @@ public abstract class Tower : MonoBehaviour, ISelectable
     // 타워 파트들 (좌표 처리용)
     [SerializeField] protected Transform rotatingPart;
     [SerializeField] protected Transform turret;
-    [SerializeField] private GameObject _selectionIndicator;
+    
+    // UI
+    [SerializeField] private GameObject selectionIndicator;
+    [SerializeField] private GameObject hoverUIPrefab;
+    [SerializeField] private Vector3 hoverUIOffset = new(0, 100, 0);
 
+    protected TowerHoverUI _hoverUI;
+    private RectTransform _hoverUIRectTransform;
     protected EnemyComparer _enemyComparer;
     protected bool _isSelectable;
     protected RangeIndicator _rangeIndicator;
@@ -75,6 +81,11 @@ public abstract class Tower : MonoBehaviour, ISelectable
         ChangeEnemyComparer(targetingType);
 
         targetingRange = towerData.TowerStats[(int)Rarity].range;
+        
+        var mainUI = GameObject.FindGameObjectWithTag("Main UI");
+        _hoverUI = Instantiate(hoverUIPrefab, mainUI.transform).GetComponent<TowerHoverUI>();
+        _hoverUIRectTransform = _hoverUI.GetComponent<RectTransform>();
+        _hoverUI.gameObject.SetActive(false);
     }
 
     protected void Start()
@@ -86,6 +97,28 @@ public abstract class Tower : MonoBehaviour, ISelectable
             .SetLink(gameObject);
 
         AudioManager.instance.PlaySound(SoundEffect.TowerBuilt);
+        
+        _hoverUI.gameObject.SetActive(true);
+        _hoverUI.UpdateUI(towerData.elementType, (int)_rarity + 1);
+        _hoverUIRectTransform.localScale = Vector3.one;
+        _hoverUIRectTransform.anchoredPosition = Vector2.zero;
+        _hoverUIRectTransform.position = Camera.main.WorldToScreenPoint(turret.transform.position) + hoverUIOffset;
+    }
+
+    protected void Update()
+    {
+        if (_hoverUI.gameObject.activeSelf)
+        {
+            _hoverUIRectTransform.position = Camera.main.WorldToScreenPoint(turret.transform.position) + hoverUIOffset;
+        }
+    }
+
+    protected void OnDestroy()
+    {
+        if (_hoverUI?.gameObject)
+        {
+            Destroy(_hoverUI.gameObject);
+        }
     }
 
     // 범위 시각화
@@ -100,11 +133,17 @@ public abstract class Tower : MonoBehaviour, ISelectable
     protected void OnMouseEnter()
     {
         _rangeIndicator.gameObject.SetActive(true);
+        if (enabled)
+        {
+            _hoverUI.gameObject.SetActive(true);
+        }
     }
 
     protected void OnMouseExit()
     {
+        if (!enabled) return;
         if (isSelected) return;
+        _hoverUI.gameObject.SetActive(false);
         _rangeIndicator.gameObject.SetActive(false);
     }
 
@@ -272,14 +311,16 @@ public abstract class Tower : MonoBehaviour, ISelectable
     {
         isSelected = true;
         SelectionManager.instance.OnSelect(this);
-        if (_selectionIndicator) _selectionIndicator.SetActive(true);
+        if (selectionIndicator) selectionIndicator.SetActive(true);
+        _hoverUI.gameObject.SetActive(true);
     }
 
     public void OnDeselect()
     {
         isSelected = false;
         _rangeIndicator.gameObject.SetActive(false);
-        if (_selectionIndicator) _selectionIndicator.SetActive(false);
+        if (selectionIndicator) selectionIndicator.SetActive(false);
+        _hoverUI.gameObject.SetActive(false);
     }
 
     [SerializeField] private TowerSelectionData selectionData;

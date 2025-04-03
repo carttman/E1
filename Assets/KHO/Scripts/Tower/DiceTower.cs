@@ -9,6 +9,7 @@ public class DiceTower : Tower
     private const int DICE_ROLLS = 20;
     private const float DICEROLL_DELAY = 0.05f;
     private const float DURINGSHOT_DELAY = 0.05f;
+    
     [SerializeField] private Sprite[] diceSprites;
     [SerializeField] private GameObject diceUIPrefab;
     [SerializeField] private Vector3 diceUIOffset = new(0, 5, 0);
@@ -39,8 +40,10 @@ public class DiceTower : Tower
         OnRarityChanged();
     }
 
-    private void Update()
+    private new void Update()
     {
+        base.Update();
+        
         if (_diceImageUI)
         {
             if (Game.Instance.IsPlayingSlowmo)
@@ -139,8 +142,10 @@ public class DiceTower : Tower
         AudioManager.instance.PlaySound(SoundEffect.DiceRoll);
     }
 
-    private void OnDestroy()
+    private new void OnDestroy()
     {
+        base.OnDestroy();
+        
         Destroy(_diceUI);
     }
 }

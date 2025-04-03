@@ -169,6 +169,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 819716441762515386, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
+        type: 3}
+      propertyPath: hoverUIOffset.y
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 1173346956814147457, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

@@ -97,12 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7126044a203dbbc4f93fde78071364f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionData:
-    tower: {fileID: 0}
-    kills: 0
-    dealtDamage: 0
-  kills: 0
-  dealtDamage: 0
   targetingType: 0
   isSelected: 0
   towerData: {fileID: 11400000, guid: a03622c45b7294648b713c02d0cd7356, type: 2}
@@ -110,8 +104,16 @@ MonoBehaviour:
   potentialTargets: []
   rotatingPart: {fileID: 6084283208865213368}
   turret: {fileID: 215468277407313828}
-  _selectionIndicator: {fileID: 8531108939828887559}
-  buildSound: {fileID: 8300000, guid: 66c5ca982cf4023418de540cf6028e9e, type: 3}
+  selectionIndicator: {fileID: 0}
+  hoverUIPrefab: {fileID: 4468217738738157267, guid: 1fc66ae177e6af1449b91958dbe938ee,
+    type: 3}
+  hoverUIOffset: {x: 0, y: 40, z: 0}
+  selectionData:
+    tower: {fileID: 0}
+    kills: 0
+    dealtDamage: 0
+  kills: 0
+  dealtDamage: 0
   attacksPerSecond: 0.33
   damage: 25
   blastRadius: 4
@@ -119,12 +121,6 @@ MonoBehaviour:
 --- !u!4 &6084283208865213368 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3653282857593457266, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
-    type: 3}
-  m_PrefabInstance: {fileID: 7411981814512296394}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8531108939828887559 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1204766025124422093, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
     type: 3}
   m_PrefabInstance: {fileID: 7411981814512296394}
   m_PrefabAsset: {fileID: 0}

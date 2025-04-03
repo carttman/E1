@@ -20,8 +20,10 @@ public class AreaTower : Tower
         OnRarityChanged();
     }
 
-    protected void Update()
+    protected new void Update()
     {
+        base.Update();
+        
         AttackProgress += attacksPerSecond * Time.deltaTime;
         while (AttackProgress >= 1f)
             if (AcquireTarget(out var pTarget))

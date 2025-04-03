@@ -24,8 +24,8 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: f8f936c416fe6904a91673822e34064e, type: 3}
   towerRateChance:
   - oneStarRate: 0.75
-    twoStarRate: 0.2
-    threeStarRate: 0.05
+    twoStarRate: 0.18
+    threeStarRate: 0.07
   - oneStarRate: 0.7
     twoStarRate: 0.21
     threeStarRate: 0.09

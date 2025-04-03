@@ -153,12 +153,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3994107318395900691}
   m_SourcePrefab: {fileID: 100100000, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d, type: 3}
---- !u!1 &3469911335174370124 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1204766025124422093, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
-    type: 3}
-  m_PrefabInstance: {fileID: 2350784071714165377}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4953520720328531183 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7215287158059519598, guid: 9a687a9fd6a683e42a7a6ba4bfff1e6d,
@@ -183,12 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18b35f3afd628342baf7ef573e0d530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionData:
-    tower: {fileID: 0}
-    kills: 0
-    dealtDamage: 0
-  kills: 0
-  dealtDamage: 0
   targetingType: 0
   isSelected: 0
   towerData: {fileID: 11400000, guid: 0a025ed51ad3e5f4aa9358a6c81a7bf3, type: 2}
@@ -196,8 +184,16 @@ MonoBehaviour:
   potentialTargets: []
   rotatingPart: {fileID: 4953520720328531183}
   turret: {fileID: 1887205882661498124}
-  _selectionIndicator: {fileID: 3469911335174370124}
-  buildSound: {fileID: 8300000, guid: 66c5ca982cf4023418de540cf6028e9e, type: 3}
+  selectionIndicator: {fileID: 0}
+  hoverUIPrefab: {fileID: 4468217738738157267, guid: 1fc66ae177e6af1449b91958dbe938ee,
+    type: 3}
+  hoverUIOffset: {x: 0, y: 40, z: 0}
+  selectionData:
+    tower: {fileID: 0}
+    kills: 0
+    dealtDamage: 0
+  kills: 0
+  dealtDamage: 0
   shotsPerSecond: 0.75
   mortar: {fileID: 1887205882661498124}
   shellPrefab: {fileID: 6791858764434182562, guid: 912255b3a0e913140818fb6708411b1d,

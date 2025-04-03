@@ -21,8 +21,10 @@ public class LaserTower : Tower
         _laserBeamStartPos = laserBeam.localPosition;
     }
 
-    private void Update()
+    private new void Update()
     {
+        base.Update();
+        
         if (AcquireTarget(out var target))
         {
             AudioManager.instance.PlaySound(SoundEffect.LaserBeam);

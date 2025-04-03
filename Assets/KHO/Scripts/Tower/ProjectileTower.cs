@@ -15,8 +15,10 @@ public class ProjectileTower : Tower
         OnRarityChanged();
     }
 
-    private void Update()
+    private new void Update()
     {
+        base.Update();
+        
         launchProgress += shotsPerSecond * Time.deltaTime;
         while (launchProgress >= 1f)
             if (AcquireTarget(out var pTarget))
@@ -45,7 +47,7 @@ public class ProjectileTower : Tower
     {
         var damagePacket = new DamagePacket(damagePerShot, towerData.elementType, this);
         var newProjectile = PoolManager.Instance.GetProjectile(projectilePrefab,
-            transform.position,
+            turret.position,
             Quaternion.identity,
             pTarget,
             damagePacket);

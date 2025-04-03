@@ -23,8 +23,10 @@ public class MortarTower : Tower
         OnRarityChanged();
     }
 
-    private void Update()
+    private new void Update()
     {
+        base.Update();
+        
         _launchProgress += shotsPerSecond * Time.deltaTime;
         while (_launchProgress >= 1f)
             if (AcquireTarget(out var pTarget))
